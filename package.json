@@ -12,6 +12,7 @@
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
+  "dependencies": {},
   "devDependencies": {
     "eslint-config-custom": "latest",
     "prettier": "latest",
@@ -21,6 +22,6 @@
     "npm": ">=8.0.0",
     "node": ">=18.0.0"
   },
-  "dependencies": {},
+  "author": "Alexander Vu <alexander.vu.tuyet@gmail.com>",
   "packageManager": "npm@8.12.1"
 }
