@@ -1,19 +1,24 @@
 {
-  "name": "documentation",
+  "name": "@studioalex/vue-hora-documentation",
   "version": "1.0.0",
-  "description": "",
+  "description": "Vue Hora Documentation",
   "main": "index.js",
   "scripts": {
-    "dev": "vitepress dev docs",
-    "build": "vitepress build docs",
-    "serve": "vitepress serve docs",
+    "dev": "vitepress dev",
+    "build": "vitepress build",
+    "serve": "vitepress serve",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": ["vue"],
+  "keywords": [
+    "vue"
+  ],
   "author": "Alexander Vu <alexander.vu.tuyet@gmail.com>",
   "engines": {
     "npm": ">=8.0.0",
     "node": ">=18.0.0"
   },
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "vitepress": "^1.0.0-alpha.1"
+  }
 }
