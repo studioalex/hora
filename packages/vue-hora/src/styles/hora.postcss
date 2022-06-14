@@ -1,0 +1,125 @@
+/* 
+ * Hora styling
+ */
+ .hora {
+  font-family: 'Roboto', sans-serif;
+  background-color: var(--hora-background);
+  overflow: hidden;
+  margin: 5vh;
+  height: 400px;
+  
+  &--grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: minmax(20px, auto);
+    /* align-items: start; */
+    /* align-content: center; */
+    /* justify-content: center; */
+    row-gap: 5px;
+    
+    overflow: auto;            
+    max-height: 100%;
+    max-width: 100%;
+    
+    .row, .row__header {
+      display: contents;
+      
+      & > div {
+        z-index: 0;
+      }
+      
+      .justify {
+        &-content-center {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+      
+        &-center {
+          display: flex;
+          justify-content: center;
+        }
+      
+        &-middle {
+          display: flex;
+          align-items: center;
+        }
+      }
+      
+      .fixed {
+        &--left {
+          position: sticky;
+          left: 0;
+          z-index: 10;
+        }
+        
+        &--right {
+          position: sticky;
+          right: 0;
+          z-index: 10;
+        }
+        
+        &--top {
+          position: sticky;
+          top: 0;
+          z-index: 10;
+        }
+
+        &--topleft {
+          position: sticky;
+          top: 0;
+          left: 0;
+          z-index: 20;
+        }
+        
+        &--topright {
+          position: sticky;
+          top: 0;
+          right: 0;
+          z-index: 20;
+        }
+      }
+    }
+    
+    .header {
+      color: var(--hora-header-text);
+      background-color: var(--hora-background);
+      padding: var(--hora-cell-padding) var(--hora-cell-padding) 0 var(--hora-cell-padding);
+      
+      &__action {
+        padding-top: calc(var(--hora-cell-padding)/2);
+        text-align: center;
+      }
+    }
+    
+    .cell {
+      padding: var(--hora-cell-padding);
+      border-top: 1px solid var(--hora-border-cell);
+      border-bottom: 1px solid var(--hora-border-cell);
+      border-right: 1px solid var(--hora-border-cell);
+      color: var(--hora-text);
+      background-color: var(--hora-background-cell);
+      
+      &:first-child {
+        border-radius: 6px 0 0 6px;
+        border-left: 1px solid var(--hora-border-cell);
+      }
+      
+      &:last-child {
+        border-radius: 0 6px 6px 0;
+      }
+      
+      &--header {
+        background-color: var(--hora-background-cell);
+      }
+    }
+  }
+  
+  &--hover {
+    .row {
+      &:hover > div {
+        background-color: var(--hora-background-hover);
+      }
+    }
+  }
+}
