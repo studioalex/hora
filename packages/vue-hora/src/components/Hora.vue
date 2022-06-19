@@ -1,5 +1,6 @@
 <script lang="ts" setup>
-  import { reactive, toRefs, PropType, computed } from 'vue'
+  import { toRefs, PropType, computed } from 'vue'
+  import { getColumnClasses, getHeaderClasses } from './hora'
 
   interface HoraColumns {
     key: string;
@@ -38,7 +39,7 @@
       type: Boolean,
       default: true
     },
-    showActions: {
+    canOrder: {
       type: Boolean,
       default: false
     }
@@ -80,52 +81,22 @@
   /**
    * Set Grid styles.
    */
-  const gridStyle = reactive({
-    gridTemplateColumns: gridTemplateColumns.value.join(' ')
+  const gridStyle = computed(() => {
+    return {
+      gridTemplateColumns: gridTemplateColumns.value.join(' ')
+    }
   })
 
   /**
-   * Set Grid CSS classes.
+   * Set Grid CSS classes like:
+   * - row hovering
    */
-  const gridClass = reactive({
-    'hora--hover': canHover.value
+  const gridClass = computed(() => {
+    return {
+      'hora--hover': canHover.value === true
+    }
   })
 
-  /**
-   * Set column header classes to enable
-   * - fix headers
-   * @param columnOrder 
-   */
-  function getHeaderClasses(columnIndex) {
-    const classes = []
-
-    if (fixHeader.value && fixFirstColumn.value && columnIndex === 0) {
-      classes.push("fixed--topleft")
-    }
-
-    if (!fixHeader.value && fixFirstColumn.value && columnIndex === 0) {
-      classes.push("fixed--left")
-    }
-
-    if (fixHeader.value && !fixFirstColumn.value && columnIndex === 0) {
-      classes.push("fixed--top")
-    }
-
-    if (fixHeader.value && columnIndex > 0) {
-      classes.push("fixed--top")
-    }
-
-    return classes.join(' ')
-  }
-
-  function getColumnClasses(columnIndex) {
-    const classes = []
-
-    if (fixFirstColumn.value && columnIndex === 0) {
-      classes.push('fixed--left')
-    }
-    return classes.join(' ')
-  }
 </script>
 
 <template>
@@ -139,7 +110,7 @@
       class="row__header">
       <div 
         class="header"
-        :class="getHeaderClasses(index)"
+        :class="getHeaderClasses(index, fixHeader, fixFirstColumn)"
         v-for="(column, index) in columnList"
         :key="index">
         <div>{{column.title}}</div>
@@ -152,12 +123,15 @@
       v-for="(record, rowIndex) in data"
       :key="rowIndex">
       <div
-        class="cell"
-        :class="getColumnClasses(columnIndex)"
         v-for="(column, columnIndex) in columnList"
-        :key="columnIndex">
-        {{record[column.key]}}
-      </div>
+        :key="columnIndex"
+        class="cell"
+        :class="getColumnClasses(columnIndex, fixFirstColumn)">
+        <!-- enable -->
+        <slot :name="column.key" :record="record" :column="column">
+          {{ record[column.key] }}
+        </slot>
+      </div> 
     </div>
   </div>
 </template>
