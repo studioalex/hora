@@ -49,7 +49,7 @@ const isFirstColumnFixed = ref(false)
     </div>
   </div>
   <!-- Hora Grid -->
-  <div class="hora">
+  <div class="hora-example">
     <hora
       :columns="data.columns"
       :data="data.data"
@@ -57,7 +57,7 @@ const isFirstColumnFixed = ref(false)
       :fix-first-column="isFirstColumnFixed"
       :is-header-visible="isHeaderVisible"
       :can-hover="canHover">
-      <template #k1="{ record }">{{record.k1}}</template>
+      <template #k1="{ record }">{{ record.k1 }}</template>
     </hora>
   </div>
 </template>
@@ -70,6 +70,12 @@ const isFirstColumnFixed = ref(false)
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+.hora-example {
+  overflow: hidden;
+  margin: 5vh;
+  height: 400px;
 }
 
 .settings {

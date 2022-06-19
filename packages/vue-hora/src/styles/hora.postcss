@@ -2,12 +2,6 @@
  * Hora styling
  */
  .hora {
-  font-family: 'Roboto', sans-serif;
-  background-color: var(--hora-background);
-  overflow: hidden;
-  margin: 5vh;
-  height: 400px;
-  
   &--grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -17,9 +11,10 @@
     /* justify-content: center; */
     row-gap: 5px;
     
-    overflow: auto;            
+    font-family: 'Roboto', sans-serif;
     max-height: 100%;
     max-width: 100%;
+    overflow: auto;
     
     .row, .row__header {
       display: contents;
@@ -90,6 +85,14 @@
         padding-top: calc(var(--hora-cell-padding)/2);
         text-align: center;
       }
+
+      &:first-child {
+        border-radius: var(--hora-border-radius) 0 0 var(--hora-border-radius);
+      }
+
+      &:lastchild {
+        border-radius: 0 var(--hora-border-radius) var(--hora-border-radius) 0;
+      }
     }
     
     .cell {
@@ -101,12 +104,12 @@
       background-color: var(--hora-background-cell);
       
       &:first-child {
-        border-radius: 6px 0 0 6px;
+        border-radius: var(--hora-border-radius) 0 0 var(--hora-border-radius);
         border-left: 1px solid var(--hora-border-cell);
       }
       
       &:last-child {
-        border-radius: 0 6px 6px 0;
+        border-radius: 0 var(--hora-border-radius) var(--hora-border-radius) 0;
       }
       
       &--header {

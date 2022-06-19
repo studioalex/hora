@@ -6,5 +6,6 @@
   --hora-text: rgb(44, 57, 76);
   --hora-border-cell: rgb(244, 226, 232);
   --hora-cell-padding: 12px;
-  --hore-icon-stroke: 6;
+  --hora-icon-stroke: 6;
+  --hora-border-radius: 6px;
 }
