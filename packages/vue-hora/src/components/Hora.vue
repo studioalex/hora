@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-  import { toRefs, PropType, computed } from 'vue'
+  import { ref, toRefs, PropType, computed } from 'vue'
   import { getColumnClasses, getHeaderClasses } from './hora'
 
   interface HoraColumns {
@@ -39,7 +39,7 @@
       type: Boolean,
       default: true
     },
-    canOrder: {
+    canSort: {
       type: Boolean,
       default: false
     }
@@ -52,8 +52,11 @@
     fixHeader,
     fixFirstColumn,
     isHeaderVisible,
-    canHover
+    canHover,
+    canSort
   } = toRefs(props)
+
+  const sortColumn = ref(null)
 
   /**
    * Return the list of columns prepared for `grid-template-columns`

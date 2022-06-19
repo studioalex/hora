@@ -1,7 +1,8 @@
 :root {
-  --hora-background: rgb(242, 244, 245);
+  --hora-background: rgb(255, 255, 255);
   --hora-background-hover: rgb(133, 206, 240);
-  --hora-background-cell: rgb(255, 255, 255);
+  --hora-background-cell: rgb(242, 244, 245);
+  --hora-header-background: rgb(255, 255, 255);
   --hora-header-text: rgb(145, 152, 165);
   --hora-text: rgb(44, 57, 76);
   --hora-border-cell: rgb(244, 226, 232);
