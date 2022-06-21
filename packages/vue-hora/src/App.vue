@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import data from './assets/columns.js'
-import Hora from './components/Hora.vue'
+  import { ref } from 'vue'
+  import data from './assets/columns.js'
+  import Hora from './components/Hora.vue'
 
-const isHeaderVisible = ref(true)
-const isHeaderFixed = ref(true)
-const canHover = ref(true)
-const isFirstColumnFixed = ref(false)
-
+  const isHeaderVisible = ref(true)
+  const isHeaderFixed = ref(true)
+  const canHover = ref(true)
+  const canSort = ref(false)
+  const isFirstColumnFixed = ref(false)
 </script>
 
 <template>
@@ -37,7 +37,15 @@ const isFirstColumnFixed = ref(false)
         id="canHover"
         type="checkbox"
         v-model="canHover" />
-      <label for="canHover">Can hover</label>
+      <label for="canHover">Hoverable</label>
+    </div>
+    <!-- can sort -->
+    <div class="settings__property">
+      <input
+        id="canSort"
+        type="checkbox"
+        v-model="canSort" />
+      <label for="canSort">Sortable</label>
     </div>
     <!-- is first column fixed -->
     <div class="settings__property">
@@ -56,7 +64,8 @@ const isFirstColumnFixed = ref(false)
       :fix-header="isHeaderFixed"
       :fix-first-column="isFirstColumnFixed"
       :is-header-visible="isHeaderVisible"
-      :can-hover="canHover">
+      :hoverable="canHover"
+      :sortable="canSort">
       <template #k1="{ record }">{{ record.k1 }}</template>
     </hora>
   </div>

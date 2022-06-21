@@ -9,7 +9,8 @@ export default {
       key: 'k2',
       title: 'Column 2',
       visible: true,
-      order: 0
+      order: 0,
+      sortable: false
     }, {
       key: 'k3',
       title: 'Column 3',

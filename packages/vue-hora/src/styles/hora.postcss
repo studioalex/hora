@@ -5,10 +5,7 @@
   &--grid {
     display: grid;
     grid-template-columns: 1fr;
-    grid-auto-rows: minmax(20px, auto);
-    /* align-items: start; */
-    /* align-content: center; */
-    /* justify-content: center; */
+    grid-auto-rows: var(--hora-grid-auto-rows);
     row-gap: 5px;
     
     font-family: 'Roboto', sans-serif;
@@ -122,6 +119,47 @@
     .row {
       &:hover > div {
         background-color: var(--hora-background-hover);
+      }
+    }
+  }
+
+  &__icon {
+    &-button {
+      border: 0;
+      background: none;
+      cursor: pointer;
+    }
+
+    &-sort {
+      height: 1.2rem;
+      width: 1.2rem;
+
+      .DESC, .ASC {
+        fill: var(--hora-icon-color);
+      }
+
+      &--asc {
+        .ASC {
+          fill: var(--hora-icon-color--active);
+        }
+        .DESC {
+          fill: var(--hora-icon-color--hollow);
+        }
+      }
+
+      &--desc {
+        .DESC {
+          fill: var(--hora-icon-color--active);
+        }
+        .ASC {
+          fill: var(--hora-icon-color--hollow);
+        }
+      }
+
+      &--disabled {
+        .DESC, .ASC {
+          fill: var(--hora-icon-color--disabled);
+        }
       }
     }
   }

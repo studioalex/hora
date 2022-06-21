@@ -1,13 +1,15 @@
 <script lang="ts" setup>
-  import { ref, toRefs, PropType, computed } from 'vue'
+  import { ref, toRefs, PropType, computed, Ref } from 'vue'
   import { getColumnClasses, getHeaderClasses } from './hora'
+  import SortIcon from './SortIcon.vue'
 
   interface HoraColumns {
     key: string;
     title: string;
-    visible: boolean;
-    width: string;
-    order: number;
+    visible?: boolean;
+    width?: string;
+    order?: number;
+    sortable?: boolean;
   }
 
   const props = defineProps({
@@ -35,11 +37,15 @@
       type: Boolean,
       default: false
     },
-    canHover: {
+    hoverable: {
       type: Boolean,
       default: true
     },
-    canSort: {
+    sortable: {
+      type: Boolean,
+      default: false
+    },
+    showSettings: {
       type: Boolean,
       default: false
     }
@@ -52,11 +58,13 @@
     fixHeader,
     fixFirstColumn,
     isHeaderVisible,
-    canHover,
-    canSort
+    hoverable,
+    sortable,
+    showSettings
   } = toRefs(props)
 
-  const sortColumn = ref(null)
+  const emit = defineEmits(['sort'])
+  const sortColumn: Ref<String[]> = ref([])
 
   /**
    * Return the list of columns prepared for `grid-template-columns`
@@ -96,10 +104,56 @@
    */
   const gridClass = computed(() => {
     return {
-      'hora--hover': canHover.value === true
+      'hora--hover': hoverable.value === true
     }
   })
 
+  /**
+   * Handle click on sort icon. When sort is not set, or the clicked column
+   * do not match with the first element in array, it set the clicked column
+   * to sorting ascending. When the clicked column is the set one, we switch
+   * the sorting direction.
+   * @param column String
+   * @returns {void}
+   */
+  function handleSort (column: String) {
+    if (Array.isArray(sortColumn.value) && sortColumn.value[0]) {
+      const [columnKey, sortDirection] = sortColumn.value[0].split('::')
+
+      if (column === columnKey) {
+        if (sortDirection === 'ASC') {
+          sortColumn.value = [`${column}::DESC`]
+        } else {
+          sortColumn.value = [`${column}::ASC`]
+        }
+      } else {
+        sortColumn.value = [`${column}::ASC`]
+      }
+    } else {
+      sortColumn.value = [`${column}::ASC`]
+    }
+
+    // Emit the sort value
+    emit('sort', sortColumn.value)
+  }
+
+  /**
+   * Set the css class for the sort icon in header to show
+   * which sort direction is set. Ascending or descending.
+   * @param column String
+   * @returns {string}
+   */
+  function getSortIconClass (column: String) {
+    if (Array.isArray(sortColumn.value) && sortColumn.value[0]) {
+      const [columnKey, sortDirection] = sortColumn.value[0].split('::')
+
+      if (columnKey === column ) {
+        return `hora__icon-sort--${sortDirection.toLowerCase()}`
+      }
+    }
+
+    return ''
+  }
 </script>
 
 <template>
@@ -116,11 +170,22 @@
         :class="getHeaderClasses(index, fixHeader, fixFirstColumn)"
         v-for="(column, index) in columnList"
         :key="index">
-        <div>{{column.title}}</div>
-        <div class="header__action">action</div>
+        <!-- header column slot -->
+        <slot :name="`${column.key}-header`" :column="column">
+          <div>
+            {{column.title}}
+          </div>
+          <div
+            v-if="sortable === true && column.sortable !== false"
+            class="header__action">
+            <button @click="handleSort(column.key)" class="hora__icon-button">
+              <SortIcon class="hora__icon-sort" :class="getSortIconClass(column.key)" />
+            </button>
+          </div>
+        </slot>
       </div>
     </div>
-    <!-- data -->
+    <!-- body -->
     <div
       class="row"
       v-for="(record, rowIndex) in data"
@@ -130,7 +195,7 @@
         :key="columnIndex"
         class="cell"
         :class="getColumnClasses(columnIndex, fixFirstColumn)">
-        <!-- enable -->
+        <!-- column slot -->
         <slot :name="column.key" :record="record" :column="column">
           {{ record[column.key] }}
         </slot>
