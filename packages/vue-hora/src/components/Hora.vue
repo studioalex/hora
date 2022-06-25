@@ -2,7 +2,7 @@
   import { ref, toRefs, PropType, computed, Ref } from 'vue'
   import { getColumnClasses, getHeaderClasses } from './hora'
   import SortIcon from './SortIcon.vue'
-  import GearIcon from './GearIcon.vue'
+  import HoraHeaderActions from './HoraHeaderActions.vue'
   import HoraSettings from './HoraSettings.vue'
 
   interface HoraColumns {
@@ -213,17 +213,12 @@
         </div>
       </div>
       <!-- header action column -->
-      <div
-        v-if="isActionColumnVisible"
-        class="header"
-        :class="getHeaderClasses(columns.length++, isHeaderStatic, isFirstColumnStatic)">
-        <button
-          v-if="isSettingsEnabled === true"
-          @click="toggleSettingsVisibility" 
-          class="hora__icon-button">
-          <GearIcon class="hora__icon"/>
-        </button>
-      </div>
+      <HoraHeaderActions
+        :is-visible="isActionColumnVisible"
+        :custom-class="getHeaderClasses(columns.length++, isHeaderStatic, isFirstColumnStatic)"
+        :is-settings-enabled="isSettingsEnabled === true"
+        @settings="toggleSettingsVisibility"
+      ></HoraHeaderActions>
     </div>
     <!-- body -->
     <div
