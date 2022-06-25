@@ -5,9 +5,10 @@
 
   const isHeaderVisible = ref(true)
   const isHeaderFixed = ref(true)
-  const canHover = ref(true)
+  const canSelect = ref(true)
   const canSort = ref(false)
   const isFirstColumnFixed = ref(false)
+  const isSettingsEnabled = ref(false)
 </script>
 
 <template>
@@ -36,8 +37,8 @@
       <input
         id="canHover"
         type="checkbox"
-        v-model="canHover" />
-      <label for="canHover">Hoverable</label>
+        v-model="canSelect" />
+      <label for="canHover">Selectable</label>
     </div>
     <!-- can sort -->
     <div class="settings__property">
@@ -55,18 +56,26 @@
         v-model="isFirstColumnFixed"/>
       <label for="isFirstColumnFixed">Fix first column</label>
     </div>
+    <!-- enable settings -->
+    <div class="settings__property">
+      <input
+        id="isSettingsEnabled"
+        type="checkbox"
+        v-model="isSettingsEnabled"/>
+      <label for="isSettingsEnabled">Enable settings</label>
+    </div>
   </div>
   <!-- Hora Grid -->
   <div class="hora-example">
     <hora
       :columns="data.columns"
       :data="data.data"
-      :fix-header="isHeaderFixed"
-      :fix-first-column="isFirstColumnFixed"
+      :is-header-static="isHeaderFixed"
+      :is-first-column-static="isFirstColumnFixed"
       :is-header-visible="isHeaderVisible"
-      :hoverable="canHover"
-      :sortable="canSort">
-      <template #k1="{ record }">{{ record.k1 }}</template>
+      :is-selectable="canSelect"
+      :is-sortable="canSort"
+      :is-settings-enabled="isSettingsEnabled">
     </hora>
   </div>
 </template>

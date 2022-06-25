@@ -7,9 +7,11 @@
   --hora-text: rgb(44, 57, 76);
   --hora-border-cell: rgb(244, 226, 232);
   --hora-cell-padding: 12px;
+  --hora-action-column-width: minmax(50px, auto);
   --hora-icon-stroke: 6;
   --hora-border-radius: 6px;
   --hora-grid-auto-rows: minmax(20px, auto);
+  --hora-settings-background-color: rgb(255, 255, 255);
   --hora-icon-color: rgb(131, 139, 153);
   --hora-icon-color--active: rgb(18, 151, 226);
   --hora-icon-color--hollow: rgb(224, 226, 232);
