@@ -1,7 +1,7 @@
 <script lang="ts" setup>
   import { ref, toRefs, PropType, computed, Ref } from 'vue'
   import { getColumnClasses, getHeaderClasses } from './hora'
-  import SortIcon from './SortIcon.vue'
+  import HoraHeaderColumnActions from './HoraHeaderColumnActions.vue'
   import HoraHeaderActions from './HoraHeaderActions.vue'
   import HoraSettings from './HoraSettings.vue'
 
@@ -203,14 +203,13 @@
           {{column.title}}
           </slot>
         </div>
-        <!-- header column slot -->
-        <div
-          v-if="isSortable === true && column.sortable !== false"
-          class="header__action">
-          <button @click="handleSort(column.key)" class="hora__icon-button">
-            <SortIcon class="hora__icon-sort" :class="getSortIconClass(column.key)" />
-          </button>
-        </div>
+        <!-- header column action slot -->
+        <HoraHeaderColumnActions
+          :is-visible="isSortable === true && column.sortable !== false"
+          :custom-class="getSortIconClass(column.key)"
+          :column-key="column.key"
+          @sort="handleSort(column.key)">
+        </HoraHeaderColumnActions>
       </div>
       <!-- header action column -->
       <HoraHeaderActions
