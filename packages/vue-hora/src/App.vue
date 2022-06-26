@@ -8,6 +8,7 @@
   const canSelect = ref(true)
   const canSort = ref(false)
   const isFirstColumnFixed = ref(false)
+  const isLastColumnFixed = ref(false)
   const isSettingsEnabled = ref(false)
 </script>
 
@@ -56,6 +57,14 @@
         v-model="isFirstColumnFixed"/>
       <label for="isFirstColumnFixed">Fix first column</label>
     </div>
+    <!-- is last column fixed -->
+    <div class="settings__property">
+      <input
+        id="isLastColumnFixed"
+        type="checkbox"
+        v-model="isLastColumnFixed"/>
+      <label for="isLastColumnFixed">Fix last column</label>
+    </div>
     <!-- enable settings -->
     <div class="settings__property">
       <input
@@ -72,6 +81,7 @@
       :data="data.data"
       :is-header-static="isHeaderFixed"
       :is-first-column-static="isFirstColumnFixed"
+      :is-last-column-static="isLastColumnFixed"
       :is-header-visible="isHeaderVisible"
       :is-selectable="canSelect"
       :is-sortable="canSort"

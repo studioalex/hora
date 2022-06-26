@@ -9,7 +9,8 @@
     },
     customClass: {
       type: String,
-      default: null
+      default: null,
+      required: false
     },
     isSettingsEnabled: {
       type: Boolean,

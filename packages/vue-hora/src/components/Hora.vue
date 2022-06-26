@@ -39,6 +39,10 @@
       type: Boolean,
       default: false
     },
+    isLastColumnStatic: {
+      type: Boolean,
+      default: false
+    },
     isSortable: {
       type: Boolean,
       default: false
@@ -63,6 +67,7 @@
     data,
     isHeaderStatic,
     isFirstColumnStatic,
+    isLastColumnStatic,
     isHeaderVisible,
     isSortable,
     isSelectable,
@@ -104,6 +109,14 @@
     }
 
     return columnsInGrid
+  })
+
+  const columnCount = computed(() => {
+    let length = columnList.value.length
+    if (isActionColumnVisible.value === true) {
+      length++
+    }
+    return length
   })
 
   /**
@@ -194,7 +207,7 @@
       <!-- header columns -->
       <div 
         class="header"
-        :class="getHeaderClasses(index, isHeaderStatic, isFirstColumnStatic)"
+        :class="getHeaderClasses(index, columnCount, isHeaderStatic, isFirstColumnStatic, isLastColumnStatic)"
         v-for="(column, index) in columnList"
         :key="index">
         <!-- header column slot -->
@@ -214,7 +227,7 @@
       <!-- header action column -->
       <HoraHeaderActions
         :is-visible="isActionColumnVisible"
-        :custom-class="getHeaderClasses(columns.length++, isHeaderStatic, isFirstColumnStatic)"
+        :custom-class="getHeaderClasses(columnCount++, columnCount++, isHeaderStatic, isFirstColumnStatic, isLastColumnStatic)"
         :is-settings-enabled="isSettingsEnabled === true"
         @settings="toggleSettingsVisibility"
       ></HoraHeaderActions>
@@ -228,15 +241,16 @@
         v-for="(column, columnIndex) in columnList"
         :key="columnIndex"
         class="cell"
-        :class="getColumnClasses(columnIndex, isFirstColumnStatic)">
+        :class="getColumnClasses(columnIndex, columnCount, isFirstColumnStatic, isLastColumnStatic)">
         <!-- column slot -->
         <slot :name="column.key" :record="record" :column="column">
-          {{ record[column.key] }}
+          {{ record[column.key] }} {{isFirstColumnStatic}}/{{columnIndex}}
         </slot>
       </div>
       <div
         v-if="isActionColumnVisible"
-        class="cell">
+        class="cell"
+        :class="getColumnClasses(columnCount++, columnCount++, isFirstColumnStatic, isLastColumnStatic)">
       </div>
     </div>
   </div>
