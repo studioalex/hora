@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-  import { toRefs } from 'vue'
+  import { toRefs, PropType } from 'vue'
   import SortIcon from './SortIcon.vue'
 
   const props = defineProps({
