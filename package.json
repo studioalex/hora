@@ -16,8 +16,6 @@
   },
   "devDependencies": {
     "del-cli": "^4.0.1",
-    "eslint-config-custom": "latest",
-    "prettier": "latest",
     "turbo": "latest"
   },
   "engines": {
