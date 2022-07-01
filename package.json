@@ -10,10 +10,12 @@
     "build": "turbo run build",
     "dev": "turbo run dev --parallel",
     "lint": "turbo run lint",
+    "clean": "turbo run clean",
+    "postclean": "del-cli ./node_modules",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
-  "dependencies": {},
   "devDependencies": {
+    "del-cli": "^4.0.1",
     "eslint-config-custom": "latest",
     "prettier": "latest",
     "turbo": "latest"

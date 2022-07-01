@@ -1,27 +1,19 @@
 <script lang="ts" setup>
   import { ref, toRefs, PropType, computed, Ref } from 'vue'
   import { getColumnClasses, getHeaderClasses } from './hora'
+  import { HoraColumn } from '../types'
   import HoraHeaderColumnActions from './HoraHeaderColumnActions.vue'
   import HoraHeaderActions from './HoraHeaderActions.vue'
   import HoraSettings from './HoraSettings.vue'
 
-  interface HoraColumns {
-    key: string;
-    title: string;
-    visible?: boolean;
-    width?: string;
-    order?: number;
-    sortable?: boolean;
-  }
-
   const props = defineProps({
     columns: {
-      type: Array as PropType<Array<HoraColumns>>,
-      default: []
+      type: Array as PropType<Array<HoraColumn>>,
+      default: () => []
     },
     data: {
       type: Array as PropType<Array<any>>,
-      default: []
+      default: () => []
     },
     loading: {
       type: Boolean,
@@ -62,7 +54,7 @@
   })
 
   const {
-    loading,
+    // loading,
     columns,
     data,
     isHeaderStatic,
@@ -71,14 +63,14 @@
     isHeaderVisible,
     isSortable,
     isSelectable,
-    multipleSelection,
+    // multipleSelection,
     isSettingsEnabled
   } = toRefs(props)
 
   const emit = defineEmits(['sort'])
-  const sortColumn: Ref<String[]> = ref([])
+  const sortColumn: Ref<string[]> = ref([])
   const settingsVisible = ref(false)
-  const selected: Ref<String[]> = ref([])
+  // const selected: Ref<string[]> = ref([])
   const isActionColumnVisible = computed(() => (isSettingsEnabled.value === true || isSelectable.value === true))
 
   /**
@@ -95,7 +87,11 @@
         column.order = column.order || 0
         return column
       })
-      .sort((a, b) => (a.order === b.order) ? 0 : (a.order < b.order) ? 1 : -1)
+      .sort((a:HoraColumn, b:HoraColumn): number => {
+        if (typeof a.order != 'number') a.order = 0
+        if (typeof b.order != 'number') b.order = 0
+        return (a.order === b.order) ? 0 : (a.order < b.order) ? 1 : -1
+      })
   })
 
   /**
@@ -142,7 +138,7 @@
   /**
    * Set Subgrid styles.
    */
-  const subgridStyle = computed(() => {
+  const rowDetailStyle = computed(() => {
     return {
       gridColumn: `1 / ${columnCount.value + 1}`
     }
@@ -156,7 +152,7 @@
    * @param column String
    * @returns {void}
    */
-  function handleSort (column: String) {
+  function handleSort (column: string) {
     if (Array.isArray(sortColumn.value) && sortColumn.value[0]) {
       const [columnKey, sortDirection] = sortColumn.value[0].split('::')
 
@@ -183,7 +179,7 @@
    * @param column String
    * @returns {string}
    */
-  function getSortIconClass (column: String) {
+  function getSortIconClass (column: string) {
     if (Array.isArray(sortColumn.value) && sortColumn.value[0]) {
       const [columnKey, sortDirection] = sortColumn.value[0].split('::')
 
@@ -204,25 +200,34 @@
   <div
     class="hora__grid"
     :class="gridClass"
-    :style="gridStyle">
+    :style="gridStyle"
+  >
     <!-- settings view -->
-    <HoraSettings @close="toggleSettingsVisibility" v-if="isSettingsEnabled">
+    <HoraSettings
+      v-if="isSettingsEnabled"
+      @close="toggleSettingsVisibility"
+    >
       content
     </HoraSettings>
     <!-- header -->
     <div
       v-if="isHeaderVisible"
-      class="row__header">
+      class="row__header"
+    >
       <!-- header columns -->
-      <div 
+      <div
+        v-for="(column, index) in columnList"
+        :key="index"
         class="header"
         :class="getHeaderClasses(index, columnCount, isHeaderStatic, isFirstColumnStatic, isLastColumnStatic)"
-        v-for="(column, index) in columnList"
-        :key="index">
+      >
         <!-- header column slot -->
         <div>
-          <slot :name="`${column.key}-header`" :column="column">
-            {{column.title}}
+          <slot
+            :name="`header-${column.key}`"
+            :column="column"
+          >
+            {{ column.title }}
           </slot>
         </div>
         <!-- header column action slot -->
@@ -230,41 +235,52 @@
           :is-visible="isSortable === true && column.sortable !== false"
           :custom-class="getSortIconClass(column.key)"
           :column-key="column.key"
-          @sort="handleSort(column.key)">
-        </HoraHeaderColumnActions>
+          @sort="handleSort(column.key)"
+        />
       </div>
       <!-- header action column -->
       <HoraHeaderActions
         :is-visible="isActionColumnVisible"
         :custom-class="getHeaderClasses(columnCount, columnCount, isHeaderStatic, isFirstColumnStatic, isLastColumnStatic)"
         :is-settings-enabled="isSettingsEnabled === true"
-        @settings="toggleSettingsVisibility">
-      </HoraHeaderActions>
+        @settings="toggleSettingsVisibility"
+      />
     </div>
     <!-- body -->
     <div
-      class="row"
       v-for="(record, rowIndex) in data"
-      :key="rowIndex">
+      :key="rowIndex"
+      class="row"
+    >
       <div
         v-for="(column, columnIndex) in columnList"
         :key="columnIndex"
         class="cell"
-        :class="getColumnClasses(columnIndex, columnCount, isFirstColumnStatic, isLastColumnStatic)">
+        :class="getColumnClasses(columnIndex, columnCount, isFirstColumnStatic, isLastColumnStatic)"
+      >
         <!-- column slot -->
-        <slot :name="column.key" :record="record" :column="column">
+        <slot
+          :name="`cell-${column.key}`"
+          :record="record"
+          :column="column"
+        >
           {{ record[column.key] }}
         </slot>
       </div>
       <div
         v-if="isActionColumnVisible"
         class="cell"
-        :class="getColumnClasses(columnCount, columnCount, isFirstColumnStatic, isLastColumnStatic)">ac
+        :class="getColumnClasses(columnCount, columnCount, isFirstColumnStatic, isLastColumnStatic)"
+      >
+        ac
       </div>
       <div
-        class="subgrid"
-        :style="subgridStyle">
-        <span name="subgrid">subgrid</span>
+        class="row__details"
+        :style="rowDetailStyle"
+      >
+        <slot name="row-details">
+          subgrid
+        </slot>
       </div>
     </div>
   </div>

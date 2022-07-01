@@ -1,0 +1,45 @@
+{
+  "name": "@studioalex/hora",
+  "private": true,
+  "version": "0.1.0",
+  "files": [
+    "dist"
+  ],
+  "types": "./dist/types/index.d.ts",
+  "main": "./dist/hora.umd.js",
+  "module": "./dist/hora.es.js",
+  "style": "./dist/style.css",
+  "exports": {
+    ".": {
+      "import": "./dist/hora.es.js",
+      "require": "./dist/hora.udm.js"
+    },
+    "./package.json": "./package.json",
+    "./style.css": "./dist/style.css"
+  },
+  "unpkg": "./dist/hora.umd.js",
+  "jsdelivr": "./dist/hora.umd.js",
+  "scripts": {
+    "build": "vue-tsc --noEmit && vite build",
+    "lint": "eslint --ext .js,.ts,.vue src",
+    "clean": "del-cli ./node_modules ./dist"
+  },
+  "dependencies": {
+    "vue": "^3.2.25"
+  },
+  "devDependencies": {
+    "@types/node": "^18.0.0",
+    "@typescript-eslint/eslint-plugin": "^5.30.3",
+    "@typescript-eslint/parser": "^5.30.3",
+    "@vitejs/plugin-vue": "^2.3.3",
+    "@vue/eslint-config-typescript": "^11.0.0",
+    "autoprefixer": "^10.4.7",
+    "del-cli": "^4.0.1",
+    "eslint": "^8.18.0",
+    "eslint-plugin-vue": "^9.1.1",
+    "postcss-nested": "^5.0.6",
+    "typescript": "^4.5.4",
+    "vite": "^2.9.9",
+    "vue-tsc": "^0.34.7"
+  }
+}
