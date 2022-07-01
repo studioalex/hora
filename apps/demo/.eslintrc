@@ -3,5 +3,28 @@
     "plugin:vue/vue3-recommended",
     "eslint:recommended",
     "@vue/typescript/recommended"
-  ]
+  ],
+  "rules": {
+    "vue/max-attributes-per-line": ["error", {
+      "singleline": {
+        "max": 2
+      },      
+      "multiline": {
+        "max": 1
+      }
+    }],
+    "vue/html-self-closing": ["error", {
+      "html": {
+        "void": "always",
+        "normal": "never",
+        "component": "always"
+      },
+      "svg": "always",
+      "math": "always"
+    }],
+    "vue/html-closing-bracket-newline": ["error", {
+      "singleline": "never",
+      "multiline": "never"
+    }]
+  }
 }

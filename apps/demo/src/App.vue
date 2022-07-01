@@ -12,64 +12,67 @@
 </script>
 
 <template>
-  <img alt="Vue logo" src="./assets/hora_logo.png" width="200"/>
+  <img
+    alt="Vue logo"
+    src="./assets/hora_logo.png"
+    width="200" />
   <!-- Hora Grid Settings -->
   <div class="settings">
     <!-- is header visible -->
     <div class="settings__property">
       <input
         id="isHeaderVisible"
-        type="checkbox"
-        v-model="isHeaderVisible" />
+        v-model="isHeaderVisible"
+        type="checkbox" />
       <label for="isHeaderVisible">Header visible</label>
     </div>
     <!-- is header fixed -->
     <div class="settings__property">
       <input
         id="isHeaderFixed"
-        type="checkbox"
         v-model="isHeaderFixed"
-        :disabled="!isHeaderVisible"/>
+        type="checkbox"
+        :disabled="!isHeaderVisible" />
       <label for="isHeaderFixed">Fix header</label>
     </div>
     <!-- can hover row -->
     <div class="settings__property">
       <input
         id="canHover"
-        type="checkbox"
-        v-model="canSelect" />
+        v-model="canSelect" 
+        type="checkbox" />
       <label for="canHover">Selectable</label>
     </div>
     <!-- can sort -->
     <div class="settings__property">
       <input
         id="canSort"
-        type="checkbox"
-        v-model="canSort" />
+        v-model="canSort"
+        type="checkbox" />
       <label for="canSort">Sortable</label>
     </div>
     <!-- is first column fixed -->
     <div class="settings__property">
       <input
         id="isFirstColumnFixed"
-        type="checkbox"
-        v-model="isFirstColumnFixed"/>
+        v-model="isFirstColumnFixed"
+        type="checkbox" />
       <label for="isFirstColumnFixed">Fix first column</label>
     </div>
     <!-- is last column fixed -->
     <div class="settings__property">
       <input
         id="isLastColumnFixed"
-        type="checkbox"
-        v-model="isLastColumnFixed"/>
+        v-model="isLastColumnFixed"
+        type="checkbox" />
       <label for="isLastColumnFixed">Fix last column</label>
     </div>
     <!-- enable settings -->
     <div class="settings__property">
       <input
         id="isSettingsEnabled"
-        type="checkbox"
-        v-model="isSettingsEnabled"/>
+        v-model="isSettingsEnabled"
+        type="checkbox" />
       <label for="isSettingsEnabled">Enable settings</label>
     </div>
   </div>
@@ -86,7 +89,7 @@
       :is-sortable="canSort"
       :is-settings-enabled="isSettingsEnabled">
       <template #cell-k1="{ record, column }">
-        {{column}} -- {{record}}
+        {{ column }} -- {{ record }}
       </template>
     </hora-grid>
   </div>
