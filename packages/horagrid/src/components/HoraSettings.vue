@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { toRefs } from 'vue'
+  import { toRefs } from 'vue'
   import CloseIcon from './icons/CloseIcon.vue'
 
   const props = defineProps({
@@ -32,14 +32,13 @@ import { toRefs } from 'vue'
       <div class="hora__settings__close">
         <button
           class="hora__icon-button"
-          @click="closeSettings"
-        >
+          @click="closeSettings">
           <CloseIcon class="hora__icon" />
         </button>
       </div>
     </div>
     <div class="hora__settings__content">
-      <slot />
+      <slot></slot>
     </div>
   </div>
 </template>

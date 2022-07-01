@@ -17,8 +17,7 @@ const { data, column } = toRefs(props)
 
 <template
   :data="data"
-  :column="column"
->
+  :column="column">
   <div>
     {{ data[column] }}
   </div>

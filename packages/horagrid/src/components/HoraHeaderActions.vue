@@ -26,13 +26,11 @@
   <div
     v-if="isVisible"
     class="header"
-    :class="customClass"
-  >
+    :class="customClass">
     <button
       v-if="isSettingsEnabled === true"
       class="hora__icon-button"
-      @click="emit('settings', true)"
-    >
+      @click="emit('settings', true)">
       <GearIcon class="hora__icon" />
     </button>
   </div>

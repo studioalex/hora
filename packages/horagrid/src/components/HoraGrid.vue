@@ -200,33 +200,28 @@
   <div
     class="hora__grid"
     :class="gridClass"
-    :style="gridStyle"
-  >
+    :style="gridStyle">
     <!-- settings view -->
     <HoraSettings
       v-if="isSettingsEnabled"
-      @close="toggleSettingsVisibility"
-    >
+      @close="toggleSettingsVisibility">
       content
     </HoraSettings>
     <!-- header -->
     <div
       v-if="isHeaderVisible"
-      class="row__header"
-    >
+      class="row__header">
       <!-- header columns -->
       <div
         v-for="(column, index) in columnList"
         :key="index"
         class="header"
-        :class="getHeaderClasses(index, columnCount, isHeaderStatic, isFirstColumnStatic, isLastColumnStatic)"
-      >
+        :class="getHeaderClasses(index, columnCount, isHeaderStatic, isFirstColumnStatic, isLastColumnStatic)">
         <!-- header column slot -->
         <div>
           <slot
             :name="`header-${column.key}`"
-            :column="column"
-          >
+            :column="column">
             {{ column.title }}
           </slot>
         </div>
@@ -235,49 +230,42 @@
           :is-visible="isSortable === true && column.sortable !== false"
           :custom-class="getSortIconClass(column.key)"
           :column-key="column.key"
-          @sort="handleSort(column.key)"
-        />
+          @sort="handleSort(column.key)" />
       </div>
       <!-- header action column -->
       <HoraHeaderActions
         :is-visible="isActionColumnVisible"
         :custom-class="getHeaderClasses(columnCount, columnCount, isHeaderStatic, isFirstColumnStatic, isLastColumnStatic)"
         :is-settings-enabled="isSettingsEnabled === true"
-        @settings="toggleSettingsVisibility"
-      />
+        @settings="toggleSettingsVisibility" />
     </div>
     <!-- body -->
     <div
       v-for="(record, rowIndex) in data"
       :key="rowIndex"
-      class="row"
-    >
+      class="row">
       <div
         v-for="(column, columnIndex) in columnList"
         :key="columnIndex"
         class="cell"
-        :class="getColumnClasses(columnIndex, columnCount, isFirstColumnStatic, isLastColumnStatic)"
-      >
+        :class="getColumnClasses(columnIndex, columnCount, isFirstColumnStatic, isLastColumnStatic)">
         <!-- column slot -->
         <slot
           :name="`cell-${column.key}`"
           :record="record"
-          :column="column"
-        >
+          :column="column">
           {{ record[column.key] }}
         </slot>
       </div>
       <div
         v-if="isActionColumnVisible"
         class="cell"
-        :class="getColumnClasses(columnCount, columnCount, isFirstColumnStatic, isLastColumnStatic)"
-      >
+        :class="getColumnClasses(columnCount, columnCount, isFirstColumnStatic, isLastColumnStatic)">
         ac
       </div>
       <div
         class="row__details"
-        :style="rowDetailStyle"
-      >
+        :style="rowDetailStyle">
         <slot name="row-details">
           subgrid
         </slot>

@@ -26,17 +26,14 @@
 <template>
   <div
     v-if="isVisible && columnKey"
-    class="header__action"
-  >
+    class="header__action">
     <button
       class="hora__icon-button"
-      @click="emit('sort', columnKey)"
-    >
+      @click="emit('sort', columnKey)">
       <SortIcon
         class="hora__icon-sort"
-        :class="customClass"
-      />
+        :class="customClass" />
     </button>
-    <slot />
+    <slot></slot>
   </div>
 </template>
