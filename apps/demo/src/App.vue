@@ -1,12 +1,95 @@
 <script setup lang="ts">
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
-import HelloWorld from './components/HelloWorld.vue'
+  import { ref } from 'vue'
+  import data from './assets/columns'
+
+  const isHeaderVisible = ref(true)
+  const isHeaderFixed = ref(true)
+  const canSelect = ref(true)
+  const canSort = ref(false)
+  const isFirstColumnFixed = ref(false)
+  const isLastColumnFixed = ref(false)
+  const isSettingsEnabled = ref(false)
 </script>
 
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" />
+  <img alt="Vue logo" src="./assets/hora_logo.png" width="200"/>
+  <!-- Hora Grid Settings -->
+  <div class="settings">
+    <!-- is header visible -->
+    <div class="settings__property">
+      <input
+        id="isHeaderVisible"
+        type="checkbox"
+        v-model="isHeaderVisible" />
+      <label for="isHeaderVisible">Header visible</label>
+    </div>
+    <!-- is header fixed -->
+    <div class="settings__property">
+      <input
+        id="isHeaderFixed"
+        type="checkbox"
+        v-model="isHeaderFixed"
+        :disabled="!isHeaderVisible"/>
+      <label for="isHeaderFixed">Fix header</label>
+    </div>
+    <!-- can hover row -->
+    <div class="settings__property">
+      <input
+        id="canHover"
+        type="checkbox"
+        v-model="canSelect" />
+      <label for="canHover">Selectable</label>
+    </div>
+    <!-- can sort -->
+    <div class="settings__property">
+      <input
+        id="canSort"
+        type="checkbox"
+        v-model="canSort" />
+      <label for="canSort">Sortable</label>
+    </div>
+    <!-- is first column fixed -->
+    <div class="settings__property">
+      <input
+        id="isFirstColumnFixed"
+        type="checkbox"
+        v-model="isFirstColumnFixed"/>
+      <label for="isFirstColumnFixed">Fix first column</label>
+    </div>
+    <!-- is last column fixed -->
+    <div class="settings__property">
+      <input
+        id="isLastColumnFixed"
+        type="checkbox"
+        v-model="isLastColumnFixed"/>
+      <label for="isLastColumnFixed">Fix last column</label>
+    </div>
+    <!-- enable settings -->
+    <div class="settings__property">
+      <input
+        id="isSettingsEnabled"
+        type="checkbox"
+        v-model="isSettingsEnabled"/>
+      <label for="isSettingsEnabled">Enable settings</label>
+    </div>
+  </div>
+  <!-- Hora Grid -->
+  <div class="hora-example">
+    <hora-grid
+      :columns="data.columns"
+      :data="data.data"
+      :is-header-static="isHeaderFixed"
+      :is-first-column-static="isFirstColumnFixed"
+      :is-last-column-static="isLastColumnFixed"
+      :is-header-visible="isHeaderVisible"
+      :is-selectable="canSelect"
+      :is-sortable="canSort"
+      :is-settings-enabled="isSettingsEnabled">
+      <template #cell-k1="{ record, column }">
+        {{column}} -- {{record}}
+      </template>
+    </hora-grid>
+  </div>
 </template>
 
 <style>
@@ -17,5 +100,33 @@ import HelloWorld from './components/HelloWorld.vue'
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+.hora-example {
+  overflow: hidden;
+  margin: 5vh;
+  height: 400px;
+}
+
+.settings {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin: 5vh;
+}
+
+.settings__property {
+  padding: 0.3rem;
+  font-size: 26px;
+}
+
+.settings__property label {
+  min-width: 200px;
+  padding-left: 1rem;
+  cursor: pointer;
+}
+
+.settings__property input[type="checkbox"] {
+  width: 1.2rem;
+  height: 1.2rem;
 }
 </style>

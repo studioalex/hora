@@ -1,5 +1,5 @@
 {
-  "name": "demo",
+  "name": "@studioalex/horagriddemo",
   "private": true,
   "version": "0.1.0",
   "scripts": {
@@ -13,6 +13,7 @@
     "vue": "^3.2.37"
   },
   "devDependencies": {
+    "@studioalex/horagrid": "*",
     "@typescript-eslint/eslint-plugin": "^5.30.3",
     "@typescript-eslint/parser": "^5.30.3",
     "@vitejs/plugin-vue": "^2.3.3",

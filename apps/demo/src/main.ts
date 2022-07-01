@@ -1,4 +1,9 @@
 import { createApp } from 'vue'
+import HoraGrid from '@studioalex/horagrid'
 import App from './App.vue'
 
-createApp(App).mount('#app')
+import '@studioalex/horagrid/style.css'
+
+createApp(App)
+  .use(HoraGrid)
+  .mount('#app')
