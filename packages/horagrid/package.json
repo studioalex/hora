@@ -1,26 +1,27 @@
 {
-  "name": "@studioalex/hora",
+  "name": "@studioalex/horagrid",
   "private": true,
   "version": "0.1.0",
   "files": [
     "dist"
   ],
   "types": "./dist/types/index.d.ts",
-  "main": "./dist/hora.umd.js",
-  "module": "./dist/hora.es.js",
+  "main": "./dist/horagrid.umd.js",
+  "module": "./dist/horagrid.es.js",
   "style": "./dist/style.css",
   "exports": {
     ".": {
-      "import": "./dist/hora.es.js",
-      "require": "./dist/hora.udm.js"
+      "import": "./dist/horagrid.es.js",
+      "require": "./dist/horagrid.udm.js"
     },
     "./package.json": "./package.json",
     "./style.css": "./dist/style.css"
   },
-  "unpkg": "./dist/hora.umd.js",
-  "jsdelivr": "./dist/hora.umd.js",
+  "unpkg": "./dist/horagrid.umd.js",
+  "jsdelivr": "./dist/horagrid.umd.js",
   "scripts": {
     "build": "vue-tsc --noEmit && vite build",
+    "postbuild": "cpy src/types/*.d.ts dist/types --flat",
     "lint": "eslint --ext .js,.ts,.vue src",
     "clean": "del-cli ./node_modules ./dist"
   },
@@ -34,6 +35,7 @@
     "@vitejs/plugin-vue": "^2.3.3",
     "@vue/eslint-config-typescript": "^11.0.0",
     "autoprefixer": "^10.4.7",
+    "cpy-cli": "^4.1.0",
     "del-cli": "^4.0.1",
     "eslint": "^8.18.0",
     "eslint-plugin-vue": "^9.1.1",

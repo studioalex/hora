@@ -9,8 +9,8 @@ export default defineConfig({
   ],
   build: {
     lib: {
-      entry: resolve(__dirname, 'src/hora.esm.ts'),
-      name: 'hora'
+      entry: resolve(__dirname, 'src/horagrid.esm.ts'),
+      name: 'horagrid'
     },
     rollupOptions: {
       // make sure to externalize deps that shouldn't be bundled
