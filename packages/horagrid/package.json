@@ -1,6 +1,7 @@
 {
   "name": "@studioalex/horagrid",
   "private": true,
+  "license": "GPLV3+",
   "version": "0.1.0",
   "files": [
     "dist"
