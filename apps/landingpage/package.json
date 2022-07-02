@@ -1,0 +1,21 @@
+{
+  "name": "@studioalex/hora-landingpage",
+  "version": "0.1.0",
+  "description": "Hora Data Grid Landingpage",
+  "main": "index.js",
+  "scripts": {
+    "dev": "eleventy --serve",
+    "build": "eleventy",
+    "clean": "del-cli ./node_modules ./dist"
+  },
+  "keywords": [],
+  "author": "Alexander Vu <alexander.vu.tuyet@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@11ty/eleventy": "^1.0.1",
+    "autoprefixer": "^10.4.7",
+    "del-cli": "^4.0.1",
+    "eleventy-plugin-postcss": "^1.0.4",
+    "postcss-nested": "^5.0.6"
+  }
+}
