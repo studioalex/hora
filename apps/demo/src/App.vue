@@ -1,6 +1,8 @@
 <script setup lang="ts">
   import { ref } from 'vue'
-  import data from './assets/columns'
+  import DemoHeader from './components/DemoHeader.vue'
+  import DemoFooter from './components/DemoFooter.vue'
+  import data from './features/columns'
 
   const isHeaderVisible = ref(true)
   const isHeaderFixed = ref(true)
@@ -12,12 +14,9 @@
 </script>
 
 <template>
-  <img
-    alt="Vue logo"
-    src="./assets/hora_logo.png"
-    width="200" />
+  <DemoHeader />
   <!-- Hora Grid Settings -->
-  <div class="settings">
+  <div class="demo__settings">
     <!-- is header visible -->
     <div class="settings__property">
       <input
@@ -77,7 +76,7 @@
     </div>
   </div>
   <!-- Hora Grid -->
-  <div class="hora-example">
+  <div class="demo__grid">
     <hora-grid
       :columns="data.columns"
       :data="data.data"
@@ -93,28 +92,16 @@
       </template>
     </hora-grid>
   </div>
+  <DemoFooter />
 </template>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+.demo__grid {
+  margin: 5vh;
 }
 
-.hora-example {
-  overflow: hidden;
-  margin: 5vh;
-  height: 400px;
-}
-
-.settings {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  margin: 5vh;
+.demo__settings {
+  
 }
 
 .settings__property {
