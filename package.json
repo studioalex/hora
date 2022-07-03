@@ -13,7 +13,7 @@
     "lint": "turbo run lint",
     "clean": "turbo run clean",
     "postclean": "del-cli ./node_modules",
-    "predeploy": "del-cli ./deploy",
+    "deploy:clean": "del-cli ./deploy",
     "deploy": "turbo run deploy",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },

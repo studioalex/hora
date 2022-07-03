@@ -14,8 +14,11 @@
     "clean": {
       "outputs": []
     },
+    "deploy:clean": {
+      "outputs": []
+    },
     "deploy": {
-      "dependsOn": ["build"],
+      "dependsOn": ["deploy:clean", "build"],
       "outputs": []
     }
   }
