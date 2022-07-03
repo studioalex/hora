@@ -1,10 +1,10 @@
 {
-  "name": "documentation",
+  "name": "@studioalex/hora-documentation",
   "version": "0.1.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "vitepress dev docs --host --port 3010",
+    "dev": "vitepress dev docs --host",
     "build": "vitepress build docs",
     "serve": "vitepress serve docs",
     "clean": "del-cli ./node_modules ./docs/.vitepress/dist"
