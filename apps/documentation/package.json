@@ -1,24 +1,27 @@
 {
-  "name": "@studioalex/vue-hora-documentation",
-  "version": "1.0.0",
-  "description": "Vue Hora Documentation",
+  "name": "documentation",
+  "version": "0.1.0",
+  "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "vitepress dev",
-    "build": "vitepress build",
-    "serve": "vitepress serve",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "vitepress dev docs --host --port 3010",
+    "build": "vitepress build docs",
+    "serve": "vitepress serve docs",
+    "clean": "del-cli ./node_modules ./docs/.vitepress/dist"
   },
   "keywords": [
-    "vue"
+    "API",
+    "documentation",
+    "docu",
+    "vitepress",
+    "vue",
+    "press"
   ],
   "author": "Alexander Vu <alexander.vu.tuyet@gmail.com>",
-  "engines": {
-    "npm": ">=8.0.0",
-    "node": ">=18.0.0"
-  },
-  "license": "ISC",
-  "dependencies": {
-    "vitepress": "^1.0.0-alpha.2"
+  "license": "MIT",
+  "devDependencies": {
+    "del-cli": "^4.0.1",
+    "vitepress": "^1.0.0-alpha.4",
+    "vue": "^3.2.37"
   }
 }
