@@ -31,7 +31,11 @@
 
 <body class="base">
   <header class="header">{% include "navigation.njk" %}</header>
-  <main class="main">{{ content | safe }}</main>
+  <main class="main">
+    <div class="container">
+      {{ content | safe }}
+    </div>  
+  </main>
   <footer class="footer">{% include "footer.njk" %}</footer>
 </body>
 
