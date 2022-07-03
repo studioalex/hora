@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "eleventy --serve",
     "build": "eleventy",
+    "deploy": "cpy . ../../../deploy/web --cwd=dist",
     "clean": "del-cli ./node_modules ./dist"
   },
   "keywords": [],
@@ -14,6 +15,7 @@
   "devDependencies": {
     "@11ty/eleventy": "^1.0.1",
     "autoprefixer": "^10.4.7",
+    "cpy-cli": "^4.1.0",
     "del-cli": "^4.0.1",
     "eleventy-plugin-postcss": "^1.0.4",
     "postcss-nested": "^5.0.6"

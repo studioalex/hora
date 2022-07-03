@@ -8,6 +8,7 @@
     "build": "vue-tsc --noEmit && vite build",
     "preview": "vite preview",
     "lint": "eslint --ext .js,.ts,.vue src",
+    "deploy": "cpy . ../../../deploy/web/demo --cwd=dist",
     "clean": "del-cli ./node_modules ./dist"
   },
   "dependencies": {
@@ -19,6 +20,7 @@
     "@typescript-eslint/parser": "^5.30.3",
     "@vitejs/plugin-vue": "^2.3.3",
     "@vue/eslint-config-typescript": "^11.0.0",
+    "cpy-cli": "^4.1.0",
     "del-cli": "^4.0.1",
     "eslint": "^8.18.0",
     "eslint-plugin-vue": "^9.1.1",

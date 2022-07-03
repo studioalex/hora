@@ -7,6 +7,7 @@
     "dev": "vitepress dev docs --host",
     "build": "vitepress build docs",
     "serve": "vitepress serve docs",
+    "deploy": "cpy . ../../../../../deploy/web/api --cwd=docs/.vitepress/dist",
     "clean": "del-cli ./node_modules ./docs/.vitepress/dist"
   },
   "keywords": [
@@ -20,6 +21,7 @@
   "author": "Alexander Vu <alexander.vu.tuyet@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "cpy-cli": "^4.1.0",
     "del-cli": "^4.0.1",
     "vitepress": "^1.0.0-alpha.4",
     "vue": "^3.2.37"
