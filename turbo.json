@@ -2,12 +2,13 @@
   "pipeline": {
     "build": {
       "dependsOn": ["^build"],
-      "outputs": ["dist/**", ".next/**"]
+      "outputs": ["dist/**"]
     },
     "lint": {
       "outputs": []
     },
     "dev": {
+      "dependsOn": ["@studioalex/horagrid#build"],
       "cache": false
     },
     "clean": {
