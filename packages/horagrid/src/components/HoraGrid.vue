@@ -1,10 +1,19 @@
 <script lang="ts" setup>
   import { ref, toRefs, PropType, computed, Ref } from 'vue'
-  import { getColumnClasses, getHeaderClasses } from './hora'
+  import {
+    getColumnClasses,
+    getHeaderClasses
+  } from '../features/classes'
+  import {
+    selected,
+    isSelected,
+    setSelection
+  } from '../features/selection'
   import { HoraColumn } from '../types'
   import HoraHeaderColumnActions from './HoraHeaderColumnActions.vue'
   import HoraHeaderActions from './HoraHeaderActions.vue'
   import HoraSettings from './HoraSettings.vue'
+  import HoraCheckbox from './HoraCheckbox.vue'
 
   const props = defineProps({
     columns: {
@@ -15,41 +24,57 @@
       type: Array as PropType<Array<any>>,
       default: () => []
     },
+    /* Show the loading item which indicate data loading status */
     loading: {
       type: Boolean,
       default: false
     },
+    /* Show or hide the whole header with all header functions */
     isHeaderVisible: {
       type: Boolean,
       default: true
     },
+    /* Let the header position static  on the top while scrolling. */
     isHeaderStatic: {
       type: Boolean,
       default: false
     },
+    /* Let the first column static on the left while scrolling. */
     isFirstColumnStatic: {
       type: Boolean,
       default: false
     },
+    /* Let the last column static on the left while scrolling. */
     isLastColumnStatic: {
       type: Boolean,
       default: false
     },
+    /* When header visibility is enabled show the sort icons 
+     * and enable the functionality */
     isSortable: {
       type: Boolean,
       default: false
     },
+    /* Enable column single selection by showing action
+     * column at the end on table view with a checkbox */
     isSelectable: {
       type: Boolean,
       default: false
     },
+    /* Enable multiple column selection when selections are enabled */
     multipleSelection: {
       type: Boolean,
       default: false
     },
+    /* Show settings icon in an additional column at the end on the table view. */
     isSettingsEnabled: {
       type: Boolean,
       default: false
+    },
+    /*  */
+    selected: {
+      type: Array as PropType<Array<any>>,
+      default: () => []
     }
   })
 
@@ -67,7 +92,7 @@
     isSettingsEnabled
   } = toRefs(props)
 
-  const emit = defineEmits(['sort'])
+  const emit = defineEmits(['sort', 'onSelection'])
   const sortColumn: Ref<string[]> = ref([])
   const settingsVisible = ref(false)
   // const selected: Ref<string[]> = ref([])
@@ -194,6 +219,11 @@
   function toggleSettingsVisibility () {
     settingsVisible.value = !settingsVisible.value
   }
+
+  function handleSelection (index: number) {
+    setSelection(index)
+    emit('onSelection', data.value.filter((record, index) => selected.value.includes(index)))
+  }
 </script>
 
 <template>
@@ -261,7 +291,9 @@
         v-if="isActionColumnVisible"
         class="cell"
         :class="getColumnClasses(columnCount, columnCount, isFirstColumnStatic, isLastColumnStatic)">
-        ac
+        <HoraCheckbox
+          :value="isSelected(rowIndex)"
+          @change="handleSelection(rowIndex)" />
       </div>
       <div
         class="row__details"
