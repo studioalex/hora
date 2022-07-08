@@ -24,7 +24,9 @@
     "build": "vue-tsc --noEmit && vite build",
     "postbuild": "cpy src/types/*.d.ts dist/types --flat",
     "lint": "eslint --ext .js,.ts,.vue src",
-    "clean": "del-cli ./node_modules ./dist"
+    "clean": "del-cli ./node_modules ./dist",
+    "test": "vitest",
+    "coverage": "vitest run --coverage"
   },
   "dependencies": {
     "vue": "^3.2.37"
@@ -36,6 +38,7 @@
     "@vitejs/plugin-vue": "^2.3.3",
     "@vue/eslint-config-typescript": "^11.0.0",
     "autoprefixer": "^10.4.7",
+    "c8": "^7.11.3",
     "cpy-cli": "^4.1.0",
     "del-cli": "^4.0.1",
     "eslint": "^8.18.0",
@@ -43,6 +46,7 @@
     "postcss-nested": "^5.0.6",
     "typescript": "^4.7.4",
     "vite": "^2.9.13",
+    "vitest": "^0.17.1",
     "vue-tsc": "^0.38.2"
   }
 }
