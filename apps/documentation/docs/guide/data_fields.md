@@ -29,17 +29,11 @@ While a minimal definition of the fields on the data might look like this:
 
 ```json
 [
-  {
-    "key": "first_name",
-  }, {
-    "key": "first_name",
-  }, {
-    "key": "first_name",
-  }, {
-    "key": "first_name",
-  }, {
-    "key": "first_name",
-  }
+  { "key": "first_name" },
+  { "key": "last_name" },
+  { "key": "age" },
+  { "key": "gender" },
+  { "key": "city" }
 ]
 ```
 
