@@ -1,7 +1,7 @@
 <script lang="ts" setup>
   import { ref, toRefs, PropType, computed, Ref } from 'vue'
   import {
-    getColumnClasses,
+    getFieldClasses,
     getHeaderClasses
   } from '../features/classes'
   import {
@@ -9,15 +9,15 @@
     isSelected,
     setSelection
   } from '../features/selection'
-  import { HoraColumn } from '../types'
-  import HoraHeaderColumnActions from './HoraHeaderColumnActions.vue'
+  import { HoraField } from '../types'
+  import HoraHeaderFieldActions from './HoraHeaderFieldActions.vue'
   import HoraHeaderActions from './HoraHeaderActions.vue'
   import HoraSettings from './HoraSettings.vue'
   import HoraCheckbox from './HoraCheckbox.vue'
 
   const props = defineProps({
-    columns: {
-      type: Array as PropType<Array<HoraColumn>>,
+    fields: {
+      type: Array as PropType<Array<HoraField>>,
       default: () => []
     },
     data: {
@@ -39,13 +39,13 @@
       type: Boolean,
       default: false
     },
-    /* Let the first column static on the left while scrolling. */
-    isFirstColumnStatic: {
+    /* Let the first field static on the left while scrolling. */
+    isFirstFieldStatic: {
       type: Boolean,
       default: false
     },
-    /* Let the last column static on the left while scrolling. */
-    isLastColumnStatic: {
+    /* Let the last field static on the left while scrolling. */
+    isLastFieldStatic: {
       type: Boolean,
       default: false
     },
@@ -55,18 +55,18 @@
       type: Boolean,
       default: false
     },
-    /* Enable column single selection by showing action
-     * column at the end on table view with a checkbox */
+    /* Enable field single selection by showing action
+     * field at the end on table view with a checkbox */
     isSelectable: {
       type: Boolean,
       default: false
     },
-    /* Enable multiple column selection when selections are enabled */
-    multipleSelection: {
+    /* Enable multiple field selection when selections are enabled */
+    singleSelection: {
       type: Boolean,
       default: false
     },
-    /* Show settings icon in an additional column at the end on the table view. */
+    /* Show settings icon in an additional field at the end on the table view. */
     isSettingsEnabled: {
       type: Boolean,
       default: false
@@ -80,39 +80,43 @@
 
   const {
     // loading,
-    columns,
+    fields,
     data,
     isHeaderStatic,
-    isFirstColumnStatic,
-    isLastColumnStatic,
+    isFirstFieldStatic,
+    isLastFieldStatic,
     isHeaderVisible,
     isSortable,
     isSelectable,
-    // multipleSelection,
+    singleSelection,
     isSettingsEnabled
   } = toRefs(props)
 
   const emit = defineEmits(['sort', 'onSelection'])
-  const sortColumn: Ref<string[]> = ref([])
+  const fieldsDefinition: Ref<Array<HoraField>> = ref([])
+  const sortField: Ref<string[]> = ref([])
   const settingsVisible = ref(false)
   // const selected: Ref<string[]> = ref([])
-  const isActionColumnVisible = computed(() => (isSettingsEnabled.value === true || isSelectable.value === true))
+  const isActionFieldVisible = computed(() => (isSettingsEnabled.value === true || isSelectable.value === true))
 
+  // prepare field definitions
+  fieldsDefinition.value = fields.value.map(field => {
+    field.visible = (field.visible != false)
+    field.order = field.order || 0
+    field.title = field.title || field.key
+    return field
+  })
   /**
-   * Return the list of columns prepared for `grid-template-columns`
+   * Return the list of fields prepared for `grid-template-fields`
    * property.
    * - marked as visible
    * - ordered by order property
    * @returns Array
    */
-  const columnList = computed(() => {
-    return columns.value
-      .filter(column => column.visible === true)
-      .map(column => {
-        column.order = column.order || 0
-        return column
-      })
-      .sort((a:HoraColumn, b:HoraColumn): number => {
+  const fieldList = computed(() => {
+    return fieldsDefinition.value
+      .filter(field => field.visible === true)
+      .sort((a:HoraField, b:HoraField): number => {
         if (typeof a.order != 'number') a.order = 0
         if (typeof b.order != 'number') b.order = 0
         return (a.order === b.order) ? 0 : (a.order < b.order) ? 1 : -1
@@ -120,21 +124,24 @@
   })
 
   /**
-   * Set `grid-template-columns` for grid.
-   * @returns String to set the `grid-template-columns` css property
+   * Set `grid-template-fields` for grid.
+   * @returns String to set the `grid-template-fields` css property
    */
   const gridTemplateColumns = computed(() => {
-    const columnsInGrid = columnList.value.map(column => column.width || '1fr')
-    if (isActionColumnVisible.value === true) {
+    const columnsInGrid = fieldList.value.map(field => field.width || '1fr')
+    if (isActionFieldVisible.value === true) {
       columnsInGrid.push('var(--hora-action-column-width)')
     }
 
     return columnsInGrid
   })
-
-  const columnCount = computed(() => {
-    let length = columnList.value.length
-    if (isActionColumnVisible.value === true) {
+  
+  /**
+   * Return the total number of visible fields.
+   */
+  const fieldCount = computed(() => {
+    let length = fieldList.value.length
+    if (isActionFieldVisible.value === true) {
       length++
     }
     return length
@@ -165,50 +172,50 @@
    */
   const rowDetailStyle = computed(() => {
     return {
-      gridColumn: `1 / ${columnCount.value + 1}`
+      gridColumn: `1 / ${fieldCount.value + 1}`
     }
   })
 
   /**
-   * Handle click on sort icon. When sort is not set, or the clicked column
-   * do not match with the first element in array, it set the clicked column
-   * to sorting ascending. When the clicked column is the set one, we switch
+   * Handle click on sort icon. When sort is not set, or the clicked field
+   * do not match with the first element in array, it set the clicked field
+   * to sorting ascending. When the clicked field is the set one, we switch
    * the sorting direction.
-   * @param column String
+   * @param field String
    * @returns {void}
    */
-  function handleSort (column: string) {
-    if (Array.isArray(sortColumn.value) && sortColumn.value[0]) {
-      const [columnKey, sortDirection] = sortColumn.value[0].split('::')
+  function handleSort (field: string) {
+    if (Array.isArray(sortField.value) && sortField.value[0]) {
+      const [fieldKey, sortDirection] = sortField.value[0].split('::')
 
-      if (column === columnKey) {
+      if (field === fieldKey) {
         if (sortDirection === 'ASC') {
-          sortColumn.value = [`${column}::DESC`]
+          sortField.value = [`${field}::DESC`]
         } else {
-          sortColumn.value = [`${column}::ASC`]
+          sortField.value = [`${field}::ASC`]
         }
       } else {
-        sortColumn.value = [`${column}::ASC`]
+        sortField.value = [`${field}::ASC`]
       }
     } else {
-      sortColumn.value = [`${column}::ASC`]
+      sortField.value = [`${field}::ASC`]
     }
 
     // Emit the sort value
-    emit('sort', sortColumn.value)
+    emit('sort', sortField.value)
   }
 
   /**
    * Set the css class for the sort icon in header to show
    * which sort direction is set. Ascending or descending.
-   * @param column String
+   * @param field String
    * @returns {string}
    */
-  function getSortIconClass (column: string) {
-    if (Array.isArray(sortColumn.value) && sortColumn.value[0]) {
-      const [columnKey, sortDirection] = sortColumn.value[0].split('::')
+  function getSortIconClass (field: string) {
+    if (Array.isArray(sortField.value) && sortField.value[0]) {
+      const [fieldKey, sortDirection] = sortField.value[0].split('::')
 
-      if (columnKey === column ) {
+      if (fieldKey === field ) {
         return `hora__icon-sort--${sortDirection.toLowerCase()}`
       }
     }
@@ -221,7 +228,7 @@
   }
 
   function handleSelection (index: number) {
-    setSelection(index)
+    setSelection(index, singleSelection.value)
     emit('onSelection', data.value.filter((record, index) => selected.value.includes(index)))
   }
 </script>
@@ -236,36 +243,39 @@
       v-if="isSettingsEnabled"
       @close="toggleSettingsVisibility">
       content
+      <div>Field List: {{fieldList}}</div>
+      <div>Field Count: {{fieldCount}}</div>
+      <div>Fields: {{fields}}</div>
     </HoraSettings>
     <!-- header -->
     <div
       v-if="isHeaderVisible"
       class="row__header">
-      <!-- header columns -->
+      <!-- header fields -->
       <div
-        v-for="(column, index) in columnList"
+        v-for="(field, index) in fieldList"
         :key="index"
         class="header"
-        :class="getHeaderClasses(index, columnCount, isHeaderStatic, isFirstColumnStatic, isLastColumnStatic)">
-        <!-- header column slot -->
+        :class="getHeaderClasses(index, fieldCount, isHeaderStatic, isFirstFieldStatic, isLastFieldStatic)">
+        <!-- header field slot -->
         <div>
           <slot
-            :name="`header-${column.key}`"
-            :column="column">
-            {{ column.title }}
+            :name="`header-${field.key}`"
+            :field="field">
+            {{ field.title }}
           </slot>
         </div>
-        <!-- header column action slot -->
-        <HoraHeaderColumnActions
-          :is-visible="isSortable === true && column.sortable !== false"
-          :custom-class="getSortIconClass(column.key)"
-          :column-key="column.key"
-          @sort="handleSort(column.key)" />
+        <!-- header field action slot -->
+        <HoraHeaderFieldActions
+          :is-visible="isSortable === true && field.sortable !== false"
+          :custom-class="getSortIconClass(field.key)"
+          :field-key="field.key"
+          @sort="handleSort(field.key)" />
       </div>
-      <!-- header action column -->
+      <!-- header action field -->
       <HoraHeaderActions
-        :is-visible="isActionColumnVisible"
-        :custom-class="getHeaderClasses(columnCount, columnCount, isHeaderStatic, isFirstColumnStatic, isLastColumnStatic)"
+        :is-visible="isActionFieldVisible"
+        :custom-class="getHeaderClasses(fieldCount, fieldCount, isHeaderStatic, isFirstFieldStatic, isLastFieldStatic)"
         :is-settings-enabled="isSettingsEnabled === true"
         @settings="toggleSettingsVisibility" />
     </div>
@@ -275,24 +285,24 @@
       :key="rowIndex"
       class="row">
       <div
-        v-for="(column, columnIndex) in columnList"
-        :key="columnIndex"
+        v-for="(field, fieldIndex) in fieldList"
+        :key="fieldIndex"
         class="cell"
-        :class="getColumnClasses(columnIndex, columnCount, isFirstColumnStatic, isLastColumnStatic)">
-        <!-- column slot -->
+        :class="getFieldClasses(fieldIndex, fieldCount, isFirstFieldStatic, isLastFieldStatic)">
+        <!-- field slot -->
         <slot
-          :name="`cell-${column.key}`"
+          :name="`cell-${field.key}`"
           :record="record"
-          :column="column">
-          {{ record[column.key] }}
+          :field="field">
+          {{ record[field.key] }}
         </slot>
       </div>
       <div
-        v-if="isActionColumnVisible"
+        v-if="isActionFieldVisible"
         class="cell"
-        :class="getColumnClasses(columnCount, columnCount, isFirstColumnStatic, isLastColumnStatic)">
+        :class="getFieldClasses(fieldCount, fieldCount, isFirstFieldStatic, isLastFieldStatic)">
         <HoraCheckbox
-          :value="isSelected(rowIndex)"
+          :v-model="isSelected(rowIndex)"
           @change="handleSelection(rowIndex)" />
       </div>
       <div

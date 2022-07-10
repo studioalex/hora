@@ -11,13 +11,13 @@
       type: String,
       default: null
     },
-    columnKey: {
+    fieldKey: {
       type: String,
       default: null
     }
   })
 
-  const { isVisible, customClass, columnKey } = toRefs(props)
+  const { isVisible, customClass, fieldKey } = toRefs(props)
   const emit = defineEmits<{
     (e: 'sort', value: string): void
   }>()
@@ -25,11 +25,11 @@
 
 <template>
   <div
-    v-if="isVisible && columnKey"
+    v-if="isVisible && fieldKey"
     class="header__action">
     <button
       class="hora__icon-button"
-      @click="emit('sort', columnKey)">
+      @click="emit('sort', fieldKey)">
       <SortIcon
         class="hora__icon-sort"
         :class="customClass" />

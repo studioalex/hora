@@ -15,14 +15,24 @@ const isSelected = (index: number) => {
  * Add or remove a record index number from selection, depend on
  * if the index is already in the selection.
  * @param index {number} The record index number to add or remove from selected.
+ * @param single {boolean} set selection type, single or multiple (default)
  * @returns {void}
  */
-function setSelection (index: number) {
+function setSelection (index: number, single: boolean = false) {
   if (isSelected(index) === false) {
-    selected.value.push(index)
+    
+    if (single === true) {
+      // single selection
+      selected.value = [index]
+    } else {
+      // multiple selection
+      selected.value.push(index)
+    }
+
   } else {
     selected.value = selected.value.filter(element => (element != index))
   }
+
   return selected.value
 }
 

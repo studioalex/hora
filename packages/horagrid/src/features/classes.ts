@@ -1,65 +1,65 @@
 /**
- * Set column classes to enable column be fixed
+ * Set field classes to enable field be fixed
  * to left or right.
- * @param columnIndex 
+ * @param fieldIndex 
  * @returns {string}
  */
-export function getColumnClasses (
-  columnIndex: number,
-  columnCount: number,
-  isFirstColumnFixed: boolean,
-  isLastColumnFixed: boolean
+export function getFieldClasses (
+  fieldIndex: number,
+  fieldCount: number,
+  isFirstFieldFixed: boolean,
+  isLastFieldFixed: boolean
 ): string|undefined {
-  // Fix first column
-  if (isFirstColumnFixed === true && columnIndex === 0) {
+  // Fix first field
+  if (isFirstFieldFixed === true && fieldIndex === 0) {
     return 'fixed--left'
   }
-  // Fix last column
-  if (isLastColumnFixed === true && columnIndex === columnCount) {
+  // Fix last field
+  if (isLastFieldFixed === true && fieldIndex === fieldCount) {
     return 'fixed--right'
   }
   return undefined
 }
 
 /**
- * Set column header classes to enable fix headers.
+ * Set field header classes to enable fix headers.
  * there are several fixed positions we need to set, like
  * 
- * @param columnOrder 
+ * @param fieldOrder 
  * @returns {string}
  */
 export function getHeaderClasses (
-  columnIndex: number,
-  columnCount: number,
+  fieldIndex: number,
+  fieldCount: number,
   isHeaderFixed: boolean,
-  isFirstColumnFixed: boolean,
-  isLastColumnFixed: boolean
+  isFirstFieldFixed: boolean,
+  isLastFieldFixed: boolean
   ): string|undefined {
   // Top-left
   if (isHeaderFixed === true
-    && isFirstColumnFixed === true
-    && columnIndex === 0) {
+    && isFirstFieldFixed === true
+    && fieldIndex === 0) {
     return 'fixed--topleft'
   }
   // Top-right
   if (isHeaderFixed === true
-    && isLastColumnFixed === true
-    && columnIndex === columnCount) {
+    && isLastFieldFixed === true
+    && fieldIndex === fieldCount) {
       return 'fixed--topright'
   }
   // Left
   if (isHeaderFixed === false
-    && isFirstColumnFixed === true
-    && columnIndex === 0) {
+    && isFirstFieldFixed === true
+    && fieldIndex === 0) {
       return 'fixed--left'
   }
   // Right
   if (isHeaderFixed === false
-    && isLastColumnFixed === true
-    && columnIndex === columnCount) {
+    && isLastFieldFixed === true
+    && fieldIndex === fieldCount) {
       return 'fixed--right'
   }
-  // Top all others columns
+  // Top all others fields
   if (isHeaderFixed === true) {
     return 'fixed--top'
   }
