@@ -21,6 +21,7 @@
   "author": "Alexander Vu <alexander.vu.tuyet@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "@studioalex/horagrid": "^0.1.0",
     "cpy-cli": "^4.1.0",
     "del-cli": "^4.0.1",
     "vitepress": "^1.0.0-alpha.4",
