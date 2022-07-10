@@ -8,9 +8,15 @@
   const isHeaderFixed = ref(true)
   const canSelect = ref(true)
   const canSort = ref(false)
-  const isFirstColumnFixed = ref(false)
-  const isLastColumnFixed = ref(false)
+  const isFirstFieldFixed = ref(false)
+  const isLastFieldFixed = ref(false)
   const isSettingsEnabled = ref(false)
+  const selectedList = ref()
+  const singleSelection = ref(true)
+
+  function setSelected(items: any) {
+    selectedList.value = items
+  }
 </script>
 
 <template>
@@ -55,7 +61,7 @@
       <div class="demo__settings-item">
         <input
           id="isFirstColumnFixed"
-          v-model="isFirstColumnFixed"
+          v-model="isLastFieldFixed"
           type="checkbox" />
         <label for="isFirstColumnFixed">Fix first column</label>
       </div>
@@ -63,7 +69,7 @@
       <div class="demo__settings-item">
         <input
           id="isLastColumnFixed"
-          v-model="isLastColumnFixed"
+          v-model="isLastFieldFixed"
           type="checkbox" />
         <label for="isLastColumnFixed">Fix last column</label>
       </div>
@@ -76,21 +82,24 @@
         <label for="isSettingsEnabled">Enable settings</label>
       </div>
     </div>
+    <div>demo: {{ selectedList }}</div>
   </div>
   <!-- Hora Grid -->
   <div class="demo__grid">
     <hora-grid
-      :columns="data.columns"
+      :fields="data.columns"
       :data="data.data"
       :is-header-static="isHeaderFixed"
-      :is-first-column-static="isFirstColumnFixed"
-      :is-last-column-static="isLastColumnFixed"
+      :is-first-field-static="isFirstFieldFixed"
+      :is-last-field-static="isLastFieldFixed"
       :is-header-visible="isHeaderVisible"
       :is-selectable="canSelect"
       :is-sortable="canSort"
-      :is-settings-enabled="isSettingsEnabled">
-      <template #cell-k1="{ record, column }">
-        {{ column }} -- {{ record }}
+      :is-settings-enabled="isSettingsEnabled"
+      :single-selection="singleSelection"
+      @onSelection="setSelected">
+      <template #cell-k1="{ record, field }">
+        {{ field }} -- {{ record }}
       </template>
     </hora-grid>
   </div>

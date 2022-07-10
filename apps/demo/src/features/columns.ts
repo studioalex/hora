@@ -1,5 +1,5 @@
 export default {
-  columns: [
+  columnsList: [
     {
       key: 'k1',
       title: 'Column 1',
@@ -35,6 +35,25 @@ export default {
       key: 'k8',
       title: 'Column 8',
       visible: true
+    }
+  ],
+  columns: [
+    {
+      key: 'k1'
+    }, {
+      key: 'k2'
+    }, {
+      key: 'k3'
+    }, {
+      key: 'k4'
+    }, {
+      key: 'k5'
+    }, {
+      key: 'k6'
+    }, {
+      key: 'k7'
+    }, {
+      key: 'k8'
     }
   ],
   data: [
