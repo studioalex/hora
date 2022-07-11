@@ -25,7 +25,6 @@
 <template>
   <div
     v-if="isVisible"
-    class="header"
     :class="customClass">
     <button
       v-if="isSettingsEnabled === true"

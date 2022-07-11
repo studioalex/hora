@@ -61,7 +61,7 @@
       <div class="demo__settings-item">
         <input
           id="isFirstColumnFixed"
-          v-model="isLastFieldFixed"
+          v-model="isFirstFieldFixed"
           type="checkbox" />
         <label for="isFirstColumnFixed">Fix first column</label>
       </div>

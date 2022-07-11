@@ -9,8 +9,8 @@
     row-gap: 5px;
     
     font-family: 'Roboto', sans-serif;
-    min-height: 100%;
-    min-width: 100%;
+    max-height: 100%;
+    max-width: 100%;
     overflow: auto;
     
     .row, .row__header {
@@ -77,45 +77,45 @@
       display: none;
     }
     
-    .header {
-      color: var(--hora-header-text);
-      background-color: var(--hora-header-background);
-      padding: var(--hora-cell-padding) var(--hora-cell-padding) 0 var(--hora-cell-padding);
-      
+    .header {      
       &__action {
         padding-top: calc(var(--hora-cell-padding)/2);
         text-align: center;
       }
 
-      &:first-child {
+      &--first {
         border-radius: var(--hora-border-radius) 0 0 var(--hora-border-radius);
       }
 
-      &:lastchild {
+      &--last {
         border-radius: 0 var(--hora-border-radius) var(--hora-border-radius) 0;
       }
+
+      color: var(--hora-header-text);
+      background-color: var(--hora-header-background);
+      padding: var(--hora-cell-padding) var(--hora-cell-padding) 0 var(--hora-cell-padding);
     }
     
     .cell {
-      padding: var(--hora-cell-padding);
-      border-top: 1px solid var(--hora-border-cell);
-      border-bottom: 1px solid var(--hora-border-cell);
-      border-right: 1px solid var(--hora-border-cell);
-      color: var(--hora-text);
-      background-color: var(--hora-background-cell);
-      
-      &:first-child {
+      &--first {
         border-radius: var(--hora-border-radius) 0 0 var(--hora-border-radius);
         border-left: 1px solid var(--hora-border-cell);
       }
       
-      &:last-child {
+      &--last {
         border-radius: 0 var(--hora-border-radius) var(--hora-border-radius) 0;
       }
       
       &--header {
         background-color: var(--hora-background-cell);
       }
+
+      padding: var(--hora-cell-padding);
+      border-top: 1px solid var(--hora-border-cell);
+      border-bottom: 1px solid var(--hora-border-cell);
+      border-right: 1px solid var(--hora-border-cell);
+      color: var(--hora-text);
+      background-color: var(--hora-background-cell);
     }
 
     &--hover {

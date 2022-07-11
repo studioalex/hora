@@ -79,7 +79,7 @@
   })
 
   const {
-    // loading,
+    loading,
     fields,
     data,
     isHeaderStatic,
@@ -255,14 +255,13 @@
       <div
         v-for="(field, index) in fieldList"
         :key="index"
-        class="header"
-        :class="getHeaderClasses(index, fieldCount, isHeaderStatic, isFirstFieldStatic, isLastFieldStatic)">
+        :class="getHeaderClasses(index+1, fieldCount, isHeaderStatic, isFirstFieldStatic, isLastFieldStatic)">
         <!-- header field slot -->
         <div>
           <slot
             :name="`header-${field.key}`"
             :field="field">
-            {{ field.title }}
+            {{ field.title }} ({{index+1}}/{{fieldCount}})
           </slot>
         </div>
         <!-- header field action slot -->
@@ -287,19 +286,17 @@
       <div
         v-for="(field, fieldIndex) in fieldList"
         :key="fieldIndex"
-        class="cell"
-        :class="getFieldClasses(fieldIndex, fieldCount, isFirstFieldStatic, isLastFieldStatic)">
+        :class="getFieldClasses(fieldIndex+1, fieldCount, isFirstFieldStatic, isLastFieldStatic)">
         <!-- field slot -->
         <slot
           :name="`cell-${field.key}`"
           :record="record"
           :field="field">
-          {{ record[field.key] }}
+          {{ record[field.key] }} ({{fieldIndex+1}}/{{fieldCount}})
         </slot>
       </div>
       <div
         v-if="isActionFieldVisible"
-        class="cell"
         :class="getFieldClasses(fieldCount, fieldCount, isFirstFieldStatic, isLastFieldStatic)">
         <HoraCheckbox
           :v-model="isSelected(rowIndex)"

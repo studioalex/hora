@@ -9,16 +9,26 @@ export function getFieldClasses (
   fieldCount: number,
   isFirstFieldFixed: boolean,
   isLastFieldFixed: boolean
-): string|undefined {
-  // Fix first field
-  if (isFirstFieldFixed === true && fieldIndex === 0) {
-    return 'fixed--left'
+): string {
+  const classes: Array<string> = ['cell']
+  // Mark as first field
+  if (fieldIndex === 1) {
+    classes.push('cell--first')
   }
-  // Fix last field
+  // Mark as last field
+  if (fieldIndex === fieldCount) {
+    classes.push('cell--last')
+  }
+  // Fix first field and mark as static
+  if (isFirstFieldFixed === true && fieldIndex === 1) {
+    classes.push('fixed--left')
+  }
+  // Fix last field and mark as static
   if (isLastFieldFixed === true && fieldIndex === fieldCount) {
-    return 'fixed--right'
+    classes.push('fixed--right')
   }
-  return undefined
+  
+  return classes.join(' ')
 }
 
 /**
@@ -34,35 +44,47 @@ export function getHeaderClasses (
   isHeaderFixed: boolean,
   isFirstFieldFixed: boolean,
   isLastFieldFixed: boolean
-  ): string|undefined {
-  // Top-left
-  if (isHeaderFixed === true
-    && isFirstFieldFixed === true
-    && fieldIndex === 0) {
-    return 'fixed--topleft'
-  }
-  // Top-right
-  if (isHeaderFixed === true
-    && isLastFieldFixed === true
-    && fieldIndex === fieldCount) {
-      return 'fixed--topright'
-  }
-  // Left
-  if (isHeaderFixed === false
-    && isFirstFieldFixed === true
-    && fieldIndex === 0) {
-      return 'fixed--left'
-  }
-  // Right
-  if (isHeaderFixed === false
-    && isLastFieldFixed === true
-    && fieldIndex === fieldCount) {
-      return 'fixed--right'
-  }
-  // Top all others fields
+  ): string {
+  const classes: Array<string> = ['header']
+  // Header is marked as fixed
   if (isHeaderFixed === true) {
-    return 'fixed--top'
+    // Fixed top-left
+    if (isFirstFieldFixed === true && fieldIndex === 1) {
+      classes.push('fixed--topleft')
+    }
+    // Fixed top-right
+    if (isLastFieldFixed === true && fieldIndex === fieldCount) {
+      classes.push('fixed--topright')
+    }
+    // Top all others fields
+    if ((fieldIndex > 1 && fieldIndex < fieldCount) 
+       || (isFirstFieldFixed === false && fieldIndex === 1)
+       || (isLastFieldFixed === false && fieldIndex === fieldCount)) {
+      classes.push('fixed--top')
+    }
   }
 
-  return undefined
+  // Header is NOT marked as fixed
+  if (isHeaderFixed === false) {
+    // Fixed left
+    if (isFirstFieldFixed === true && fieldIndex === 1) {
+      classes.push('fixed--left')
+    }
+    // Fixed right
+    if (isLastFieldFixed === true && fieldIndex === fieldCount) {
+      classes.push('fixed--right')
+    }
+  }
+
+  // Mark first visible header cell
+  if (fieldIndex === 1) {
+    classes.push('header--first')
+  }
+
+  // Mark last visible header cell
+  if (fieldIndex === fieldCount) {
+    classes.push('header--last')
+  }
+
+  return classes.join(' ')
 }
