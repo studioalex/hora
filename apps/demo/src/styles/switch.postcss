@@ -1,0 +1,29 @@
+.hrd-switch {
+  &__title {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-content: stretch;
+    align-items: flex-start;
+  }
+
+  &__caption {
+    order: 0;
+    flex: 1 1 auto;
+    align-self: center;
+    cursor: pointer;
+  }
+
+  &__switch {
+    order: 0;
+    flex: 0 1 auto;
+    align-self: auto;
+  }
+
+  &__description {
+    margin-top: 5px;
+    margin-bottom: 18px;
+    color: var(--hr-color-text-3);
+  }
+}

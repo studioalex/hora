@@ -261,7 +261,7 @@
           <slot
             :name="`header-${field.key}`"
             :field="field">
-            {{ field.title }} ({{index+1}}/{{fieldCount}})
+            {{ field.title }}
           </slot>
         </div>
         <!-- header field action slot -->
@@ -292,7 +292,7 @@
           :name="`cell-${field.key}`"
           :record="record"
           :field="field">
-          {{ record[field.key] }} ({{fieldIndex+1}}/{{fieldCount}})
+          {{ record[field.key] }}
         </slot>
       </div>
       <div
