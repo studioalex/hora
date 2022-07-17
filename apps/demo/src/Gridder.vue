@@ -23,7 +23,7 @@
 <template>
   <div class="hrd-side hrd--distribute">
     <HrdSideHeader :title="sideTitle" :logo="sideLogo" />
-    <div>
+    <div class="hrd-side__content">
       <HrdFilter />
     </div>
     <HrdSideFooter />

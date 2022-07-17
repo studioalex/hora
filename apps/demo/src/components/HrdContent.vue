@@ -27,7 +27,7 @@
         :is-multiple-selection="store.isMultipleSelection"
         @onSelection="setSelected">
         <template #cell-k1="{ record, field }">
-          {{ field }} -- {{ record }}
+          {{ field.key }} -- {{ record[field.key] }}
         </template>
       </hora-grid>
   </div>

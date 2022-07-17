@@ -8,37 +8,40 @@
   display: inline-block;
   height: 1.25em;
   width: 1.25em;
-  font-size: 1em;
+  font-size: 1.2em;
   margin: 0.2em;
   box-sizing: border-box;
 
-  label {
+  &__label {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
     background-color: var(--rcb-background-color);
     border: 0.15em solid var(--rcb-border-color);
     border-radius: 9999em;
     cursor: pointer;
-    height: 1.25em;
-    left: 0;
-    position: absolute;
-    top: 0;
-    width: 1.25em;
 
     &:after {
       border: .2em solid var(--rcb-checked-sign-color);
       border-top: none;
       border-right: none;
       content: "";
-      height: 0.33em;
-      left: .266em;
+      height: 0.3em;
+      left: 0.1em;
       opacity: 0;
       position: absolute;
-      top: 0.33em;
+      top: 0.12em;
       transform: rotate(-45deg);
-      width: 0.667em;
+      width: 0.6em;
     }
   }
 
-  input[type="checkbox"] {
+  &__input {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
     visibility: hidden;
 
     &:checked + label {
