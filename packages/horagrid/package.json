@@ -21,6 +21,7 @@
   "unpkg": "./dist/horagrid.umd.js",
   "jsdelivr": "./dist/horagrid.umd.js",
   "scripts": {
+    "dev": "vue-tsc --noEmit && vite build --watch",
     "build": "vue-tsc --noEmit && vite build",
     "postbuild": "cpy src/types/*.d.ts dist/types --flat",
     "lint": "eslint --ext .js,.ts,.vue src",
