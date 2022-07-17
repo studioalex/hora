@@ -1,5 +1,6 @@
 @import './styles/variables.css';
 @import './styles/hora.postcss';
 @import './styles/checkbox.postcss';
+@import './styles/indicator.postcss';
 @import './styles/settings.postcss';
 @import './styles/icons.postcss';

@@ -13,7 +13,7 @@
   import HoraHeaderFieldActions from './HoraHeaderFieldActions.vue'
   import HoraHeaderActions from './HoraHeaderActions.vue'
   import HoraSettings from './HoraSettings.vue'
-  import HoraCheckbox from './HoraCheckbox.vue'
+  import HoraIndicator from './Indicator.vue'
 
   const props = defineProps({
     fields: {
@@ -291,14 +291,12 @@
           {{ record[field.key] }}
         </slot>
       </div>
+      <!-- FIELD::ACTIONS -->
       <div
         v-if="isActionFieldVisible"
         :class="getFieldClasses(fieldCount, fieldCount, isFirstFieldStatic, isLastFieldStatic)"
         :data-selected="isSelected(rowIndex)">
-        <div
-          class="selection-indicator"
-          :class="{ 'selection-indicator--active': isSelected(rowIndex) }"
-          @click="handleSelection(rowIndex)"></div>
+        <HoraIndicator :is-active="isSelected(rowIndex)" @click="handleSelection(rowIndex)" />
       </div>
       <!-- FIELD::DETAILS -->
       <div
@@ -311,33 +309,4 @@
     </div>
   </div>
 </div>
-</template>
-
-<style lang="postcss">
-.selection-indicator {
-  position: relative;
-  display: inline-block;
-  width: 2em;
-  height: 2em;
-  border-radius: 6px;
-  border: 2px solid grey;
-
-  &::after {
-    position: absolute;
-    content: "";
-    top: 2px;
-    left: 2px;
-    bottom: 2px;
-    right: 2px;
-    border-radius: 4px;
-    background-color: grey;
-  }
-
-  &--active {
-    border-color: green;
-    &::after {
-      background-color: green;
-    }
-  }
-}
-</style>
+</template>>

@@ -1,0 +1,31 @@
+.hora-indicator {
+  position: relative;
+  display: inline-block;
+  width: 2em;
+  height: 2em;
+  border-radius: 6px;
+  border: 2px solid grey;
+  cursor: pointer;
+
+  &::after {
+    position: absolute;
+    content: "";
+    top: 2px;
+    left: 2px;
+    bottom: 2px;
+    right: 2px;
+    border-radius: 4px;
+    background-color: grey;
+  }
+
+  &:hover::after {
+    background-color: green;
+  }
+
+  &--active {
+    border-color: green;
+    &::after {
+      background-color: green;
+    }
+  }
+}
