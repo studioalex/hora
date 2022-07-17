@@ -10,6 +10,7 @@ export const useSettingsStore = defineStore('settings', {
       isSortable: false,
       isSelectable: false,
       isSettingsEnabled: false,
+      isMultipleSelection: false,
       selectedItems: []
     }
   }

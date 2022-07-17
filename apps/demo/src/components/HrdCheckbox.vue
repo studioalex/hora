@@ -1,32 +1,44 @@
 <script lang="ts" setup>
-  import { ref, toRefs } from 'vue'
+  import { ref, watch, onMounted, getCurrentInstance } from 'vue'
   
   const emit = defineEmits(['update:modelValue'])
   const props = defineProps({
     id: {
       type: String,
-      required: true
+      required: false
     },
     modelValue: {
       type: Boolean,
       default: false
     }
   })
-  const { id } = toRefs(props)
+
+  const checkbox = ref(null)
+  const componentId = ref(props.id)
   const isChecked = ref(props.modelValue)
 
-  const onChange = () => {
-    emit('update:modelValue', isChecked.value)
+  const onChange = (event: any) => {
+    emit('update:modelValue', event.currentTarget.checked)
   }
+  
+  watch(() => props.modelValue, (newValue) => {
+    isChecked.value = newValue
+  })
+
+  onMounted(() => {
+    const getUid = getCurrentInstance()
+    componentId.value = componentId.value || getUid?.uid.toString()
+  })
 </script>
 
 <template>
   <div class="hrd-checkbox">
     <input
-      :id="id" 
+      :id="componentId" 
       type="checkbox"
       v-model="isChecked"
-      @change="onChange"/>
-    <label :for="id"></label>
+      ref="checkbox"
+      @input="onChange"/>
+    <label :for="componentId"></label>
   </div>
 </template>

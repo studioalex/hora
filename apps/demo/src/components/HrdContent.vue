@@ -24,7 +24,7 @@
         :is-selectable="store.isSelectable"
         :is-sortable="store.isSortable"
         :is-settings-enabled="store.isSettingsEnabled"
-        :single-selection="testSingleSelection"
+        :is-multiple-selection="store.isMultipleSelection"
         @onSelection="setSelected">
         <template #cell-k1="{ record, field }">
           {{ field }} -- {{ record }}
