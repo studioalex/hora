@@ -2,11 +2,9 @@
  * Hora styling
  */
  .hora {
-  &__wrapper {
-    overflow: auto;
-  }
+  overflow: auto;
   
-  &__grid {
+  &-grid {
     display: grid;
     grid-template-columns: 1fr;
     grid-auto-rows: var(--hora-grid-auto-rows);
@@ -17,71 +15,73 @@
     max-width: 100%;
     overflow: auto;
     
-    .row, .row__header {
+    &__row, &__row-header {
       display: contents;
       
       & > div {
         z-index: 0;
       }
       
-      .justify {
-        &-content-center {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-      
-        &-center {
-          display: flex;
-          justify-content: center;
-        }
-      
-        &-middle {
-          display: flex;
-          align-items: center;
-        }
-      }
-      
-      .fixed {
-        &--left {
-          position: sticky;
-          left: 0;
-          z-index: 10;
-        }
+      .hora-grid__cell {
+        &--justify {
+          &-content-center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
         
-        &--right {
-          position: sticky;
-          right: 0;
-          z-index: 10;
-        }
+          &-center {
+            display: flex;
+            justify-content: center;
+          }
         
-        &--top {
-          position: sticky;
-          top: 0;
-          z-index: 10;
+          &-middle {
+            display: flex;
+            align-items: center;
+          }
         }
+      
+        &--fixed {
+          &-left {
+            position: sticky;
+            left: 0;
+            z-index: 10;
+          }
+          
+          &-right {
+            position: sticky;
+            right: 0;
+            z-index: 10;
+          }
+          
+          &-top {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+          }
 
-        &--topleft {
-          position: sticky;
-          top: 0;
-          left: 0;
-          z-index: 20;
-        }
-        
-        &--topright {
-          position: sticky;
-          top: 0;
-          right: 0;
-          z-index: 20;
+          &-top-left {
+            position: sticky;
+            top: 0;
+            left: 0;
+            z-index: 20;
+          }
+          
+          &-top-right {
+            position: sticky;
+            top: 0;
+            right: 0;
+            z-index: 20;
+          }
         }
       }
     }
 
-    .row__details {
+    &__row-details {
       display: none;
     }
     
-    .header {      
+    &__header {      
       &__action {
         padding-top: calc(var(--hora-cell-padding)/2);
         text-align: center;
@@ -100,7 +100,7 @@
       padding: var(--hora-cell-padding) var(--hora-cell-padding) 0 var(--hora-cell-padding);
     }
     
-    .cell {
+    &__cell {
       &--first {
         border-radius: var(--hora-border-radius) 0 0 var(--hora-border-radius);
         border-left: 1px solid var(--hora-border-cell);
@@ -123,7 +123,7 @@
     }
 
     &--hover {
-      .row {
+      .hora-grid__row {
         &:hover > div {
           background-color: var(--hora-background-hover);
         }

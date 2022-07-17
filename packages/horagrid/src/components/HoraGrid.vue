@@ -162,8 +162,8 @@
    */
   const gridClass = computed(() => {
     return {
-      'hora__grid--hover': isSelectable.value === true,
-      'hora__grid--settings': settingsVisible.value === true
+      'hora-grid--hover': isSelectable.value === true,
+      'hora-grid--settings': settingsVisible.value === true
     }
   })
 
@@ -234,9 +234,9 @@
 </script>
 
 <template>
-<div class="hora__wrapper">
+<div class="hora">
   <div
-    class="hora__grid"
+    class="hora-grid"
     :class="gridClass"
     :style="gridStyle">
     <!-- settings view -->
@@ -248,10 +248,10 @@
       <div>Field Count: {{fieldCount}}</div>
       <div>Fields: {{fields}}</div>
     </HoraSettings>
-    <!-- header -->
+    <!-- HEADER -->
     <div
       v-if="isHeaderVisible"
-      class="row__header">
+      class="hora-grid__row-header">
       <!-- header fields -->
       <div
         v-for="(field, index) in fieldList"
@@ -279,15 +279,16 @@
         :is-settings-enabled="isSettingsEnabled === true"
         @settings="toggleSettingsVisibility" />
     </div>
-    <!-- body -->
+    <!-- BODY -->
     <div
       v-for="(record, rowIndex) in data"
       :key="rowIndex"
-      class="row">
+      class="hora-grid__row">
       <div
         v-for="(field, fieldIndex) in fieldList"
         :key="fieldIndex"
-        :class="getFieldClasses(fieldIndex+1, fieldCount, isFirstFieldStatic, isLastFieldStatic)">
+        :class="getFieldClasses(fieldIndex+1, fieldCount, isFirstFieldStatic, isLastFieldStatic)"
+        :data-selected="isSelected(rowIndex)">
         <!-- field slot -->
         <slot
           :name="`cell-${field.key}`"
@@ -298,13 +299,15 @@
       </div>
       <div
         v-if="isActionFieldVisible"
-        :class="getFieldClasses(fieldCount, fieldCount, isFirstFieldStatic, isLastFieldStatic)">
+        :class="getFieldClasses(fieldCount, fieldCount, isFirstFieldStatic, isLastFieldStatic)"
+        :data-selected="isSelected(rowIndex)">
         <HoraCheckbox
           :v-model="isSelected(rowIndex)"
           @change="handleSelection(rowIndex)" />
       </div>
+      <!-- Field Details -->
       <div
-        class="row__details"
+        class="hora-grid__row-details"
         :style="rowDetailStyle">
         <slot name="row-details">
           subgrid

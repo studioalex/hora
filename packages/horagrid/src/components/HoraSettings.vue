@@ -24,12 +24,12 @@
 </script>
 
 <template>
-  <div class="hora__settings">
-    <div class="hora__settings__header">
-      <div class="hora__settings__title">
+  <div class="hora-settings">
+    <div class="hora-settings__header">
+      <div class="hora-settings__title">
         {{ title }}
       </div>
-      <div class="hora__settings__close">
+      <div class="hora-settings__close">
         <button
           class="hora__icon-button"
           @click="closeSettings">
@@ -37,7 +37,7 @@
         </button>
       </div>
     </div>
-    <div class="hora__settings__content">
+    <div class="hora-settings__content">
       <slot></slot>
     </div>
   </div>

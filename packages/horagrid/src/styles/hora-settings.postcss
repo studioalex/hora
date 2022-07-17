@@ -1,22 +1,22 @@
 .hora {
-  &__grid {
+  &-grid {
 
     &--settings {
       grid-template-columns: 1fr !important;
       grid-template-rows: 1fr !important;
       min-height: 100%;
 
-      .row__header, .row {
+      .hora-grid__row-header, .hora-grid__row {
         display: none;
       }
 
-      .hora__settings {
+      .hora-settings {
         display: grid;
       }
     }
   }
 
-  &__settings {
+  &-settings {
     display: none;
     grid-template-columns: 1fr;
     grid-template-rows: minmax(20px, auto) 1fr;
