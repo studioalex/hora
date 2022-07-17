@@ -36,8 +36,16 @@ function setSelection (index: number, multipleSelection: boolean = false) {
   return selected.value
 }
 
+/**
+ * Clear selection empty the selection array
+ */
+function clearSelection () {
+  selected.value = []
+}
+
 export {
   selected,
   isSelected,
-  setSelection
+  setSelection,
+  clearSelection
 }

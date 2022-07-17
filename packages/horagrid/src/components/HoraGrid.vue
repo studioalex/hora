@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-  import { ref, toRefs, PropType, computed, Ref } from 'vue'
+  import { ref, toRefs, PropType, computed, watch, Ref } from 'vue'
   import {
     getFieldClasses,
     getHeaderClasses
@@ -7,7 +7,8 @@
   import {
     selected,
     isSelected,
-    setSelection
+    setSelection,
+    clearSelection
   } from '../features/selection'
   import { HoraField } from '../types'
   import HoraHeaderFieldActions from './HoraHeaderFieldActions.vue'
@@ -216,14 +217,31 @@
 
     return ''
   }
-
-  function toggleSettingsVisibility () {
-    settingsVisible.value = !settingsVisible.value
-  }
-
+  
+  /**
+   * SELECTION
+   * ---------
+   * @param index 
+   */
   function handleSelection (index: number) {
     setSelection(index, isMultipleSelection.value)
     emit('onSelection', data.value.filter((record, index) => selected.value.includes(index)))
+  }
+  /**
+   * Clear selection when select ability was disabled.
+   */
+  watch([isSelectable,isMultipleSelection], ([newSelectable, newMultipleSelection]) => {
+    if (newSelectable === false || newMultipleSelection === false) {
+      clearSelection()
+    }
+  })
+
+  /**
+   * SETTINGS
+   * --------
+   */
+  function toggleSettingsVisibility () {
+    settingsVisible.value = !settingsVisible.value
   }
 </script>
 
