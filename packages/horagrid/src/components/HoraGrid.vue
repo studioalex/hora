@@ -62,7 +62,7 @@
       default: false
     },
     /* Enable multiple field selection when selections are enabled */
-    singleSelection: {
+    isMultipleSelection: {
       type: Boolean,
       default: false
     },
@@ -70,11 +70,6 @@
     isSettingsEnabled: {
       type: Boolean,
       default: false
-    },
-    /*  */
-    selected: {
-      type: Array as PropType<Array<any>>,
-      default: () => []
     }
   })
 
@@ -88,7 +83,7 @@
     isHeaderVisible,
     isSortable,
     isSelectable,
-    singleSelection,
+    isMultipleSelection,
     isSettingsEnabled
   } = toRefs(props)
 
@@ -96,7 +91,6 @@
   const fieldsDefinition: Ref<Array<HoraField>> = ref([])
   const sortField: Ref<string[]> = ref([])
   const settingsVisible = ref(false)
-  // const selected: Ref<string[]> = ref([])
   const isActionFieldVisible = computed(() => (isSettingsEnabled.value === true || isSelectable.value === true))
 
   // prepare field definitions
@@ -228,7 +222,7 @@
   }
 
   function handleSelection (index: number) {
-    setSelection(index, singleSelection.value)
+    setSelection(index, isMultipleSelection.value)
     emit('onSelection', data.value.filter((record, index) => selected.value.includes(index)))
   }
 </script>
@@ -239,7 +233,7 @@
     class="hora-grid"
     :class="gridClass"
     :style="gridStyle">
-    <!-- settings view -->
+    <!-- SETTINGS -->
     <HoraSettings
       v-if="isSettingsEnabled"
       @close="toggleSettingsVisibility">
@@ -252,12 +246,12 @@
     <div
       v-if="isHeaderVisible"
       class="hora-grid__row-header">
-      <!-- header fields -->
+      <!-- HEADER::FIELD -->
       <div
         v-for="(field, index) in fieldList"
         :key="index"
         :class="getHeaderClasses(index+1, fieldCount, isHeaderStatic, isFirstFieldStatic, isLastFieldStatic)">
-        <!-- header field slot -->
+        <!-- HEADER::SLOT -->
         <div>
           <slot
             :name="`header-${field.key}`"
@@ -265,21 +259,21 @@
             {{ field.title }}
           </slot>
         </div>
-        <!-- header field action slot -->
+        <!-- HEADER::INFIELD-ACTIONS -->
         <HoraHeaderFieldActions
           :is-visible="isSortable === true && field.sortable !== false"
           :custom-class="getSortIconClass(field.key)"
           :field-key="field.key"
           @sort="handleSort(field.key)" />
       </div>
-      <!-- header action field -->
+      <!-- HEADER::ACTIONS -->
       <HoraHeaderActions
         :is-visible="isActionFieldVisible"
         :custom-class="getHeaderClasses(fieldCount, fieldCount, isHeaderStatic, isFirstFieldStatic, isLastFieldStatic)"
         :is-settings-enabled="isSettingsEnabled === true"
         @settings="toggleSettingsVisibility" />
     </div>
-    <!-- BODY -->
+    <!-- FIELDS -->
     <div
       v-for="(record, rowIndex) in data"
       :key="rowIndex"
@@ -289,7 +283,7 @@
         :key="fieldIndex"
         :class="getFieldClasses(fieldIndex+1, fieldCount, isFirstFieldStatic, isLastFieldStatic)"
         :data-selected="isSelected(rowIndex)">
-        <!-- field slot -->
+        <!-- FIELD::SLOT -->
         <slot
           :name="`cell-${field.key}`"
           :record="record"
@@ -301,11 +295,12 @@
         v-if="isActionFieldVisible"
         :class="getFieldClasses(fieldCount, fieldCount, isFirstFieldStatic, isLastFieldStatic)"
         :data-selected="isSelected(rowIndex)">
-        <HoraCheckbox
-          :v-model="isSelected(rowIndex)"
-          @change="handleSelection(rowIndex)" />
+        <div
+          class="selection-indicator"
+          :class="{ 'selection-indicator--active': isSelected(rowIndex) }"
+          @click="handleSelection(rowIndex)"></div>
       </div>
-      <!-- Field Details -->
+      <!-- FIELD::DETAILS -->
       <div
         class="hora-grid__row-details"
         :style="rowDetailStyle">
@@ -317,3 +312,32 @@
   </div>
 </div>
 </template>
+
+<style lang="postcss">
+.selection-indicator {
+  position: relative;
+  display: inline-block;
+  width: 2em;
+  height: 2em;
+  border-radius: 6px;
+  border: 2px solid grey;
+
+  &::after {
+    position: absolute;
+    content: "";
+    top: 2px;
+    left: 2px;
+    bottom: 2px;
+    right: 2px;
+    border-radius: 4px;
+    background-color: grey;
+  }
+
+  &--active {
+    border-color: green;
+    &::after {
+      background-color: green;
+    }
+  }
+}
+</style>

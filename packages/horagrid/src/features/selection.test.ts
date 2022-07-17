@@ -10,7 +10,7 @@ describe('feature => selections:', () => {
   })
 
   it('add first index number to multiple selection', () => {
-    setSelection(firstIndex)
+    setSelection(firstIndex, true)
     assert.equal(selected.value.length, 1)
     expect(selected.value[0]).eq(firstIndex)
   })
@@ -20,30 +20,30 @@ describe('feature => selections:', () => {
   })
 
   it('add second index number to multiple selection', () => {
-    setSelection(secondIndex)
+    setSelection(secondIndex, true)
     assert.equal(selected.value.length, 2)
     expect(selected.value[1]).eq(secondIndex)
   })
 
   it('remove first index number from multiple selection', () => {
-    setSelection(firstIndex)
+    setSelection(firstIndex, true)
     assert.equal(selected.value.length, 1)
     expect(selected.value[0]).eq(secondIndex)
   })
 
   it('remove second index number from multiple selection', () => {
-    setSelection(secondIndex)
+    setSelection(secondIndex, true)
     assert.equal(selected.value.length, 0)
   })
 
   it('add first index number to single selection', () => {
-    setSelection(firstIndex, true)
+    setSelection(firstIndex, false)
     assert.equal(selected.value.length, 1)
     expect(selected.value[0]).eq(firstIndex)
   })
 
   it('add second index number to single selection', () => {
-    setSelection(secondIndex, true)
+    setSelection(secondIndex, false)
     assert.equal(selected.value.length, 1)
     expect(selected.value[0]).eq(secondIndex)
   })
