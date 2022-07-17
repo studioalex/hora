@@ -234,6 +234,7 @@
 </script>
 
 <template>
+<div class="hora__wrapper">
   <div
     class="hora__grid"
     :class="gridClass"
@@ -311,4 +312,5 @@
       </div>
     </div>
   </div>
+</div>
 </template>
