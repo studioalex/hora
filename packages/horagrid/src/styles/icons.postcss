@@ -1,55 +1,59 @@
 .hora {
+  --HORA--icon--stroke: 6;
+  --HORA--icon--color-default: var(--hr-color-gray);
+  --HORA--icon--color-active: var(--hr-color-blue);
+  --HORA--icon--color-light: var(--hr-color-gray-light-2);
+  --HORA--icon--color-disabled: var(--hr-color-gray-light-3);
+
   &__icon {
     width: 1rem;
     path, circle {
-      stroke: var(--hora-icon-color);
+      stroke: var(--HORA--icon--color-default);
     }
 
     &-button {
       border: 0;
       background: none;
       cursor: pointer;
-
-      svg {
-        height: 1.8em;
-        width: 1.8em;
-      }
     }
 
     &-sort {
+      height: auto;
+      width: 2em;
+
       .DESC, .ASC {
-        fill: var(--hora-icon-color);
+        fill: var(--hr-color-gray-light-2);
       }
 
       &--asc {
         .ASC {
-          fill: var(--hora-icon-color--active);
+          fill: var(--HORA--icon--color-active);
         }
         .DESC {
-          fill: var(--hora-icon-color--hollow);
+          fill: var(--HORA--icon--color-light);
         }
       }
 
       &--desc {
         .DESC {
-          fill: var(--hora-icon-color--active);
+          fill: var(--HORA--icon--color-active);
         }
         .ASC {
-          fill: var(--hora-icon-color--hollow);
+          fill: var(--HORA--icon--color-light);
         }
       }
 
       &--disabled {
         .DESC, .ASC {
-          fill: var(--hora-icon-color--disabled);
+          fill: var(--HORA--icon--color-disabled);
         }
       }
     }
 
     &-close {
       path, circle {
-        stroke: var(--hora-icon-color);
-        fill: var(--hora-icon-color);
+        stroke: var(--HORA--icon--color-default);
+        fill: var(--HORA--icon--color-default);
       }
     }
   }

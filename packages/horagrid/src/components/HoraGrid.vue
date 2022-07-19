@@ -125,7 +125,7 @@
   const gridTemplateColumns = computed(() => {
     const columnsInGrid = fieldList.value.map(field => field.width || '1fr')
     if (isActionFieldVisible.value === true) {
-      columnsInGrid.push('var(--hora-action-column-width)')
+      columnsInGrid.push('var(--HORA--cell-action--width)')
     }
 
     return columnsInGrid

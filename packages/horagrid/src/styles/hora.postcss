@@ -2,15 +2,44 @@
  * Hora styling
  */
  .hora {
+  --HORA--color--action: var(--hr-color-blue);
+
+  --HORA--grid--gap: 8px;
+  --HORA--grid--font-family: var(--hr-font-family-base);
+  --HORA--grid--rows-auto: minmax(20px, auto);
+
+  --HORA--header--background: var(--hr-color-white);
+  --HORA--header--font-color: var(--hr-color-text-light-3);
+  --HORA--header--font-weight: 700;
+
+  --HORA--cell--background: var(--hr-color-white);
+  --HORA--cell--padding: 12px;
+
+  --HORA--cell--font-color: var(--hr-color-text-light-1);
+  --HORA--cell--font-weight: 400;
+  --HORA--cell--border-size: 1px;
+  --HORA--cell--border-radius: 6px;
+  --HORA--cell--border: var(--HORA--cell--border-size) solid var(--hr-color-text-light-4);
+  --HORA--cell--border-separator: var(--HORA--cell--border-size) solid var(--hr-color-white);
+  --HORA--cell-hover--background-color: var(--hr-color-white-mute);
+  --HORA--cell-hover--border-separator: var(--HORA--cell--border-size) solid var(--hr-color-white-mute);
+  --HORA--cell-hover--border: var(--HORA--cell--border-size) solid var(--hr-color-white);
+  --HORA--cell-selected--background: var(--hr-color-blue-light);
+  --HORA--cell-selected--border-separator: var(--HORA--cell--border-size) solid var(--hr-color-blue-light);
+  --HORA--cell-selected--border: var(--HORA--cell--border-size) solid var(--hr-color-blue);
+
+  --HORA--settings--background-color: var(--hr-color-white);
+
+  --HORA--cell-action--width: minmax(50px, auto);
   overflow: auto;
   
   &-grid {
     display: grid;
     grid-template-columns: 1fr;
-    grid-auto-rows: var(--hora-grid-auto-rows);
-    row-gap: 5px;
+    grid-auto-rows: var(--HORA--grid--rows-auto);
+    row-gap: var(--HORA--grid--gap);
     
-    font-family: 'Roboto', sans-serif;
+    font-family: var(--HORA--grid--font-family);
     max-height: 100%;
     max-width: 100%;
     overflow: auto;
@@ -83,8 +112,8 @@
     
     &__header {      
       &__action {
-        padding-top: calc(var(--hora-cell-padding)/2);
-        text-align: center;
+        padding-top: calc(var(--HORA--cell--padding)/2);
+        text-align: right;
       }
 
       &--first {
@@ -95,41 +124,62 @@
         border-radius: 0 var(--hora-border-radius) var(--hora-border-radius) 0;
       }
 
-      color: var(--hora-header-text);
-      background-color: var(--hora-header-background);
-      padding: var(--hora-cell-padding) var(--hora-cell-padding) 0 var(--hora-cell-padding);
+      font-weight: var(--HORA--header--font-weight);
+      color: var(--HORA--header--font-color);
+      background-color: var(--HORA--header--background);
+      padding: var(--HORA--cell--padding) var(--HORA--cell--padding) 0 var(--HORA--cell--padding);
     }
     
     &__cell {
+      padding: var(--HORA--cell--padding);
+      border-top: var(--HORA--cell--border);
+      border-bottom: var(--HORA--cell--border);
+      border-right: var(--HORA--cell--border-separator);
+      color: var(--HORA--cell-font-color);
+      background-color: var(--HORA--cell--background);
+      font-weight: var(--HORA--cell--font-weight);
+
+      &[data-selected="true"] {
+        border-top: var(--HORA--cell-selected--border);
+        border-bottom: var(--HORA--cell-selected--border);
+        border-right: var(--HORA--cell-selected--border-separator);
+        background-color: var(--HORA--cell-selected--background);
+      }
+
       &--first {
-        border-radius: var(--hora-border-radius) 0 0 var(--hora-border-radius);
-        border-left: 1px solid var(--hora-border-cell);
+        border-radius: var(--HORA--cell--border-radius) 0 0 var(--HORA--cell--border-radius);
+        border-left: var(--HORA--cell--border);
+        
+        &[data-selected="true"] {
+          background-color: var(--HORA--cell-selected--background);
+          border-left: var(--HORA--cell-selected--border);
+        }
       }
       
       &--last {
-        border-radius: 0 var(--hora-border-radius) var(--hora-border-radius) 0;
-      }
-      
-      &--header {
-        background-color: var(--hora-background-cell);
-      }
+        border-radius: 0 var(--HORA--cell--border-radius) var(--HORA--cell--border-radius) 0;
+        border-right: var(--HORA--cell--border);
 
-      padding: var(--hora-cell-padding);
-      border-top: 1px solid var(--hora-border-cell);
-      border-bottom: 1px solid var(--hora-border-cell);
-      border-right: 1px solid var(--hora-border-cell);
-      color: var(--hora-text);
-      background-color: var(--hora-background-cell);
-
-      &[data-selected="true"] {
-        background-color: aqua;
+        &[data-selected="true"] {
+          background-color: var(--HORA--cell-selected--background);
+          border-right: var(--HORA--cell-selected--border);
+        }
       }
     }
 
     &--hover {
-      .hora-grid__row {
-        &:hover > div {
-          background-color: var(--hora-background-hover);
+      .hora-grid__row:hover {
+        .hora-grid__cell {
+          border-top: var(--HORA--cell-hover--border);
+          border-bottom: var(--HORA--cell-hover--border);
+          border-right: var(--HORA--cell-hover--border-separator);
+          background-color: var(--HORA--cell-hover--background-color);
+          &--first {
+            border-left: var(--HORA--cell-hover--border);
+          }
+          &--last {
+            border-right: var(--HORA--cell-hover--border);
+          }
         }
       }
     }

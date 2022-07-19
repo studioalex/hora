@@ -26,7 +26,7 @@
 <template>
   <div
     v-if="isVisible && fieldKey"
-    class="header__action">
+    class="hora-grid__header__action">
     <button
       class="hora__icon-button"
       @click="emit('sort', fieldKey)">
