@@ -21,7 +21,7 @@
   --hr-color-divider-light-2: rgba(60, 60, 60, 0.12);
   --hr-color-divider-dark-1: rgba(84, 84, 84, 0.65);
   --hr-color-divider-dark-2: rgba(84, 84, 84, 0.48);
-  --hr-color-text-light-1: var(--hr-color-indigo);
+  --hr-color-text-light-1: rgb(33, 53, 71);
   --hr-color-text-light-2: rgba(60, 60, 60, 0.70);
   --hr-color-text-light-3: rgba(60, 60, 60, 0.33);
   --hr-color-text-light-4: rgba(60, 60, 60, 0.18);

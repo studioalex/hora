@@ -15,6 +15,7 @@
   <div class="hrd-grid-content">
     <h1>Grid Example</h1>
       <hora-grid
+        class="thema-block"
         :fields="data.columns"
         :data="data.data"
         :is-header-static="store.isHeaderStatic"
