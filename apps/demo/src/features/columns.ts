@@ -1,6 +1,10 @@
 export default {
   columnsList: [
     {
+      key: 'k0',
+      title: 'free'
+    },
+    {
       key: 'k1',
       title: 'Column 1',
       visible: true,
@@ -39,6 +43,10 @@ export default {
   ],
   columns: [
     {
+      key: 'k0',
+      title: 'Virtual Field',
+      sortable: false
+    }, {
       key: 'k1'
     }, {
       key: 'k2'

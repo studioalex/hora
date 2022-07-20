@@ -4,7 +4,8 @@
   import data from '../features/columns'
 
   const store = useSettingsStore()
-  const theme = ref(null)
+  const theme = ref('')
+  const settings = ref(false)
   const themeList = ref([{class: 'theme-block', label: 'Block'}])
 
   function setSelected (items: any) {
@@ -22,6 +23,7 @@
           <option value="">default</option>
           <option v-for="(themeItem, index) in themeList" :key="index" :value="themeItem.class">{{themeItem.label}}</option>
         </select>
+        <button @click="settings = !settings">Toogle Settings</button>
       </div>
     </div>
     <hora-grid
@@ -36,9 +38,10 @@
       :is-sortable="store.isSortable"
       :is-settings-enabled="store.isSettingsEnabled"
       :is-multiple-selection="store.isMultipleSelection"
+      :showSettings="settings"
       @onSelection="setSelected">
-      <template #cell-k1="{ record, field }">
-        {{ field.key }} -- {{ record[field.key] }}
+      <template #cell-k0="{ record, field }">
+        {{ field.key }} -- {{ record.k6 }}
       </template>
     </hora-grid>
   </div>
