@@ -211,7 +211,7 @@
       const [fieldKey, sortDirection] = sortField.value[0].split('::')
 
       if (fieldKey === field ) {
-        return `hora__icon-sort--${sortDirection.toLowerCase()}`
+        return `hora__icon hora__icon-sort--${sortDirection.toLowerCase()}`
       }
     }
 

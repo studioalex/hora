@@ -61,6 +61,7 @@
   --hr-color-red-dimm-3: rgba(237, 60, 80, 0.05);
   --hr-color-blue: rgb(67, 186, 231);
   --hr-color-blue-light: rgb(187, 229, 246);
+  --hr-color-blue-dark: rgb(0, 154, 195);
 
   --hr-font-family-base: 'Inter var experimental', 'Inter var', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   --hr-font-family-mono: Menlo, Monaco, Consolas, 'Courier New', monospace;
