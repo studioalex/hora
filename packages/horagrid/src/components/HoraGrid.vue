@@ -71,6 +71,10 @@
     isSettingsEnabled: {
       type: Boolean,
       default: false
+    },
+    showSettings: {
+      type: Boolean,
+      default: false
     }
   })
 
@@ -91,8 +95,13 @@
   const emit = defineEmits(['sort', 'onSelection'])
   const fieldsDefinition: Ref<Array<HoraField>> = ref([])
   const sortField: Ref<string[]> = ref([])
-  const settingsVisible = ref(false)
   const isActionFieldVisible = computed(() => (isSettingsEnabled.value === true || isSelectable.value === true))
+
+  // Settings
+  const settingsVisible = ref(false)
+  watch(() => props.showSettings, (newValue) => {
+    settingsVisible.value = (newValue && isSettingsEnabled.value)
+  })
 
   // prepare field definitions
   fieldsDefinition.value = fields.value.map(field => {

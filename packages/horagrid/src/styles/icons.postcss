@@ -1,5 +1,5 @@
 .hora {
-  --HORA--icon--stroke: 6;
+  --HORA--icon--stroke: 6px;
   --HORA--icon--color: var(--hr-color-gray);
   --HORA--icon--color-active: var(--hr-color-blue);
   --HORA--icon--color-disabled: var(--hr-color-gray-light-3);
@@ -10,9 +10,9 @@
   --HORA--icon-sort--disabled: var(--HORA--icon--color-disabled);
 
   &__icon {
-    width: 1rem;
+    width: 2em;
     path, circle {
-      stroke: var(--HORA--icon--color-default);
+      stroke: var(--HORA--icon--color);
     }
 
     &-button {
@@ -56,8 +56,8 @@
 
     &-close {
       path, circle {
-        stroke: var(--HORA--icon--color-default);
-        fill: var(--HORA--icon--color-default);
+        stroke: var(--HORA--icon--color);
+        fill: var(--HORA--icon--color);
       }
     }
   }
