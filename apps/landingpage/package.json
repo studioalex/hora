@@ -16,7 +16,7 @@
     "@11ty/eleventy": "^1.0.1",
     "autoprefixer": "^10.4.7",
     "cpy-cli": "^4.1.0",
-    "del-cli": "^4.0.1",
+    "del-cli": "^5.0.0",
     "eleventy-plugin-postcss": "^1.0.4",
     "postcss-nested": "^5.0.6"
   }

@@ -25,7 +25,7 @@
     "build": "vue-tsc --noEmit && vite build",
     "postbuild": "cpy src/types/*.d.ts dist/types --flat",
     "lint": "eslint --ext .js,.ts,.vue src",
-    "clean": "del-cli ./node_modules ./dist",
+    "clean": "del-cli ./node_modules ./dist ./src/dist ./coverage",
     "test": "vitest",
     "coverage": "vitest run --coverage"
   },

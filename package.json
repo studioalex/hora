@@ -12,18 +12,18 @@
     "dev": "turbo run dev --parallel",
     "lint": "turbo run lint",
     "clean": "turbo run clean",
-    "postclean": "del-cli ./node_modules",
+    "postclean": "del-cli ./node_modules ./deploy",
     "deploy:clean": "del-cli ./deploy",
     "deploy": "turbo run deploy",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
-    "del-cli": "^4.0.1",
+    "del-cli": "^5.0.0",
     "turbo": "latest"
   },
   "engines": {
     "npm": ">=8.0.0",
-    "node": ">=18.0.0"
+    "node": ">=18.0.0 <18.6.0"
   },
   "author": "Alexander Vu <alexander.vu.tuyet@gmail.com>",
   "packageManager": "npm@8.12.1"
