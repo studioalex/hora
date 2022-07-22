@@ -8,8 +8,8 @@ export const useSettingsStore = defineStore('settings', {
       isFirstColumnStatic: false,
       isLastColumnStatic: false,
       isSortable: false,
+      isSettingsEnabled: true,
       isSelectable: false,
-      isSettingsEnabled: false,
       isMultipleSelection: false,
       selectedItems: []
     }

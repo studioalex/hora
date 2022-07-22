@@ -11,7 +11,7 @@
   const baseurl: string = import.meta.env.BASE_URL
   const sideTitle: string = 'Hora Grid'
   const sideLogo: string = `${baseurl}images/logo.png`
-  const footerCopyright: string = 'Copyright © 2022-present Alexander Vu'
+  const footerCopyright: string = 'Copyright © 2022-present Alexander Sedeke'
   const headerLinks: navs = new Map([
     ["vitepress", { link: "/api/", title: "API Documentation"}],
     ["github:issues", { link: "https://github.com/studioalex/hora/issues", title: "Issues"}],
