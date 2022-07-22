@@ -28,7 +28,7 @@ export default defineConfig({
     ],
     footer: {
       message: 'Released under the GPLV3+ License.',
-      copyright: 'Copyright © 2022-present Alexander Vu'
+      copyright: 'Copyright © 2022-present Alexander Sedeke'
     }
   }
 })

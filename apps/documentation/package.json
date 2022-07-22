@@ -18,7 +18,7 @@
     "vue",
     "press"
   ],
-  "author": "Alexander Vu <alexander.vu.tuyet@gmail.com>",
+  "author": "Alexander Sedeke <alexander.sedeke@gmail.com>",
   "license": "MIT",
   "devDependencies": {
     "@studioalex/horagrid": "*",
