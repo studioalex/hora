@@ -1,5 +1,6 @@
 <script lang="ts" setup>
   import { ref, toRefs, PropType, computed, watch, Ref } from 'vue'
+  import { VueDraggableNext as draggable} from 'vue-draggable-next'
   import {
     getFieldClasses,
     getHeaderClasses
@@ -11,9 +12,9 @@
     clearSelection
   } from '../features/selection'
   import { HoraField } from '../types'
-  import HoraHeaderFieldActions from './HoraHeaderFieldActions.vue'
-  import HoraHeaderActions from './HoraHeaderActions.vue'
-  import HoraSettings from './HoraSettings.vue'
+  import HoraHeaderFieldActions from './HeaderFieldActions.vue'
+  import HoraHeaderActions from './HeaderActions.vue'
+  import HoraSettings from './Settings.vue'
   import HoraIndicator from './Indicator.vue'
 
   const props = defineProps({
@@ -152,11 +153,18 @@
   })
 
   /**
-   * Set Grid styles.
+   * Set `grid-template-columns` in styles depend on column count and their visibility.
+   * When Settings are visible set `grid-template-columns` fix to one column.
    */
   const gridStyle = computed(() => {
+    let gridTemplateColumnsValue = gridTemplateColumns.value.join(' ')
+
+    if (settingsVisible.value === true) {
+      gridTemplateColumnsValue = '1fr'
+    }
+
     return {
-      gridTemplateColumns: gridTemplateColumns.value.join(' ')
+      gridTemplateColumns: gridTemplateColumnsValue
     }
   })
 
@@ -167,7 +175,7 @@
   const gridClass = computed(() => {
     return {
       'hora-grid--hover': isSelectable.value === true,
-      'hora-grid--settings': settingsVisible.value === true
+      'hora-grid--settings-enabled': settingsVisible.value === true
     }
   })
 
@@ -249,9 +257,38 @@
    * SETTINGS
    * --------
    */
-  function toggleSettingsVisibility () {
+  function toggleSettingsVisibility (): void {
     settingsVisible.value = !settingsVisible.value
   }
+
+  function toggleFieldVisibility (fieldKey: string): void {
+    fieldsDefinition.value = fieldsDefinition.value.map(field => {
+      if (field.key === fieldKey) {
+        field.visible = !field.visible
+      }
+      return field
+    })
+  }
+
+  /**
+   * Transform visibility value to boolean if it is not set. The default value is then used.
+   * @param visibility {boolean|undefined} Get the Field visibility value.
+   * @param defaultValue The default value to return if visibility value is undefined. Default is ‘true‘.
+   */
+  function isFieldVisible (visibility: boolean|undefined, defaultValue: boolean = true): boolean {
+    if (typeof visibility !== 'boolean') {
+      return defaultValue
+    }
+    return visibility
+  }
+
+
+  const dragOptions = computed(() => ({
+        animation: 1,
+        group: 'description',
+        disabled: false,
+        ghostClass: 'hora-grid-field-settings__ghost-field',
+      }))
 </script>
 
 <template>
@@ -264,10 +301,24 @@
     <HoraSettings
       v-if="isSettingsEnabled"
       @close="toggleSettingsVisibility">
-      content
-      <div>Field List: {{fieldList}}</div>
-      <div>Field Count: {{fieldCount}}</div>
-      <div>Fields: {{fields}}</div>
+        <draggable
+          v-model="fieldsDefinition"
+          v-bind="dragOptions"
+          class="hora-grid-field-settings">
+          <div
+            v-for="fieldItem in fieldsDefinition"
+            :key="fieldItem.key"
+            class="hora-grid-field-settings__field"
+            :class="{ 'hora-grid-field-settings__field--disabled': !isFieldVisible(fieldItem.visible) }">
+            <div class="hora-grid-field-settings__field-title">
+              {{fieldItem.title}}
+            </div>
+            <div
+              class="hora-grid-field-settings__field-actions">
+              <HoraIndicator :is-active="isFieldVisible(fieldItem.visible)" @click="toggleFieldVisibility(fieldItem.key)" />
+            </div>
+          </div>
+        </draggable>
     </HoraSettings>
     <!-- HEADER -->
     <div
@@ -323,7 +374,10 @@
         v-if="isActionFieldVisible"
         :class="getFieldClasses(fieldCount, fieldCount, isFirstFieldStatic, isLastFieldStatic)"
         :data-selected="isSelected(rowIndex)">
-        <HoraIndicator :is-active="isSelected(rowIndex)" @click="handleSelection(rowIndex)" />
+        <HoraIndicator 
+          v-if="isSelectable"
+          :is-active="isSelected(rowIndex)"
+          @click="handleSelection(rowIndex)" />
       </div>
       <!-- FIELD::DETAILS -->
       <div
@@ -336,4 +390,4 @@
     </div>
   </div>
 </div>
-</template>>
+</template>
