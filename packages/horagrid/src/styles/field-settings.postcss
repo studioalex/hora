@@ -1,0 +1,59 @@
+.hora {
+  --HORA--field-settings--background: var(--hr-color-white);
+  --HORA--field-settings--background-disabled: var(--hr-color-gray-light-4);
+  --HORA--field-settings--border-radius: 6px;
+  --HORA--field-settings--border-size: 1px;
+  --HORA--field-settings--border: var(--HORA--field-settings--border-size) solid var(--hr-color-text-light-4);
+
+  --HORA--field-settings--font-color: var(--hr-color-text-light-2);
+  --HORA--field-settings--font-weight: 700;
+  --HORA--field-settings--padding: 6px;
+  --HORA--field-settings--margin: 3px;
+
+  &-grid-field-settings {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-content: stretch;
+    align-items: stretch;
+
+    &__field {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: flex-start;
+      align-content: stretch;
+      align-items: center;
+      margin: var(--HORA--field-settings--margin);
+      padding: var(--HORA--field-settings--padding);
+      background-color: var(--HORA--field-settings--background);
+      border-radius: var(--HORA--field-settings--border-radius);
+      border: var(--HORA--field-settings--border);
+      font-weight: var(--HORA--field-settings--font-weight);
+      color: var(--HORA--field-settings--font-color);
+
+      &--disabled {
+        background-color: var(--HORA--field-settings--background-disabled);
+      }
+
+      &-title {
+        order: 0;
+        flex: 1 1 auto;
+        align-self: auto;
+        padding: 0 var(--HORA--field-settings--padding);
+      }
+
+      &-actions {
+        order: 1;
+        flex: 0 1 auto;
+        align-self: auto;
+      }
+    }
+
+    &__ghost-field {
+      opacity: 0.5;
+      background: #c8ebfb;
+    }
+  }
+}
