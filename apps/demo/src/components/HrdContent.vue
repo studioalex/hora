@@ -1,14 +1,18 @@
 <script lang="ts" setup>
-  import { ref } from 'vue'
+  import { ref, Ref } from 'vue'
+  import { HoraField } from '@studioalex/horagrid'
   import { useSettingsStore } from '../store/settings'
   import data from '../features/columns'
 
   const store = useSettingsStore()
   const theme = ref('')
   const settings = ref(false)
-  const themeList = ref([{class: 'theme-block', label: 'Block'}])
+  const themeList = ref([
+    { class: '', label: 'Default' },
+    { class: 'theme-block', label: 'Block' }
+  ])
 
-  function setSelected (items: any) {
+  function setSelected (items: Array<HoraField>) {
     store.selectedItems = items
   }
 </script>
@@ -17,12 +21,9 @@
   <div class="hrd-grid-content">
     <div>
       <h1>Grid Example</h1>
-      <div class="demogrid-settings">
-        <label for="">Theme: </label>
-        <select v-model="theme">
-          <option value="">
-            default
-          </option>
+      <div class="demo-grid-settings">
+        <label for="theme">Theme: </label>
+        <select id="theme" v-model="theme">
           <option
             v-for="(themeItem, index) in themeList"
             :key="index"
@@ -56,8 +57,8 @@
   </div>
 </template>
 
-<style lang="postcss">
-.demogrid-settings {
+<style>
+.demo-grid-settings {
   margin-bottom: 1rem;
 }
 </style>
