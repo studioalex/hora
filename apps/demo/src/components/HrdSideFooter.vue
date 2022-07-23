@@ -14,7 +14,7 @@
 
 <template>
   <div class="hrd-footer">
-     <img :src="`${baseurl}images/czech_with_love.png`" /> 
-     {{ text }}
+    <img :src="`${baseurl}images/czech_with_love.png`" /> 
+    {{ text }}
   </div>
 </template>

@@ -35,11 +35,11 @@
   <div class="hrd-checkbox">
     <input
       :id="componentId"
+      ref="checkbox"
+      v-model="isChecked"
       type="checkbox"
       class="hrd-checkbox__input"
-      v-model="isChecked"
-      ref="checkbox"
-      @input="onChange"/>
+      @input="onChange" />
     <label class="hrd-checkbox__label" :for="componentId"></label>
   </div>
 </template>

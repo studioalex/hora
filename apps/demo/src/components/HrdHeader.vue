@@ -19,9 +19,15 @@
   <div class="hrd-header hrd-header--content">
     <div class="hrd-header--content-left"></div>
     <div class="hrd-header--content-middle"></div>
-    <nav class="hrd-header--content-right hrd-header--content-nav" role="navigation" aria-label="main navigation">
-      <div v-for="[key, item] in nav" :key="key" class="hrd-header--content-nav-item">
-        <a :href="item.link" class="navbar-item">{{item.title}}</a>
+    <nav
+      class="hrd-header--content-right hrd-header--content-nav"
+      role="navigation"
+      aria-label="main navigation">
+      <div
+        v-for="[key, item] in nav"
+        :key="key"
+        class="hrd-header--content-nav-item">
+        <a :href="item.link" class="navbar-item">{{ item.title }}</a>
       </div>
     </nav>
   </div>

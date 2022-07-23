@@ -33,13 +33,16 @@
 <template>
   <div class="hrd-switch">
     <div class="hrd-switch__title">
-      <label class="hrd-switch__caption" :for="id">{{title}}</label>
+      <label class="hrd-switch__caption" :for="id">{{ title }}</label>
       <div class="hrd-switch__switch">
-        <HrdCheckbox :id="id" v-model="isChecked" @change="onChange"/>
+        <HrdCheckbox
+          :id="id"
+          v-model="isChecked"
+          @change="onChange" />
       </div>
     </div>
     <p class="hrd-switch__description">
-      <slot>{{description}}</slot>
+      <slot>{{ description }}</slot>
     </p>
   </div>
 </template>

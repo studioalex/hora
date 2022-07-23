@@ -9,7 +9,7 @@
   const themeList = ref([{class: 'theme-block', label: 'Block'}])
 
   function setSelected (items: any) {
-    store.selectedItems = []
+    store.selectedItems = items
   }
 </script>
 
@@ -20,10 +20,19 @@
       <div class="demogrid-settings">
         <label for="">Theme: </label>
         <select v-model="theme">
-          <option value="">default</option>
-          <option v-for="(themeItem, index) in themeList" :key="index" :value="themeItem.class">{{themeItem.label}}</option>
+          <option value="">
+            default
+          </option>
+          <option
+            v-for="(themeItem, index) in themeList"
+            :key="index"
+            :value="themeItem.class">
+            {{ themeItem.label }}
+          </option>
         </select>
-        <button @click="settings = !settings">Toogle Settings</button>
+        <button @click="settings = !settings">
+          Toogle Settings
+        </button>
       </div>
     </div>
     <hora-grid
@@ -38,8 +47,8 @@
       :is-sortable="store.isSortable"
       :is-settings-enabled="store.isSettingsEnabled"
       :is-multiple-selection="store.isMultipleSelection"
-      :showSettings="settings"
-      @onSelection="setSelected">
+      :show-settings="settings"
+      @on-selection="setSelected">
       <template #cell-k0="{ record, field }">
         {{ field.key }} -- {{ record.k6 }}
       </template>
