@@ -21,7 +21,7 @@
       "outputs": []
     },
     "deploy": {
-      "dependsOn": ["test", "deploy:clean", "^build"],
+      "dependsOn": ["test", "deploy:clean", "build"],
       "outputs": ["deploy/**"]
     }
   }
