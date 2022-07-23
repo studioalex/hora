@@ -1,6 +1,6 @@
 <script lang="ts" setup>
   import { ref, toRefs, PropType, computed, watch, Ref } from 'vue'
-  import { VueDraggableNext as draggable} from 'vue-draggable-next'
+  // import { VueDraggableNext as draggable} from 'vue-draggable-next'
   import {
     getFieldClasses,
     getHeaderClasses
@@ -16,6 +16,7 @@
   import HoraHeaderActions from './HeaderActions.vue'
   import HoraSettings from './Settings.vue'
   import HoraIndicator from './Indicator.vue'
+  import HoraFieldSettings from './FieldSettings.vue'
 
   const props = defineProps({
     fields: {
@@ -260,35 +261,6 @@
   function toggleSettingsVisibility (): void {
     settingsVisible.value = !settingsVisible.value
   }
-
-  function toggleFieldVisibility (fieldKey: string): void {
-    fieldsDefinition.value = fieldsDefinition.value.map(field => {
-      if (field.key === fieldKey) {
-        field.visible = !field.visible
-      }
-      return field
-    })
-  }
-
-  /**
-   * Transform visibility value to boolean if it is not set. The default value is then used.
-   * @param visibility {boolean|undefined} Get the Field visibility value.
-   * @param defaultValue The default value to return if visibility value is undefined. Default is ‘true‘.
-   */
-  function isFieldVisible (visibility: boolean|undefined, defaultValue: boolean = true): boolean {
-    if (typeof visibility !== 'boolean') {
-      return defaultValue
-    }
-    return visibility
-  }
-
-
-  const dragOptions = computed(() => ({
-        animation: 1,
-        group: 'description',
-        disabled: false,
-        ghostClass: 'hora-grid-field-settings__ghost-field',
-      }))
 </script>
 
 <template>
@@ -301,24 +273,7 @@
     <HoraSettings
       v-if="isSettingsEnabled"
       @close="toggleSettingsVisibility">
-        <draggable
-          v-model="fieldsDefinition"
-          v-bind="dragOptions"
-          class="hora-grid-field-settings">
-          <div
-            v-for="fieldItem in fieldsDefinition"
-            :key="fieldItem.key"
-            class="hora-grid-field-settings__field"
-            :class="{ 'hora-grid-field-settings__field--disabled': !isFieldVisible(fieldItem.visible) }">
-            <div class="hora-grid-field-settings__field-title">
-              {{fieldItem.title}}
-            </div>
-            <div
-              class="hora-grid-field-settings__field-actions">
-              <HoraIndicator :is-active="isFieldVisible(fieldItem.visible)" @click="toggleFieldVisibility(fieldItem.key)" />
-            </div>
-          </div>
-        </draggable>
+        <HoraFieldSettings v-model="fieldsDefinition" />
     </HoraSettings>
     <!-- HEADER -->
     <div
