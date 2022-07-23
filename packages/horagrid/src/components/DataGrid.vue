@@ -1,6 +1,5 @@
 <script lang="ts" setup>
   import { ref, toRefs, PropType, computed, watch, Ref } from 'vue'
-  // import { VueDraggableNext as draggable} from 'vue-draggable-next'
   import {
     getFieldClasses,
     getHeaderClasses
@@ -14,9 +13,9 @@
   import { HoraField } from '../types'
   import HoraHeaderFieldActions from './HeaderFieldActions.vue'
   import HoraHeaderActions from './HeaderActions.vue'
-  import HoraSettings from './Settings.vue'
-  import HoraIndicator from './Indicator.vue'
+  import HoraGridSettings from './GridSettings.vue'
   import HoraFieldSettings from './FieldSettings.vue'
+  import HoraStatusIndicator from './StatusIndicator.vue'
 
   const props = defineProps({
     fields: {
@@ -28,10 +27,10 @@
       default: () => []
     },
     /* Show the loading item which indicate data loading status */
-    loading: {
-      type: Boolean,
-      default: false
-    },
+    // loading: {
+    //   type: Boolean,
+    //   default: false
+    // },
     /* Show or hide the whole header with all header functions */
     isHeaderVisible: {
       type: Boolean,
@@ -81,7 +80,7 @@
   })
 
   const {
-    loading,
+    // loading,
     fields,
     data,
     isHeaderStatic,
@@ -238,7 +237,6 @@
   
   /**
    * SELECTION
-   * ---------
    * @param index 
    */
   function handleSelection (index: number) {
@@ -256,7 +254,6 @@
 
   /**
    * SETTINGS
-   * --------
    */
   function toggleSettingsVisibility (): void {
     settingsVisible.value = !settingsVisible.value
@@ -264,85 +261,85 @@
 </script>
 
 <template>
-<div class="hora">
-  <div
-    class="hora-grid"
-    :class="gridClass"
-    :style="gridStyle">
-    <!-- SETTINGS -->
-    <HoraSettings
-      v-if="isSettingsEnabled"
-      @close="toggleSettingsVisibility">
-        <HoraFieldSettings v-model="fieldsDefinition" />
-    </HoraSettings>
-    <!-- HEADER -->
+  <div class="hora">
     <div
-      v-if="isHeaderVisible"
-      class="hora-grid__row-header">
-      <!-- HEADER::FIELD -->
+      class="hora-grid"
+      :class="gridClass"
+      :style="gridStyle">
+      <!-- SETTINGS -->
+      <HoraGridSettings
+        v-if="isSettingsEnabled"
+        @close="toggleSettingsVisibility">
+        <HoraFieldSettings v-model="fieldsDefinition" />
+      </HoraGridSettings>
+      <!-- HEADER -->
       <div
-        v-for="(field, index) in fieldList"
-        :key="index"
-        :class="getHeaderClasses(index+1, fieldCount, isHeaderStatic, isFirstFieldStatic, isLastFieldStatic)">
-        <!-- HEADER::SLOT -->
-        <div>
+        v-if="isHeaderVisible"
+        class="hora-grid__row-header">
+        <!-- HEADER::FIELD -->
+        <div
+          v-for="(field, index) in fieldList"
+          :key="index"
+          :class="getHeaderClasses(index+1, fieldCount, isHeaderStatic, isFirstFieldStatic, isLastFieldStatic)">
+          <!-- HEADER::SLOT -->
+          <div>
+            <slot
+              :name="`header-${field.key}`"
+              :field="field">
+              {{ field.title }}
+            </slot>
+          </div>
+          <!-- HEADER::INFIELD-ACTIONS -->
+          <HoraHeaderFieldActions
+            :is-visible="isSortable === true && field.sortable !== false"
+            :custom-class="getSortIconClass(field.key)"
+            :field-key="field.key"
+            @sort="handleSort(field.key)" />
+        </div>
+        <!-- HEADER::ACTIONS -->
+        <HoraHeaderActions
+          :is-visible="isActionFieldVisible"
+          :custom-class="getHeaderClasses(fieldCount, fieldCount, isHeaderStatic, isFirstFieldStatic, isLastFieldStatic)"
+          :is-settings-enabled="isSettingsEnabled === true"
+          @settings="toggleSettingsVisibility" />
+      </div>
+      <!-- FIELDS -->
+      <div
+        v-for="(record, rowIndex) in data"
+        :key="rowIndex"
+        class="hora-grid__row">
+        <div
+          v-for="(field, fieldIndex) in fieldList"
+          :key="fieldIndex"
+          :class="getFieldClasses(fieldIndex+1, fieldCount, isFirstFieldStatic, isLastFieldStatic)"
+          :data-selected="isSelected(rowIndex)">
+          <!-- FIELD::SLOT -->
           <slot
-            :name="`header-${field.key}`"
+            :name="`cell-${field.key}`"
+            :record="record"
             :field="field">
-            {{ field.title }}
+            {{ record[field.key] }}
           </slot>
         </div>
-        <!-- HEADER::INFIELD-ACTIONS -->
-        <HoraHeaderFieldActions
-          :is-visible="isSortable === true && field.sortable !== false"
-          :custom-class="getSortIconClass(field.key)"
-          :field-key="field.key"
-          @sort="handleSort(field.key)" />
-      </div>
-      <!-- HEADER::ACTIONS -->
-      <HoraHeaderActions
-        :is-visible="isActionFieldVisible"
-        :custom-class="getHeaderClasses(fieldCount, fieldCount, isHeaderStatic, isFirstFieldStatic, isLastFieldStatic)"
-        :is-settings-enabled="isSettingsEnabled === true"
-        @settings="toggleSettingsVisibility" />
-    </div>
-    <!-- FIELDS -->
-    <div
-      v-for="(record, rowIndex) in data"
-      :key="rowIndex"
-      class="hora-grid__row">
-      <div
-        v-for="(field, fieldIndex) in fieldList"
-        :key="fieldIndex"
-        :class="getFieldClasses(fieldIndex+1, fieldCount, isFirstFieldStatic, isLastFieldStatic)"
-        :data-selected="isSelected(rowIndex)">
-        <!-- FIELD::SLOT -->
-        <slot
-          :name="`cell-${field.key}`"
-          :record="record"
-          :field="field">
-          {{ record[field.key] }}
-        </slot>
-      </div>
-      <!-- FIELD::ACTIONS -->
-      <div
-        v-if="isActionFieldVisible"
-        :class="getFieldClasses(fieldCount, fieldCount, isFirstFieldStatic, isLastFieldStatic)"
-        :data-selected="isSelected(rowIndex)">
-        <HoraIndicator 
-          v-if="isSelectable"
-          :is-active="isSelected(rowIndex)"
-          @click="handleSelection(rowIndex)" />
-      </div>
-      <!-- FIELD::DETAILS -->
-      <div
-        class="hora-grid__row-details"
-        :style="rowDetailStyle">
-        <slot name="row-details">
-          subgrid
-        </slot>
+        <!-- FIELD::ACTIONS -->
+        <div
+          v-if="isActionFieldVisible"
+          :class="getFieldClasses(fieldCount, fieldCount, isFirstFieldStatic, isLastFieldStatic)"
+          :data-selected="isSelected(rowIndex)">
+          <HoraStatusIndicator 
+            v-if="isSelectable"
+            :is-active="isSelected(rowIndex)"
+            @click="handleSelection(rowIndex)" />
+        </div>
+        <!-- FIELD::DETAILS -->
+        <div
+          class="hora-grid__row-details"
+          :style="rowDetailStyle">
+          <slot name="row-details">
+            subgrid
+          </slot>
+        </div>
       </div>
     </div>
   </div>
-</div>
 </template>

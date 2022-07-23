@@ -1,8 +1,8 @@
 import { assert, describe, expect, it } from 'vitest'
 import { selected, isSelected, setSelection } from './selection'
 
-const firstIndex: number = 0;
-const secondIndex: number = 3;
+const firstIndex = 0;
+const secondIndex = 3;
 
 describe('feature => selections:', () => {
   it('selection should be empty', () => {

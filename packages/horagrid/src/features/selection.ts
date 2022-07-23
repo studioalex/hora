@@ -18,7 +18,7 @@ const isSelected = (index: number) => {
  * @param multipleSelection {boolean} set selection type, single (default) or multiple 
  * @returns {void}
  */
-function setSelection (index: number, multipleSelection: boolean = false) {
+function setSelection (index: number, multipleSelection = false) {
   if (isSelected(index) === false) {
     
     if (multipleSelection === false) {

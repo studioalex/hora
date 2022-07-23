@@ -1,7 +1,7 @@
 <script lang="ts" setup>
   import { ref, PropType, computed } from 'vue'
   import { VueDraggableNext as draggable } from 'vue-draggable-next'
-  import HoraIndicator from './Indicator.vue'
+  import HoraStatusIndicator from './StatusIndicator.vue'
   import { HoraField } from '../types'
 
   const emit = defineEmits(['update:modelValue'])
@@ -35,7 +35,7 @@
    * @param visibility {boolean|undefined} Get the Field visibility value.
    * @param defaultValue The default value to return if visibility value is undefined. Default is ‘true‘.
    */
-  function isFieldVisible (visibility: boolean|undefined, defaultValue: boolean = true): boolean {
+  function isFieldVisible (visibility: boolean|undefined, defaultValue = true): boolean {
     if (typeof visibility !== 'boolean') {
       return defaultValue
     }
@@ -57,19 +57,21 @@
   <draggable
     v-model="fieldsDefinitions"
     v-bind="dragOptions"
-    @update="emit('update:modelValue', fieldsDefinitions)"
-    class="hora-grid-field-settings">
+    class="hora-grid-field-settings"
+    @update="emit('update:modelValue', fieldsDefinitions)">
     <div
       v-for="fieldItem in fieldsDefinitions"
       :key="fieldItem.key"
       class="hora-grid-field-settings__field"
       :class="{ 'hora-grid-field-settings__field--disabled': !isFieldVisible(fieldItem.visible) }">
       <div class="hora-grid-field-settings__field-title">
-        {{fieldItem.title}}
+        {{ fieldItem.title }}
       </div>
       <div
         class="hora-grid-field-settings__field-actions">
-        <HoraIndicator :is-active="isFieldVisible(fieldItem.visible)" @click="toggleFieldVisibility(fieldItem.key)" />
+        <HoraStatusIndicator
+          :is-active="isFieldVisible(fieldItem.visible)"
+          @click="toggleFieldVisibility(fieldItem.key)" />
       </div>
     </div>
   </draggable>

@@ -1,2 +1,1 @@
-export { default as HoraGrid } from './Grid.vue'
-export { default as HoraCheckbox } from './Checkbox.vue'
+export { default as HoraGrid } from './DataGrid.vue'
