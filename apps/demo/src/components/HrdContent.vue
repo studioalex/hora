@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-  import { ref, Ref } from 'vue'
+  import { ref } from 'vue'
   import { HoraField } from '@studioalex/horagrid'
   import { useSettingsStore } from '../store/settings'
   import data from '../features/columns'

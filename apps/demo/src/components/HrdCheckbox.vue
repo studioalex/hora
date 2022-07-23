@@ -1,10 +1,11 @@
 <script lang="ts" setup>
-  import { ref, watch, onMounted, getCurrentInstance } from 'vue'
-  
+  import { ref, watch, onMounted, getCurrentInstance, PropType } from 'vue'
+
   const emit = defineEmits(['update:modelValue'])
   const props = defineProps({
     id: {
-      type: String,
+      type: String as PropType<string | undefined>,
+      default: undefined,
       required: false
     },
     modelValue: {
@@ -17,8 +18,9 @@
   const componentId = ref(props.id)
   const isChecked = ref(props.modelValue)
 
-  const onChange = (event: any) => {
-    emit('update:modelValue', event.currentTarget.checked)
+  const onChange = (event: Event) => {
+    const target = event.target as HTMLInputElement
+    emit('update:modelValue', target.checked)
   }
   
   watch(() => props.modelValue, (newValue) => {
