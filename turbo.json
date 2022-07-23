@@ -1,15 +1,18 @@
 {
   "pipeline": {
     "build": {
-      "dependsOn": ["^build"],
-      "outputs": ["dist/**"]
+      "dependsOn": ["lint", "^build"],
+      "outputs": ["dist/**", "docs/.vitepress/dist/**"]
     },
     "lint": {
       "outputs": []
     },
     "dev": {
-      "dependsOn": [],
+      "dependsOn": ["@studioalex/horagrid#build"],
       "cache": false
+    },
+    "test": {
+      "dependsOn": ["lint"]
     },
     "clean": {
       "outputs": []
@@ -18,8 +21,8 @@
       "outputs": []
     },
     "deploy": {
-      "dependsOn": ["deploy:clean", "build"],
-      "outputs": []
+      "dependsOn": ["test", "deploy:clean", "^build"],
+      "outputs": ["deploy/**"]
     }
   }
 }

@@ -9,12 +9,13 @@
   ],
   "scripts": {
     "build": "turbo run build",
-    "dev": "turbo run dev --parallel",
+    "dev": "turbo run dev",
     "lint": "turbo run lint",
     "clean": "turbo run clean",
     "postclean": "del-cli ./node_modules ./deploy",
     "deploy:clean": "del-cli ./deploy",
     "deploy": "turbo run deploy",
+    "test": "turbo run test",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {

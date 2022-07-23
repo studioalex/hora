@@ -26,7 +26,9 @@
     "postbuild": "cpy src/types/*.d.ts dist/types --flat",
     "lint": "eslint --ext .js,.ts,.vue src",
     "clean": "del-cli ./node_modules ./dist ./src/dist ./coverage",
-    "test": "vitest",
+    "test": "vitest --run",
+    "test:ui": "vitest --ui",
+    "test:dev": "vitest",
     "coverage": "vitest run --coverage"
   },
   "dependencies": {
@@ -37,6 +39,7 @@
     "@typescript-eslint/eslint-plugin": "^5.30.3",
     "@typescript-eslint/parser": "^5.30.3",
     "@vitejs/plugin-vue": "^2.3.3",
+    "@vitest/ui": "^0.18.1",
     "@vue/eslint-config-typescript": "^11.0.0",
     "autoprefixer": "^10.4.7",
     "c8": "^7.11.3",
