@@ -47,7 +47,7 @@
    */
   const dragOptions = computed(() => ({
     animation: 0,
-    group: 'description',
+    group: 'key',
     disabled: false,
     ghostClass: 'hora-grid-field-settings__ghost-field',
   }))
@@ -63,7 +63,8 @@
       v-for="fieldItem in fieldsDefinitions"
       :key="fieldItem.key"
       class="hora-grid-field-settings__field"
-      :class="{ 'hora-grid-field-settings__field--disabled': !isFieldVisible(fieldItem.visible) }">
+      :class="{ 'hora-grid-field-settings__field--disabled': !isFieldVisible(fieldItem.visible) }"
+      :data-field-key="fieldItem.key">
       <div class="hora-grid-field-settings__field-title">
         {{ fieldItem.title }}
       </div>
