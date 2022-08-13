@@ -24,7 +24,7 @@
   },
   "engines": {
     "npm": ">=8.0.0",
-    "node": ">=18.0.0 <18.6.0"
+    "node": ">=18.0.0 <18.9.0"
   },
   "author": "Alexander Sedeke <alexander.sedeke@gmail.com>",
   "packageManager": "npm@8.12.1"

@@ -8,5 +8,6 @@ import HeaderActions from './HeaderActions.vue'
 describe('Grid Field Settings', () => {
   it('should render', () => {
     const wrapper = mount(HeaderActions)
+    console.log(wrapper)
   })
 })
