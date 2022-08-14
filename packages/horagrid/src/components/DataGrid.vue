@@ -283,7 +283,7 @@
         <HoraFieldSettings v-model="fieldsDefinition" />
       </HoraGridSettings>
       <!-- LOADING -->
-      <HoraGridLoading :is-visible="isLoading"></HoraGridLoading>
+      <HoraGridLoading :is-visible="isLoading" />
       <!-- HEADER -->
       <div
         v-if="isHeaderVisible"
