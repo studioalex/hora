@@ -93,7 +93,7 @@
     isSettingsEnabled
   } = toRefs(props)
 
-  const emit = defineEmits(['sort', 'onSelection'])
+  const emit = defineEmits(['onSort', 'onSelection'])
   const fieldsDefinition: Ref<Array<HoraField>> = ref([])
   const sortField: Ref<string[]> = ref([])
   const isActionFieldVisible = computed(() => (isSettingsEnabled.value === true || isSelectable.value === true))
@@ -214,7 +214,7 @@
     }
 
     // Emit the sort value
-    emit('sort', sortField.value)
+    emit('onSort', sortField.value[0].split('::'))
   }
 
   /**

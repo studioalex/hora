@@ -1,25 +1,3 @@
-# Sorting
-
-Clicking on a sortable column header will sort the column in ascending direction (smallest first), while clicking on it again will switch the direction of sorting to descending (largest first). Clicking on a non-sortable column will clear the sorting (the prop no-sort-reset can be used to disable this feature).
-
-Sorting is not enabled by default. Use the `isSortable` property to enable sorting. Setting the property to true (or no explicit value) will enable the sorting to appear in the header. This will appear only if the `isHeaderVisible` property is not set to false.
-
-**Hora Grid** do not provide any sorting mechanism for you. It use the `onSort` event to let you handle the sorting on your data. This gives the possibility to determine the optimal sorting function yourself, or to let the database or the backend do it itself. This is considerably more effective with large amounts of data, since they do not all have to be loaded into the frontend.
-
-## Sort Event
-
-The `onSort` event returns an array where the first element is the selected field and the second element is the sort direction. The sort direction can be only the string value **ASC** or **DESC** in capital letters.
-
-```js
-// ['field key', 'Sort direction']
-['first_name', 'ASC']
-```
-
-## Example
-
-<SortExample />
-
-```vue
 <script setup>
   import { ref } from 'vue'
   import _ from 'lodash'
@@ -71,8 +49,3 @@ The `onSort` event returns an array where the first element is the selected fiel
   text-align: center;
 }
 </style>
-```
-
-<script setup>
-  import SortExample from './SortExample.vue'
-</script>

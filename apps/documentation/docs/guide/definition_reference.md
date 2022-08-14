@@ -39,7 +39,8 @@ The following field properties are recognized:
 
 | Event              | Arguments         | Description |
 | ------------------ | ----------------- | ----------- |
-| onSelection        | Array of the row items that are selected | Emitted when a row or rows have been selected or unselected |
+| onSelection        | Array of the row items that are selected | Emitted when a row or rows have been selected or unselected. |
+| onSort             | Array with the sort field as first value and the sort direction as the second value | Emitted on click at the sort icons. |
 
 ## Table Slots
 
