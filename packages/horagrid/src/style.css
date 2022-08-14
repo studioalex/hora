@@ -2,6 +2,7 @@
 @import './styles/hora.postcss';
 @import './styles/checkbox.postcss';
 @import './styles/indicator.postcss';
+@import './styles/view.postcss';
 @import './styles/settings.postcss';
 @import './styles/field-settings.postcss';
 @import './styles/icons.postcss';

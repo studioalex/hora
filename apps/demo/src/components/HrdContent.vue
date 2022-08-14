@@ -48,6 +48,7 @@
       :is-sortable="store.isSortable"
       :is-settings-enabled="store.isSettingsEnabled"
       :is-multiple-selection="store.isMultipleSelection"
+      :is-loading="store.isLoading"
       :show-settings="settings"
       @on-selection="setSelected">
       <template #cell-k0="{ record, field }">

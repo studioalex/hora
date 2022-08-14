@@ -64,6 +64,16 @@
     max-height: 100%;
     max-width: 100%;
     overflow: auto;
+
+    &--view-enabled {
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr;
+      min-height: 100%;
+
+      .hora-grid__row-header, .hora-grid__row {
+        display: none;
+      }
+    }
     
     &__row, &__row-header {
       display: contents;

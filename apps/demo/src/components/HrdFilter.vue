@@ -58,5 +58,11 @@
       id="switch-8"
       v-model="store.isMultipleSelection"
       title="Can select multiple" />
+    <HrdSwitch
+      id="switch-9"
+      v-model="store.isLoading"
+      title="Show loading">
+      Show the loading view.
+    </HrdSwitch>
   </div>
 </template>

@@ -14,6 +14,7 @@
   import HoraHeaderFieldActions from './HeaderFieldActions.vue'
   import HoraHeaderActions from './HeaderActions.vue'
   import HoraGridSettings from './GridSettings.vue'
+  import HoraGridLoading from './GridLoading.vue'
   import HoraFieldSettings from './FieldSettings.vue'
   import HoraStatusIndicator from './StatusIndicator.vue'
 
@@ -27,10 +28,10 @@
       default: () => []
     },
     /* Show the loading item which indicate data loading status */
-    // loading: {
-    //   type: Boolean,
-    //   default: false
-    // },
+    isLoading: {
+      type: Boolean,
+      default: false
+    },
     /* Show or hide the whole header with all header functions */
     isHeaderVisible: {
       type: Boolean,
@@ -80,9 +81,9 @@
   })
 
   const {
-    // loading,
     fields,
     data,
+    isLoading,
     isHeaderStatic,
     isFirstFieldStatic,
     isLastFieldStatic,
@@ -159,7 +160,7 @@
   const gridStyle = computed(() => {
     let gridTemplateColumnsValue = gridTemplateColumns.value.join(' ')
 
-    if (settingsVisible.value === true) {
+    if (settingsVisible.value === true || isLoading.value === true) {
       gridTemplateColumnsValue = '1fr'
     }
 
@@ -175,7 +176,7 @@
   const gridClass = computed(() => {
     return {
       'hora-grid--hover': isSelectable.value === true,
-      'hora-grid--settings-enabled': settingsVisible.value === true
+      'hora-grid--view-enabled': settingsVisible.value === true || isLoading.value === true
     }
   })
 
@@ -258,6 +259,14 @@
   function toggleSettingsVisibility (): void {
     settingsVisible.value = !settingsVisible.value
   }
+
+  /**
+   * Watch property is loading and hide all other internal views
+   * like settings when loading view change.
+   */
+  watch(() => props.isLoading, (newValue) => {
+    settingsVisible.value = false
+  })
 </script>
 
 <template>
@@ -269,9 +278,12 @@
       <!-- SETTINGS -->
       <HoraGridSettings
         v-if="isSettingsEnabled"
+        :is-visible="settingsVisible"
         @close="toggleSettingsVisibility">
         <HoraFieldSettings v-model="fieldsDefinition" />
       </HoraGridSettings>
+      <!-- LOADING -->
+      <HoraGridLoading :is-visible="isLoading"></HoraGridLoading>
       <!-- HEADER -->
       <div
         v-if="isHeaderVisible"

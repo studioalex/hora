@@ -3,13 +3,17 @@
   import CloseIcon from './icons/CloseIcon.vue'
 
   const props = defineProps({
+    isVisible: {
+      type: Boolean,
+      default: false
+    },
     title: {
       type: String,
       default: 'Settings'
     }
   })
 
-  const { title } = toRefs(props)
+  const { title, isVisible } = toRefs(props)
   const emit = defineEmits<{
     (e: 'close'): void
   }>()
@@ -24,7 +28,9 @@
 </script>
 
 <template>
-  <div class="hora-settings">
+  <div
+    class="hora-settings"
+    :class="{ 'hora-settings--visible': isVisible}">
     <div class="hora-settings__header">
       <div class="hora-settings__title">
         {{ title }}
