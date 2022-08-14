@@ -20,6 +20,8 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
       - run: |
+          npm --version
+          node --version 
           npm ci
           npm run deploy --if-present
       - name: Deploy to Netlify
