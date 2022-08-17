@@ -1,4 +1,11 @@
 :root {
+  
+}
+/* 
+ * Hora styling
+ */
+ .hora {
+  /* Color settings */
   --hr-color-white: #ffffff;
   --hr-color-white-soft: #f9f9f9;
   --hr-color-white-mute: #f1f1f1;
@@ -62,7 +69,121 @@
   --hr-color-blue: rgb(67, 186, 231);
   --hr-color-blue-light: rgb(187, 229, 246);
   --hr-color-blue-dark: rgb(0, 154, 195);
-
+  /* Font settings */
   --hr-font-family-base: 'Inter var experimental', 'Inter var', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   --hr-font-family-mono: Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+
+@media (prefers-color-scheme: light) {
+	.hora {
+		/* Basic Theme Settings */
+    --HORA--color--action: var(--hr-color-blue);
+
+    --HORA--grid--gap: 8px;
+    --HORA--grid--font-family: var(--hr-font-family-base);
+    --HORA--grid--rows-auto: minmax(20px, auto);
+  
+    --HORA--header--background: var(--hr-color-white);
+    --HORA--header--font-color: var(--hr-color-text-light-3);
+    --HORA--header--font-weight: 700;
+    --HORA--header--padding: 12px;
+    --HORA--header--border-size: 1px;
+    --HORA--header--border-radius: 6px;
+    --HORA--header--border: none;
+    --HORA--header--border-top: var(--HORA--header--border);
+    --HORA--header--border-bottom: var(--HORA--header--border);
+    --HORA--header--border-left: var(--HORA--header--border);
+    --HORA--header--border-right: var(--HORA--header--border);
+    --HORA--header--border-separator: var(--HORA--header--border-size) solid var(--hr-color-white);
+  
+    --HORA--cell--background: var(--hr-color-white);
+    --HORA--cell--padding: 12px;
+  
+    --HORA--cell--font-color: var(--hr-color-text-light-1);
+    --HORA--cell--font-weight: 400;
+    --HORA--cell--border-size: 1px;
+    --HORA--cell--border-radius: 6px;
+    --HORA--cell--border: var(--HORA--cell--border-size) solid var(--hr-color-text-light-4);
+    --HORA--cell--border-top: var(--HORA--cell--border);
+    --HORA--cell--border-bottom: var(--HORA--cell--border);
+    --HORA--cell--border-left: var(--HORA--cell--border);
+    --HORA--cell--border-right: var(--HORA--cell--border);
+    --HORA--cell--border-separator: var(--HORA--cell--border-size) solid var(--hr-color-white);
+    --HORA--cell-hover--background-color: var(--hr-color-white-mute);
+    --HORA--cell-hover--border-separator: var(--HORA--cell--border-size) solid var(--hr-color-white-mute);
+    --HORA--cell-hover--border: var(--HORA--cell--border-size) solid var(--hr-color-white);
+    --HORA--cell-hover--border-top: var(--HORA--cell-hover--border);
+    --HORA--cell-hover--border-bottom: var(--HORA--cell-hover--border);
+    --HORA--cell-hover--border-left: var(--HORA--cell-hover--border);
+    --HORA--cell-hover--border-right: var(--HORA--cell-hover--border);
+    --HORA--cell-selected--background: var(--hr-color-blue-light);
+    --HORA--cell-selected--border-separator: var(--HORA--cell--border-size) solid var(--hr-color-blue-light);
+    --HORA--cell-selected--border: var(--HORA--cell--border-size) solid var(--hr-color-blue);
+    --HORA--cell-selected--border-top: var(--HORA--cell-selected--border);
+    --HORA--cell-selected--border-bottom: var(--HORA--cell-selected--border);
+    --HORA--cell-selected--border-left: var(--HORA--cell-selected--border);
+    --HORA--cell-selected--border-right: var(--HORA--cell-selected--border);
+  
+    --HORA--settings--background-color: var(--hr-color-white);
+  
+    --HORA--cell-action--width: minmax(50px, auto);
+	}
+}
+
+@media (prefers-color-scheme: dark) {
+	.hora {
+		--HORA--color--action: var(--hr-color-blue);
+
+    --HORA--grid--gap: 8px;
+    --HORA--grid--font-family: var(--hr-font-family-base);
+    --HORA--grid--rows-auto: minmax(20px, auto);
+
+    --HORA--header--background: var(--hr-color-black-soft);
+    --HORA--header--font-color: var(--hr-color-text-dark-4);
+    --HORA--header--font-weight: 700;
+    --HORA--header--padding: 12px;
+    --HORA--header--border-size: 1px;
+    --HORA--header--border-radius: 6px;
+    --HORA--header--border: none;
+    --HORA--header--border-top: var(--HORA--header--border);
+    --HORA--header--border-bottom: var(--HORA--header--border);
+    --HORA--header--border-left: var(--HORA--header--border);
+    --HORA--header--border-right: var(--HORA--header--border);
+    --HORA--header--border-separator: var(--HORA--header--border-size) solid transparent;
+
+    --HORA--cell--background: var(--hr-color-black);
+    --HORA--cell--padding: 12px;
+
+    --HORA--cell--font-color: var(--hr-color-text-dark-2);
+    --HORA--cell--font-weight: 400;
+    --HORA--cell--border-size: 1px;
+    --HORA--cell--border-radius: 6px;
+    --HORA--cell--border: var(--HORA--cell--border-size) solid var(--hr-color-text-light-4);
+    --HORA--cell--border-top: var(--HORA--cell--border);
+    --HORA--cell--border-bottom: var(--HORA--cell--border);
+    --HORA--cell--border-left: var(--HORA--cell--border);
+    --HORA--cell--border-right: var(--HORA--cell--border);
+    --HORA--cell--border-separator: var(--HORA--cell--border-size) solid var(--hr-color-gray-dark-4);
+  
+    --HORA--cell-hover--background-color: var(--hr-color-white-mute);
+    --HORA--cell-hover--border-separator: var(--HORA--cell--border-size) solid var(--hr-color-white-mute);
+    --HORA--cell-hover--border: var(--HORA--cell--border-size) solid var(--hr-color-white);
+    --HORA--cell-hover--border-top: var(--HORA--cell-hover--border);
+    --HORA--cell-hover--border-bottom: var(--HORA--cell-hover--border);
+    --HORA--cell-hover--border-left: var(--HORA--cell-hover--border);
+    --HORA--cell-hover--border-right: var(--HORA--cell-hover--border);
+
+    --HORA--cell-selected--background: var(--hr-color-blue-light);
+    --HORA--cell-selected--border-separator: var(--HORA--cell--border-size) solid var(--hr-color-blue-light);
+    --HORA--cell-selected--border: var(--HORA--cell--border-size) solid var(--hr-color-blue);
+    --HORA--cell-selected--border-top: var(--HORA--cell-selected--border);
+    --HORA--cell-selected--border-bottom: var(--HORA--cell-selected--border);
+    --HORA--cell-selected--border-left: var(--HORA--cell-selected--border);
+    --HORA--cell-selected--border-right: var(--HORA--cell-selected--border);
+
+    --HORA--settings--background-color: var(--hr-color-white);
+
+    --HORA--cell-action--width: minmax(50px, auto);
+	}
 }
