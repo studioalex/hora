@@ -9,7 +9,7 @@
   ],
   "scripts": {
     "build": "turbo run build",
-    "dev": "turbo run dev",
+    "dev": "turbo run dev --concurrency=1",
     "lint": "turbo run lint",
     "clean": "turbo run clean",
     "postclean": "del-cli ./node_modules ./deploy",
