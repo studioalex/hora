@@ -1,5 +1,6 @@
 <script lang="ts" setup>
   import { toRefs } from 'vue'
+  import GridShimmer from './GridShimmer.vue'
 
   const props = defineProps({
     isVisible: {
@@ -15,6 +16,6 @@
   <div
     class="hora-loading"
     :class="{ 'hora-loading--visible': isVisible}">
-    <slot>loading</slot>
+    <slot><GridShimmer /></slot>
   </div>
 </template>

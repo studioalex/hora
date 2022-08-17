@@ -264,7 +264,7 @@
    * Watch property is loading and hide all other internal views
    * like settings when loading view change.
    */
-  watch(() => props.isLoading, (newValue) => {
+  watch(() => props.isLoading, () => {
     settingsVisible.value = false
   })
 </script>
