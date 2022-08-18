@@ -292,7 +292,7 @@
         <div
           v-for="(field, index) in fieldList"
           :key="index"
-          :class="getHeaderClasses(index+1, fieldCount, isHeaderStatic, isFirstFieldStatic, isLastFieldStatic)">
+          :class="getHeaderClasses(index+1, fieldCount, isHeaderStatic, isFirstFieldStatic, isLastFieldStatic, (isSortable === true && field.sortable !== false))">
           <!-- HEADER::SLOT -->
           <div>
             <slot
@@ -311,7 +311,7 @@
         <!-- HEADER::ACTIONS -->
         <HoraHeaderActions
           :is-visible="isActionFieldVisible"
-          :custom-class="getHeaderClasses(fieldCount, fieldCount, isHeaderStatic, isFirstFieldStatic, isLastFieldStatic)"
+          :custom-class="getHeaderClasses(fieldCount, fieldCount, isHeaderStatic, isFirstFieldStatic, isLastFieldStatic, true)"
           :is-settings-enabled="isSettingsEnabled === true"
           @settings="toggleSettingsVisibility" />
       </div>
