@@ -1,5 +1,6 @@
 <script lang="ts" setup>
   import { ref } from 'vue'
+  import _ from 'lodash'
   import { HoraField } from '@studioalex/horagrid'
   import { useSettingsStore } from '../store/settings'
   import data from '../features/columns'
@@ -11,9 +12,20 @@
     { class: '', label: 'Default' },
     { class: 'theme-block', label: 'Block' }
   ])
+  const sortField = ref('')
+  const sortDirection = ref('')
+  const gridData = ref(data.data)
+  const gridColumns = ref(data.columns)
 
   function setSelected (items: Array<HoraField>) {
     store.selectedItems = items
+  }
+
+  function handleSort (data: Array<string>) {
+    sortField.value = data[0]
+    sortDirection.value = data[1]
+    // handle sorting by sort function or db query
+    gridData.value = _.orderBy(gridData.value, [sortField.value], [sortDirection.value.toLowerCase()])
   }
 </script>
 
@@ -38,8 +50,8 @@
     </div>
     <hora-grid
       :class="theme"
-      :fields="data.columns"
-      :data="data.data"
+      :fields="gridColumns"
+      :data="gridData"
       :is-header-static="store.isHeaderStatic"
       :is-first-field-static="store.isFirstColumnStatic"
       :is-last-field-static="store.isLastColumnStatic"
@@ -50,7 +62,8 @@
       :is-multiple-selection="store.isMultipleSelection"
       :is-loading="store.isLoading"
       :show-settings="settings"
-      @on-selection="setSelected">
+      @on-selection="setSelected"
+      @on-sort="handleSort">
       <template #cell-k0="{ record, field }">
         {{ field.key }} -- {{ record.k6 }}
       </template>
