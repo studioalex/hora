@@ -13,7 +13,7 @@
     { class: 'theme-block', label: 'Block' }
   ])
   const sortField = ref('')
-  const sortDirection = ref('')
+  const sortDirection = ref(true)
   const gridData = ref(data.data)
   const gridColumns = ref(data.columns)
 
@@ -23,9 +23,9 @@
 
   function handleSort (data: Array<string>) {
     sortField.value = data[0]
-    sortDirection.value = data[1]
+    sortDirection.value = (data[1] === 'ASC')
     // handle sorting by sort function or db query
-    gridData.value = _.orderBy(gridData.value, [sortField.value], [sortDirection.value.toLowerCase()])
+    gridData.value = _.orderBy(gridData.value, [sortField.value], [sortDirection.value])
   }
 </script>
 
