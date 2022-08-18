@@ -92,6 +92,8 @@
     --HORA--header--border-left: var(--HORA--header--border);
     --HORA--header--border-right: var(--HORA--header--border);
     --HORA--header--border-separator: var(--HORA--header--border-size) solid var(--hr-color-white);
+
+    --HORA--header-action-hover-background: var(--hr-color-white-mute);
   
     --HORA--cell--background: var(--hr-color-white-soft);
     --HORA--cell--padding: 12px;
@@ -168,6 +170,8 @@
     --HORA--header--border-left: var(--HORA--header--border);
     --HORA--header--border-right: var(--HORA--header--border);
     --HORA--header--border-separator: var(--HORA--header--border-size) solid var(--hr-color-black-soft);
+
+    --HORA--header-action-hover-background: var(--hr-color-text-dark-4);
 
     --HORA--cell--background: var(--hr-color-black-mute);
     --HORA--cell--padding: 12px;

@@ -35,42 +35,46 @@ describe('feature => classes:', () => {
 
   // header cell tests
   it('Header first field should be fixed when header is fixed and also first field', () => {
-    expect(getHeaderClasses(1, 10, true, true, true)).eq('hora-grid__header hora-grid__cell--fixed-top-left hora-grid__header--first')
+    expect(getHeaderClasses(1, 10, true, true, true, false)).eq('hora-grid__header hora-grid__cell--fixed-top-left hora-grid__header--first')
   })
 
   it('Header any field should be fixed when header is fixed', () => {
-    expect(getHeaderClasses(2, 10, true, true, true)).eq('hora-grid__header hora-grid__cell--fixed-top')
+    expect(getHeaderClasses(2, 10, true, true, true, false)).eq('hora-grid__header hora-grid__cell--fixed-top')
   })
 
   it('Header last field should be fixed when header is fixed and also last field', () => {
-    expect(getHeaderClasses(10, 10, true, true, true)).eq('hora-grid__header hora-grid__cell--fixed-top-right hora-grid__header--last')
+    expect(getHeaderClasses(10, 10, true, true, true, false)).eq('hora-grid__header hora-grid__cell--fixed-top-right hora-grid__header--last')
   })
 
   it('Header first field should be fixed when only first field is fixed', () => {
-    expect(getHeaderClasses(1, 10, false, true, true)).eq('hora-grid__header hora-grid__cell--fixed-left hora-grid__header--first')
+    expect(getHeaderClasses(1, 10, false, true, true, false)).eq('hora-grid__header hora-grid__cell--fixed-left hora-grid__header--first')
   })
 
   it('Header last field should be fixed when only last field is fixed', () => {
-    expect(getHeaderClasses(10, 10, false, true, true)).eq('hora-grid__header hora-grid__cell--fixed-right hora-grid__header--last')
+    expect(getHeaderClasses(10, 10, false, true, true, false)).eq('hora-grid__header hora-grid__cell--fixed-right hora-grid__header--last')
   })
 
   it('Any Header should not be fixed when header is not fixed neither first or last field', () => {
-    expect(getHeaderClasses(8, 10, false, false, false)).eq('hora-grid__header')
+    expect(getHeaderClasses(8, 10, false, false, false, false)).eq('hora-grid__header')
   })
 
   it('Is first header cell identified', () => {
-    expect(getHeaderClasses(1, 10, false, false, false)).eq('hora-grid__header hora-grid__header--first')
+    expect(getHeaderClasses(1, 10, false, false, false, false)).eq('hora-grid__header hora-grid__header--first')
   })
 
   it('Is first header cell identified on fixed header', () => {
-    expect(getHeaderClasses(1, 10, true, false, false)).eq('hora-grid__header hora-grid__cell--fixed-top hora-grid__header--first')
+    expect(getHeaderClasses(1, 10, true, false, false, false)).eq('hora-grid__header hora-grid__cell--fixed-top hora-grid__header--first')
   })
 
   it('Is last header cell identified', () => {
-    expect(getHeaderClasses(10, 10, false, false, false)).eq('hora-grid__header hora-grid__header--last')
+    expect(getHeaderClasses(10, 10, false, false, false, false)).eq('hora-grid__header hora-grid__header--last')
   })
 
   it('Is last header cell identified on fixed header', () => {
-    expect(getHeaderClasses(10, 10, true , false, false)).eq('hora-grid__header hora-grid__cell--fixed-top hora-grid__header--last')
+    expect(getHeaderClasses(10, 10, true , false, false, false)).eq('hora-grid__header hora-grid__cell--fixed-top hora-grid__header--last')
+  })
+
+  it('Is last header cell identified on fixed header and action are visible', () => {
+    expect(getHeaderClasses(10, 10, true , false, false, true)).eq('hora-grid__header hora-grid__cell--fixed-top hora-grid__header--last hora-grid__header--action')
   })
 })

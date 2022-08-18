@@ -43,7 +43,8 @@ export function getHeaderClasses (
   fieldCount: number,
   isHeaderFixed: boolean,
   isFirstFieldFixed: boolean,
-  isLastFieldFixed: boolean
+  isLastFieldFixed: boolean,
+  hasActionField: boolean
   ): string {
   const classes: Array<string> = ['hora-grid__header']
   // Header is marked as fixed
@@ -84,6 +85,11 @@ export function getHeaderClasses (
   // Mark last visible header cell
   if (fieldIndex === fieldCount) {
     classes.push('hora-grid__header--last')
+  }
+
+  // Has action Field inside
+  if (hasActionField === true) {
+    classes.push('hora-grid__header--action')
   }
 
   return classes.join(' ')
