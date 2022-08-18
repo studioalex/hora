@@ -38,34 +38,3 @@
     <div class="hora-shimmer-box"></div>
   </div>
 </template>
-
-<style lang="postcss">
-.hora-shimmer {
-  width: 100%;
-  padding: 1rem;
-  box-sizing: border-box;
-  background: var(--hr-color-white);
-
-  svg {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 0;
-    height: 0;
-  }
-}
-
-.hora-shimmer-box {
-  width: 100%;
-  height: 60px;
-  background: linear-gradient(to right, var(--hr-color-gray-light-3) 0%, var(--hr-color-gray-light-5) 20%, var(--hr-color-gray-light-3) 100%);
-  background-size: cover;
-  clip-path: url(#hora-shimmer-clippath);
-  animation: 2s hora-shimmer-animation infinite linear;
-}
-
-@keyframes hora-shimmer-animation {
-  0% { background-position: 0vw 0; }
-  100% {  background-position: 70vw 0; }
-}
-</style>

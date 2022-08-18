@@ -145,6 +145,10 @@
     --HORA--field-settings--padding: 6px;
     --HORA--field-settings--margin: 6px 3px;
     --HORA--field-settings--ghost-background: var(--hr-color-blue-light);
+
+    --HORA--shimmer--background-color: var(--hr-color-white);
+    --HORA-schimmer--box-from-color: var(--hr-color-gray-light-3);
+    --HORA-schimmer--box-to-color: var(--hr-color-gray-light-5);
   
     --HORA--cell-action--width: minmax(50px, auto);
 	}
@@ -223,6 +227,10 @@
     --HORA--field-settings--padding: 6px;
     --HORA--field-settings--margin: 6px 3px;
     --HORA--field-settings--ghost-background: var(--hr-color-blue-light);
+
+    --HORA--shimmer--background-color: var(--hr-color-black-soft);
+    --HORA-schimmer--box-from-color: var(--hr-color-gray-dark-4);
+    --HORA-schimmer--box-to-color: var(--hr-color-gray-dark-3);
 
     --HORA--cell-action--width: minmax(50px, auto); 
 	}
