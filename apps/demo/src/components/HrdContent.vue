@@ -25,7 +25,6 @@
   function handleSort (data: Array<string>) {
     sortField.value = data[0]
     sortDirection.value = data[1].toLowerCase() === 'asc' ? 'asc' : 'desc'
-    console.log(sortField.value, sortDirection.value)
     // handle sorting by sort function or db query
     gridData.value = _.orderBy(gridData.value, [sortField.value], [sortDirection.value])
   }
