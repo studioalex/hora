@@ -3,7 +3,8 @@
   import _ from 'lodash'
   import { HoraField } from '@studioalex/horagrid'
   import { useSettingsStore } from '../store/settings'
-  import data from '../features/columns'
+  import columns from '../features/columns'
+  import data from '../features/data'
 
   const store = useSettingsStore()
   const theme = ref('')
@@ -13,9 +14,9 @@
     { class: 'theme-block', label: 'Block' }
   ])
   const sortField = ref('')
-  const sortDirection = ref(true)
-  const gridData = ref(data.data)
-  const gridColumns = ref(data.columns)
+  const sortDirection = ref<boolean | 'asc' | 'desc'>(true)
+  const gridData = ref(data)
+  const gridColumns = ref(columns)
 
   function setSelected (items: Array<HoraField>) {
     store.selectedItems = items
@@ -23,7 +24,8 @@
 
   function handleSort (data: Array<string>) {
     sortField.value = data[0]
-    sortDirection.value = (data[1] === 'ASC')
+    sortDirection.value = data[1].toLowerCase() === 'asc' ? 'asc' : 'desc'
+    console.log(sortField.value, sortDirection.value)
     // handle sorting by sort function or db query
     gridData.value = _.orderBy(gridData.value, [sortField.value], [sortDirection.value])
   }
