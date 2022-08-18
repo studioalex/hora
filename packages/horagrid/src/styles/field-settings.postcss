@@ -1,16 +1,4 @@
 .hora {
-  --HORA--field-settings--background: var(--hr-color-white);
-  --HORA--field-settings--background-disabled: var(--hr-color-gray-light-4);
-  --HORA--field-settings--border-radius: 6px;
-  --HORA--field-settings--border-size: 1px;
-  --HORA--field-settings--border: var(--HORA--field-settings--border-size) solid var(--hr-color-text-light-4);
-
-  --HORA--field-settings--font-color: var(--hr-color-text-light-2);
-  --HORA--field-settings--font-weight: 700;
-  --HORA--field-settings--padding: 6px;
-  --HORA--field-settings--margin: 3px;
-  --HORA--field-settings--ghost-background: var(--hr-color-blue-light);
-
   &-grid-field-settings {
     display: flex;
     flex-direction: column;
@@ -37,6 +25,7 @@
 
       &--disabled {
         background-color: var(--HORA--field-settings--background-disabled);
+        border: var(--HORA--field-settings--border-disabled);
       }
 
       &-title {
