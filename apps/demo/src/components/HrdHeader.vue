@@ -1,6 +1,7 @@
 <script lang="ts" setup>
   import { toRefs } from 'vue'
   import type { PropType } from 'vue'
+  import HrdSwitchApperance from './HrdSwitchApperance.vue'
 
   export type navs = Map<string, {link: string, title: string}>
 
@@ -29,6 +30,7 @@
         class="hrd-header--content-nav-item">
         <a :href="item.link" class="navbar-item">{{ item.title }}</a>
       </div>
+      <HrdSwitchApperance />
     </nav>
   </div>
 </template>
