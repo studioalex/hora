@@ -1,4 +1,4 @@
-import { ref, Ref } from 'vue'
+import { ref, computed, Ref } from 'vue'
 
 const selected: Ref<Array<number>> = ref([])
 
@@ -43,9 +43,20 @@ function clearSelection () {
   selected.value = []
 }
 
+/**
+ * Return the number of selected records.
+ */
+const selectedCount = computed(() => selected.value.length)
+
+function selectAll(count: number):void {
+  selected.value = Array.from(Array(count).keys())
+}
+
 export {
   selected,
   isSelected,
   setSelection,
-  clearSelection
+  clearSelection,
+  selectedCount,
+  selectAll
 }

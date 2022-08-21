@@ -8,11 +8,12 @@
     selected,
     isSelected,
     setSelection,
-    clearSelection
+    clearSelection,
+    selectedCount,
+    selectAll
   } from '../features/selection'
   import { HoraField } from '../types'
   import HoraHeaderFieldActions from './HeaderFieldActions.vue'
-  import HoraHeaderActions from './HeaderActions.vue'
   import HoraGridSettings from './GridSettings.vue'
   import HoraGridLoading from './GridLoading.vue'
   import HoraFieldSettings from './FieldSettings.vue'
@@ -95,39 +96,64 @@
   } = toRefs(props)
 
   const emit = defineEmits(['onSort', 'onSelection'])
+
+  /**
+   * COMPONENT PREPARATION
+   * > > > > > > > > > > > >
+   */
   const fieldsDefinition: Ref<Array<HoraField>> = ref([])
   const sortField: Ref<string[]> = ref([])
-  const isActionFieldVisible = computed(() => (isSettingsEnabled.value === true || isSelectable.value === true))
 
-  // Settings
-  const settingsVisible = ref(false)
-  watch(() => props.showSettings, (newValue) => {
-    settingsVisible.value = (newValue && isSettingsEnabled.value)
-  })
-
-  // prepare field definitions
+  /**
+   * Prepare field definitions,
+   * The minimum requirement on field definitions is the key property,
+   * to identify the data property in the JSON object. But we expect some
+   * properties, like `order` or `title` that exists.
+   * Here we set the minimum field definition properties.
+   * @todo may it is better to use a lib like ZOD
+   */
   fieldsDefinition.value = fields.value.map(field => {
     field.visible = (field.visible != false)
     field.order = field.order || 0
     field.title = field.title || field.key
     return field
   })
+
   /**
-   * Return the list of fields prepared for `grid-template-fields`
-   * property.
-   * - marked as visible
-   * - ordered by order property
+   * Return a list of fields in sorted order and only fields mark as visible.
+   * The list is also required by `grid-template-fields` to set the right amount of fields.
+   *
+   * The list contains only field:
+   *   - marked as visible
+   *   - ordered by order property
+   *
    * @returns Array
    */
-  const fieldList = computed(() => {
-    return fieldsDefinition.value
+  const fieldList = computed(() =>
+    fieldsDefinition.value
       .filter(field => field.visible === true)
       .sort((a:HoraField, b:HoraField): number => {
         if (typeof a.order != 'number') a.order = 0
         if (typeof b.order != 'number') b.order = 0
         return (a.order === b.order) ? 0 : (a.order < b.order) ? 1 : -1
       })
+  )
+  
+  /**
+   * Return the total number of visible fields.
+   */
+  const fieldCount = computed(() => {
+    let length = fieldList.value.length
+    if (isSelectionFieldVisible.value === true) {
+      length++
+    }
+    return length
   })
+  
+  /**
+   * Return the total number of visible records.
+   */
+  const recordCount = computed(() => data.value.length)
 
   /**
    * Set `grid-template-fields` for grid.
@@ -135,24 +161,18 @@
    */
   const gridTemplateColumns = computed(() => {
     const columnsInGrid = fieldList.value.map(field => field.width || '1fr')
-    if (isActionFieldVisible.value === true) {
+    if (isSelectionFieldVisible.value === true) {
       columnsInGrid.push('var(--HORA--cell-action--width)')
     }
 
     return columnsInGrid
   })
-  
-  /**
-   * Return the total number of visible fields.
-   */
-  const fieldCount = computed(() => {
-    let length = fieldList.value.length
-    if (isActionFieldVisible.value === true) {
-      length++
-    }
-    return length
-  })
 
+  /**
+   * GRID DISPLAY OPTIONS
+   * > > > > > > > > > > > >
+   * 
+   */
   /**
    * Set `grid-template-columns` in styles depend on column count and their visibility.
    * When Settings are visible set `grid-template-columns` fix to one column.
@@ -181,14 +201,74 @@
   })
 
   /**
-   * Set Subgrid styles.
+   * SELECTIONS
+   * > > > > > > > >
+   * Handle record selections.
    */
-  const rowDetailStyle = computed(() => {
-    return {
-      gridColumn: `1 / ${fieldCount.value + 1}`
+  const isSelectionFieldVisible = computed(() => (isSelectable.value === true))
+
+  /**
+   * Handle selection click on record.
+   * Add selected record to list and propagate all selected records.  
+   * @param index 
+   */
+  function handleSelection (index: number) {
+    setSelection(index, isMultipleSelection.value)
+    emit('onSelection', data.value.filter((__record, index) => selected.value.includes(index)))
+  }
+
+  /**
+   * Clear selection when single or multiple select ability was disabled.
+   */
+  watch([isSelectable, isMultipleSelection], ([newSelectable, newMultipleSelection]) => {
+    if (newSelectable === false || newMultipleSelection === false) {
+      clearSelection()
     }
   })
 
+  /**
+   * Return `true` if all visible records are selected.
+   */
+  const isSelectedAll = computed(() => recordCount.value === selectedCount.value)
+
+  /**
+   * Mark all records as selected.
+   * Clear the selection and add all records to the selection list.
+   */
+  function handleSelectAll () {
+    if (isSelectedAll.value === true) {
+      clearSelection()
+    } else {
+      selectAll(recordCount.value)
+    }
+  }
+
+  /**
+   * SETTINGS
+   * > > > > > > > >
+   * Show or hide settings panel.
+   */
+  const settingsVisible = ref(false)
+
+  /**
+   * Toggle settings visibility
+   */
+  function toggleSettingsVisibility (): void {
+    settingsVisible.value = !settingsVisible.value
+  }
+
+  /**
+   * Watch the component `showSettings` property,
+   * when it change to enable the visibility of the settings from outside. 
+   */
+  watch(() => props.showSettings, (newValue) => {
+    settingsVisible.value = (newValue && isSettingsEnabled.value)
+  })
+
+  /**
+   * SETTINGS::FIELD
+   * > > > > > > > > > >
+   */
   /**
    * Handle click on sort icon. When sort is not set, or the clicked field
    * do not match with the first element in array, it set the clicked field
@@ -235,37 +315,26 @@
 
     return ''
   }
-  
-  /**
-   * SELECTION
-   * @param index 
-   */
-  function handleSelection (index: number) {
-    setSelection(index, isMultipleSelection.value)
-    emit('onSelection', data.value.filter((record, index) => selected.value.includes(index)))
-  }
-  /**
-   * Clear selection when select ability was disabled.
-   */
-  watch([isSelectable,isMultipleSelection], ([newSelectable, newMultipleSelection]) => {
-    if (newSelectable === false || newMultipleSelection === false) {
-      clearSelection()
-    }
-  })
 
   /**
-   * SETTINGS
-   */
-  function toggleSettingsVisibility (): void {
-    settingsVisible.value = !settingsVisible.value
-  }
-
-  /**
+   * LOADING
+   * > > > > > > >
    * Watch property is loading and hide all other internal views
    * like settings when loading view change.
    */
   watch(() => props.isLoading, () => {
     settingsVisible.value = false
+  })
+
+  /**
+   * RECORD SUBGRID
+   * > > > > > > > > > >
+   * Set Subgrid styles.
+   */
+  const rowDetailStyle = computed(() => {
+    return {
+      gridColumn: `1 / ${fieldCount.value + 1}`
+    }
   })
 </script>
 
@@ -308,12 +377,15 @@
             :field-key="field.key"
             @sort="handleSort(field.key)" />
         </div>
-        <!-- HEADER::ACTIONS -->
-        <HoraHeaderActions
-          :is-visible="isActionFieldVisible"
-          :custom-class="getHeaderClasses(fieldCount, fieldCount, isHeaderStatic, isFirstFieldStatic, isLastFieldStatic, true)"
-          :is-settings-enabled="isSettingsEnabled === true"
-          @settings="toggleSettingsVisibility" />
+        <!-- HEADER::ALL-RECORDS-SELECTION -->
+        <div
+          v-if="isSelectionFieldVisible"
+          :class="getHeaderClasses(fieldCount, fieldCount, isHeaderStatic, isFirstFieldStatic, isLastFieldStatic, true)">
+          <HoraStatusIndicator
+            v-if="isMultipleSelection"
+            :is-active="isSelectedAll"
+            @click="handleSelectAll()" />
+        </div>
       </div>
       <!-- FIELDS -->
       <div
@@ -333,13 +405,12 @@
             {{ record[field.key] }}
           </slot>
         </div>
-        <!-- FIELD::ACTIONS -->
+        <!-- FIELD::RECORD-SELECTION -->
         <div
-          v-if="isActionFieldVisible"
+          v-if="isSelectionFieldVisible"
           :class="getFieldClasses(fieldCount, fieldCount, isFirstFieldStatic, isLastFieldStatic)"
           :data-selected="isSelected(rowIndex)">
-          <HoraStatusIndicator 
-            v-if="isSelectable"
+          <HoraStatusIndicator
             :is-active="isSelected(rowIndex)"
             @click="handleSelection(rowIndex)" />
         </div>
