@@ -1,7 +1,7 @@
 <script lang="ts" setup>
   import { ref } from 'vue'
   import _ from 'lodash'
-  import { HoraField } from '@studioalex/horagrid'
+  import { HoraField } from '@studioalex/hora-grid'
   import { useSettingsStore } from '../store/settings'
   import columns from '../features/columns'
   import data from '../features/data'
@@ -50,6 +50,7 @@
       </div>
     </div>
     <hora-grid
+      title="Demo List"
       :class="theme"
       :fields="gridColumns"
       :data="gridData"

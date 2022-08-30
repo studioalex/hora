@@ -1,9 +1,9 @@
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
-import HoraGrid from '@studioalex/horagrid'
+import HoraGrid from '@studioalex/hora-grid'
 import DemoApp from './DemoApp.vue'
 
-import '@studioalex/horagrid/style.css'
+import '@studioalex/hora-grid/style.css'
 import './style.css'
 
 createApp(DemoApp)

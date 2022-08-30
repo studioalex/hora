@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { HoraField } from '@studioalex/horagrid'
+import { HoraField } from '@studioalex/hora-grid'
 
 export interface GridSettings {
   isHeaderStatic: boolean;

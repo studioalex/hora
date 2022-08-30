@@ -13,9 +13,9 @@
   "author": "Alexander Sedeke <alexander.sedeke@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "@11ty/eleventy": "^1.0.1",
+    "@11ty/eleventy": "^1.0.2",
     "autoprefixer": "^10.4.8",
-    "cpy-cli": "^4.1.0",
+    "cpy-cli": "^4.2.0",
     "del-cli": "^5.0.0",
     "eleventy-plugin-postcss": "^1.0.4",
     "postcss-nested": "^5.0.6"
