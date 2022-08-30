@@ -1,0 +1,125 @@
+:root {
+  /* yellow */
+  --color-yellow-800: rgb(255, 122, 0);
+  --color-yellow-700: rgb(255, 155, 0);
+  --color-yellow-600: rgb(255, 187, 0);
+  --color-yellow-500: rgb(255, 216, 0);
+  --color-yellow-400: rgb(255, 240, 0);
+  --color-yellow-300: rgb(255, 248, 118);
+  --color-yellow-200: rgb(255, 255, 175);
+  --color-yellow-100: rgb(255, 255, 220);
+
+  /* orange */
+  --color-orange-800: rgb(162, 72, 0);
+  --color-orange-700: rgb(192, 94, 0);
+  --color-orange-600: rgb(215, 123, 0);
+  --color-orange-500: rgb(243, 146, 0);
+  --color-orange-400: rgb(248, 171, 55);
+  --color-orange-300: rgb(250, 202, 127);
+  --color-orange-200: rgb(252, 227, 180);
+  --color-orange-100: rgb(255, 244, 216);
+
+  /* red */
+  --color-red-800: rgb(116, 0, 9);
+  --color-red-700: rgb(155, 0, 14);
+  --color-red-600: rgb(197, 0, 20);
+  --color-red-500: rgb(236, 0, 22);
+  --color-red-400: rgb(247, 80, 86);
+  --color-red-300: rgb(250, 144, 144);
+  --color-red-200: rgb(252, 200, 195);
+  --color-red-100: rgb(254, 230, 230);
+
+  /* burgundy */
+  --color-burgundy-800: rgb(77, 8, 32);
+  --color-burgundy-700: rgb(100, 30, 50);
+  --color-burgundy-600: rgb(140, 46, 70);
+  --color-burgundy-500: rgb(169, 69, 93);
+  --color-burgundy-400: rgb(192, 104, 123);
+  --color-burgundy-300: rgb(218, 154, 168);
+  --color-burgundy-200: rgb(237, 203, 214);
+  --color-burgundy-100: rgb(244, 232, 237);
+
+  /* pink */
+  --color-pink-800: rgb(151, 0, 82);
+  --color-pink-700: rgb(184, 0, 101);
+  --color-pink-600: rgb(219, 0, 120);
+  --color-pink-500: rgb(233, 62, 143);
+  --color-pink-400: rgb(238, 123, 174);
+  --color-pink-300: rgb(244, 174, 206);
+  --color-pink-200: rgb(249, 210, 229);
+  --color-pink-100: rgb(253, 238, 248);
+
+  /* violet */
+  --color-violet-800: rgb(66, 24, 87);
+  --color-violet-700: rgb(88, 29, 112);
+  --color-violet-600: rgb(110, 54, 140);
+  --color-violet-500: rgb(129, 73, 151);
+  --color-violet-400: rgb(154, 108, 166);
+  --color-violet-300: rgb(194, 161, 199);
+  --color-violet-200: rgb(224, 205, 228);
+  --color-violet-100: rgb(244, 238, 250);
+
+  /* blue */
+  --color-blue-800: rgb(6, 19, 80);
+  --color-blue-700: rgb(10, 30, 110);
+  --color-blue-600: rgb(12, 57, 146);
+  --color-blue-500: rgb(20, 85, 192);
+  --color-blue-400: rgb(52, 125, 224);
+  --color-blue-300: rgb(115, 174, 244);
+  --color-blue-200: rgb(180, 213, 246);
+  --color-blue-100: rgb(224, 239, 251);
+
+  /* cyan */
+  --color-cyan-800: rgb(0, 75, 109);
+  --color-cyan-700: rgb(0, 106, 150);
+  --color-cyan-600: rgb(0, 135, 185);
+  --color-cyan-500: rgb(48, 159, 209);
+  --color-cyan-400: rgb(85, 185, 230);
+  --color-cyan-300: rgb(132, 207, 239);
+  --color-cyan-200: rgb(187, 230, 248);
+  --color-cyan-100: rgb(229, 250, 255);
+
+  /* green */
+  --color-green-800: rgb(21, 74, 38);
+  --color-green-700: rgb(22, 92, 39);
+  --color-green-600: rgb(42, 114, 48);
+  --color-green-500: rgb(64, 131, 53);
+  --color-green-400: rgb(102, 165, 88);
+  --color-green-300: rgb(140, 188, 128);
+  --color-green-200: rgb(189, 219, 185);
+  --color-green-100: rgb(226, 243, 229);
+
+  /* light green */
+  --color-light-green-800: rgb(55, 95, 21);
+  --color-light-green-700: rgb(68, 116, 26);
+  --color-light-green-600: rgb(80, 139, 27);
+  --color-light-green-500: rgb(99, 166, 21);
+  --color-light-green-400: rgb(120, 190, 20);
+  --color-light-green-300: rgb(159, 212, 95);
+  --color-light-green-200: rgb(201, 235, 158);
+  --color-light-green-100: rgb(235, 247, 221);
+
+  /* warm grey */
+  --color-warm-grey-800: rgb(56, 52, 47);
+  --color-warm-grey-700: rgb(79, 75, 65);
+  --color-warm-grey-600: rgb(116, 112, 103);
+  --color-warm-grey-500: rgb(133, 131, 121);
+  --color-warm-grey-400: rgb(156, 154, 142);
+  --color-warm-grey-300: rgb(188, 187, 178);
+  --color-warm-grey-200: rgb(221, 222, 214);
+  --color-warm-grey-100: rgb(245, 244, 241);
+
+  /* cool grey */
+  --color-cool-grey-800: rgb(19, 24, 33);
+  --color-cool-grey-700: rgb(40, 45, 55);
+  --color-cool-grey-600: rgb(60, 65, 75);
+  --color-cool-grey-500: rgb(100, 105, 115);
+  --color-cool-grey-400: rgb(135, 140, 150);
+  --color-cool-grey-300: rgb(175, 180, 187);
+  --color-cool-grey-200: rgb(215, 220, 225);
+  --color-cool-grey-100: rgb(240, 243, 245);
+
+  /* else */
+  --color-white: rgb(255, 255, 255);
+  --color-black: rgb(0, 0, 0);
+}

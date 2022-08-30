@@ -9,7 +9,7 @@
       "outputs": []
     },
     "dev": {
-      "dependsOn": ["@studioalex/horagrid#build"],
+      "dependsOn": ["@studioalex/hora-elements#build", "@studioalex/hora-grid#build"],
       "cache": false
     },
     "test": {

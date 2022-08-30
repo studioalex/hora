@@ -1,0 +1,81 @@
+/* 
+ * Hora styling
+ */
+ .hora {
+  /* Color settings */
+  --hr-color-white: #ffffff;
+  --hr-color-white-soft: #f9f9f9;
+  --hr-color-white-mute: #f1f1f1;
+  --hr-color-black: #1a1a1a;
+  --hr-color-black-pure: #000000;
+  --hr-color-black-soft: #242424;
+  --hr-color-black-mute: #2f2f2f;
+  --hr-color-gray: #8e8e8e;
+  --hr-color-gray-light-1: #aeaeae;
+  --hr-color-gray-light-2: #c7c7c7;
+  --hr-color-gray-light-3: #d1d1d1;
+  --hr-color-gray-light-4: #e5e5e5;
+  --hr-color-gray-light-5: #f2f2f2;
+  --hr-color-gray-dark-1: #636363;
+  --hr-color-gray-dark-2: #484848;
+  --hr-color-gray-dark-3: #3a3a3a;
+  --hr-color-gray-dark-4: #282828;
+  --hr-color-gray-dark-5: #202020;
+  --hr-color-divider-light-1: rgba(60, 60, 60, 0.29);
+  --hr-color-divider-light-2: rgba(60, 60, 60, 0.12);
+  --hr-color-divider-dark-1: rgba(84, 84, 84, 0.65);
+  --hr-color-divider-dark-2: rgba(84, 84, 84, 0.48);
+  --hr-color-text-light-1: rgb(33, 53, 71);
+  --hr-color-text-light-2: rgba(60, 60, 60, 0.70);
+  --hr-color-text-light-3: rgba(60, 60, 60, 0.33);
+  --hr-color-text-light-4: rgba(60, 60, 60, 0.18);
+  --hr-color-text-dark-1: rgba(255, 255, 255, 0.87);
+  --hr-color-text-dark-2: rgba(235, 235, 235, 0.60);
+  --hr-color-text-dark-3: rgba(235, 235, 235, 0.38);
+  --hr-color-text-dark-4: rgba(235, 235, 235, 0.18);
+  --hr-color-indigo: #213547;
+  --hr-color-indigo-soft: #476582;
+  --hr-color-indigo-light: #aac8e4;
+  --hr-color-indigo-lighter: #c9def1;
+  --hr-color-indigo-dark: #1d2f3f;
+  --hr-color-indigo-darker: #14212e;
+  --hr-color-green: #42b883;
+  --hr-color-green-light: #42d392;
+  --hr-color-green-lighter: #35eb9a;
+  --hr-color-green-dark: #33a06f;
+  --hr-color-green-darker: #155f3e;
+  --hr-color-green-dimm-1: rgba(66, 184, 131, 0.5);
+  --hr-color-green-dimm-2: rgba(66, 184, 131, 0.25);
+  --hr-color-green-dimm-3: rgba(66, 184, 131, 0.05);
+  --hr-color-yellow: #ffc517;
+  --hr-color-yellow-light: #fcd253;
+  --hr-color-yellow-lighter: #fcfc7c;
+  --hr-color-yellow-dark: #e0ad15;
+  --hr-color-yellow-darker: #ad850e;
+  --hr-color-yellow-dimm-1: rgba(255, 197, 23, 0.5);
+  --hr-color-yellow-dimm-2: rgba(255, 197, 23, 0.25);
+  --hr-color-yellow-dimm-3: rgba(255, 197, 23, 0.05);
+  --hr-color-red: #ed3c50;
+  --hr-color-red-light: #f54e82;
+  --hr-color-red-lighter: #fd1d7c;
+  --hr-color-red-dark: #cd2d3f;
+  --hr-color-red-darker: #ab2131;
+  --hr-color-red-dimm-1: rgba(237, 60, 80, 0.5);
+  --hr-color-red-dimm-2: rgba(237, 60, 80, 0.25);
+  --hr-color-red-dimm-3: rgba(237, 60, 80, 0.05);
+  --hr-color-blue: rgb(67, 186, 231);
+  --hr-color-blue-light: rgb(187, 229, 246);
+  --hr-color-blue-dark: rgb(0, 154, 195);
+  /* Font settings */
+  --hr-font-family-base: 'Inter var experimental', 'Inter var', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  --hr-font-family-mono: Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+.hora {
+  /* Basic Theme Settings */
+  
+}
+
+.dark	.hora {
+  /* Dark Theme Settings */
+}
