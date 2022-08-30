@@ -1,8 +1,8 @@
 <script lang="ts" setup>
   import { ref, PropType, computed } from 'vue'
   import { VueDraggableNext as draggable } from 'vue-draggable-next'
-  import HoraStatusIndicator from './StatusIndicator.vue'
-  import { HoraField } from '../types'
+  import HoraStatusIndicator from '../StatusIndicator.vue'
+  import { HoraField } from '../../types'
 
   const emit = defineEmits(['update:modelValue'])
   const props = defineProps({

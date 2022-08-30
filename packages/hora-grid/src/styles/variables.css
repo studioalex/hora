@@ -79,6 +79,9 @@
   --HORA--grid--font-family: var(--hr-font-family-base);
   --HORA--grid--rows-auto: minmax(20px, auto);
 
+  --HORA--actionbar--title-font: 700 1.4em var(--hr-font-family-base);
+  --HORA--actionbar--title-color: var(--hr-color-gray-dark-3);
+
   --HORA--header--background: var(--hr-color-white);
   --HORA--header--font-color: var(--hr-color-text-light-3);
   --HORA--header--font-weight: 700;
@@ -146,8 +149,8 @@
   --HORA--field-settings--ghost-background: var(--hr-color-blue-light);
 
   --HORA--shimmer--background-color: var(--hr-color-white);
-  --HORA-schimmer--box-from-color: var(--hr-color-gray-light-3);
-  --HORA-schimmer--box-to-color: var(--hr-color-gray-light-5);
+  --HORA--schimmer--box-from-color: var(--hr-color-gray-light-3);
+  --HORA--schimmer--box-to-color: var(--hr-color-gray-light-5);
 
   --HORA--cell-action--width: minmax(50px, auto);
 }
@@ -158,6 +161,9 @@
   --HORA--grid--gap: 8px;
   --HORA--grid--font-family: var(--hr-font-family-base);
   --HORA--grid--rows-auto: minmax(20px, auto);
+
+  --HORA--actionbar--title-font: 700 1.4em var(--hr-font-family-base);
+  --HORA--actionbar--title-color: var(--hr-color-light-dark-5);
 
   --HORA--header--background: var(--hr-color-black-soft);
   --HORA--header--font-color: var(--hr-color-text-dark-3);
@@ -226,8 +232,8 @@
   --HORA--field-settings--ghost-background: var(--hr-color-blue-light);
 
   --HORA--shimmer--background-color: var(--hr-color-black-soft);
-  --HORA-schimmer--box-from-color: var(--hr-color-gray-dark-4);
-  --HORA-schimmer--box-to-color: var(--hr-color-gray-dark-3);
+  --HORA--shimmer--box-from-color: var(--hr-color-gray-dark-4);
+  --HORA--shimmer--box-to-color: var(--hr-color-gray-dark-3);
 
   --HORA--cell-action--width: minmax(50px, auto); 
 }

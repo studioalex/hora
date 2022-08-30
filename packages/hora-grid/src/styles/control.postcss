@@ -1,0 +1,32 @@
+.hora {
+  &-control {
+    margin: 1em 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-content: stretch;
+    align-items: flex-start;
+
+    &--left {
+      order: 0;
+      flex: 1 1 auto;
+      align-self: auto;
+    }
+
+    &--right {
+      order: 1;
+      flex: 0 1 auto;
+      align-self: auto;
+    }
+
+    &__title {
+      font: var(--HORA--actionbar--title-font);
+      color: var(--HORA--actionbar--title-color);
+    }
+
+    &__button {
+      font-size: 1em;
+    }
+  }
+}

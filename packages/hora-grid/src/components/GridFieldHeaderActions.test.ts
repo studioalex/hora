@@ -3,16 +3,16 @@
  */
 import { describe, it, expect } from 'vitest'
 import { mount } from '@vue/test-utils'
-import HeaderFieldActions from './HeaderFieldActions.vue'
+import HeaderActions from './GridFieldHeaderActions.vue'
 
 describe('Grid header actions', () => {
   it('should not render', () => {
-    const wrapper = mount(HeaderFieldActions)
+    const wrapper = mount(HeaderActions)
     expect(wrapper.find('.hora-grid__row-header').exists()).toBeFalsy()
   })
 
   it('should not render without key', () => {
-    const wrapper = mount(HeaderFieldActions, {
+    const wrapper = mount(HeaderActions, {
       propsData: {
         isVisible: true
       }
@@ -21,7 +21,7 @@ describe('Grid header actions', () => {
   })
 
   it('should render and function', () => {
-    const wrapper = mount(HeaderFieldActions, {
+    const wrapper = mount(HeaderActions, {
       propsData: {
         isVisible: true,
         fieldKey: 'field1'

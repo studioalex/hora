@@ -4,7 +4,7 @@
 import { describe, it, expect } from 'vitest'
 import { mount } from '@vue/test-utils'
 import FieldSettings from './FieldSettings.vue'
-import { HoraField } from '../types'
+import { HoraField } from '../../types'
 
 const testFields: HoraField[] = [
   {
