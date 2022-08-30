@@ -1,7 +1,7 @@
 <script setup>
   import { ref } from 'vue'
-  import { HoraGrid } from '@studioalex/horagrid'
-  import '@studioalex/horagrid/style.css'
+  import { HoraGrid } from '@studioalex/hora-grid'
+  import '@studioalex/hora-grid/style.css'
 
   const dataExample = ref([
     { "first_name": "John", "last_name": "Slim", "age": 35, "gender": "male", "city": "London" },
