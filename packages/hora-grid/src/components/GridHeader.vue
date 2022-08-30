@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { toRefs } from 'vue'
 import { HoraButton } from "@studioalex/hora-elements"
+import { properties } from '../features/initGrid'
 import { useGrid } from '../features/useGrid'
 
 const props = defineProps({
@@ -11,6 +12,7 @@ const props = defineProps({
 })
 
 const { title } = toRefs(props)
+const { isSettingsEnabled, isSettingsVisible } = properties
 const { toggleSettingsVisibility } = useGrid()
 </script>
 
@@ -21,8 +23,9 @@ const { toggleSettingsVisibility } = useGrid()
     </div>
     <div class="hora-control--right">
       <hora-button
+        v-if="isSettingsEnabled"
         class="hora-control__button"
-        type="secondary-outline"
+        type="primary-outline"
         @click="toggleSettingsVisibility()">
         Settings
       </hora-button>
