@@ -70,10 +70,6 @@
     isSettingsEnabled: {
       type: Boolean,
       default: false
-    },
-    showSettings: {
-      type: Boolean,
-      default: false
     }
   })
 
@@ -176,25 +172,32 @@
   })
 
   /**
-   * SETTINGS
-   * Watch the component `showSettings` property,
-   * when it change to enable the visibility of the settings from outside. 
-   */
-  watch(() => props.showSettings, (newValue) => {
-    isSettingsVisible.value = newValue
-  })
-
-  /**
    * LOADING
    * Watch property is loading and hide all other internal views
    * like settings when loading view change.
    */
-  watch(() => props.isLoading, () => {
-    properties.isSettingsVisible.value = false
+  watch(() => properties.isLoading.value, (newValue) => {
+    if (newValue === true) {
+      properties.isSettingsVisible.value = false
+      properties.isNotFoundVisible.value = false
+    }
   })
 
+  /**
+   * Manage show "No Data Found" message visibility.
+   */
   watch(() => data.value, () => {
     isNotFoundVisible.value = (data.value.length === 0)
+  })
+
+  /**
+   * Show "No Data Found" message when there is no data
+   * and setting view has been closed.
+   */
+  watch(() => properties.isSettingsVisible.value, (newValue) => {
+    if (newValue === false && data.value.length === 0) {
+      isNotFoundVisible.value = true
+    }
   })
 </script>
 

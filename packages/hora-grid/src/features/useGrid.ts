@@ -59,15 +59,16 @@ export function useGrid () {
   }
 
   /**
-   * Toggle settings visibility
+   * Toggle settings visibility,
+   * but only show Settings when loading is not active.
+   * Hide the "No data Found" message when visible.
    */
   function toggleSettingsVisibility (): void {
-    if (properties.isSettingsVisible.value === false) {
-      properties.isLoading.value = false
-      properties.isNotFoundVisible.value = false
-      properties.isSettingsVisible.value = true
-    } else {
-      properties.isSettingsVisible.value = false
+    if (properties.isLoading.value === false) {
+      if (properties.isSettingsVisible.value === false) {
+        properties.isNotFoundVisible.value = false
+        properties.isSettingsVisible.value = !properties.isSettingsVisible.value
+      }
     }
   }
 

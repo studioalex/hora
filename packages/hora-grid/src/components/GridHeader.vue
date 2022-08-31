@@ -12,8 +12,12 @@ const props = defineProps({
 })
 
 const { title } = toRefs(props)
-const { isSettingsEnabled, isSettingsVisible } = properties
 const { toggleSettingsVisibility } = useGrid()
+const {
+  isSettingsEnabled,
+  isSettingsVisible,
+  isLoading
+} = properties
 
 const settingsCaption = computed(() => isSettingsVisible.value === true ? 'Close Settings' : 'Settings')
 </script>
@@ -28,6 +32,7 @@ const settingsCaption = computed(() => isSettingsVisible.value === true ? 'Close
         v-if="isSettingsEnabled"
         class="hora-header__button"
         type="secondary"
+        :disabled="isLoading"
         @click="toggleSettingsVisibility()">
         {{ settingsCaption }}
       </hora-button>
