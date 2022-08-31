@@ -12,6 +12,8 @@ interface GridProperties {
   isMultipleSelection: Ref<boolean>;
   isSettingsEnabled: Ref<boolean>;
   isSettingsVisible: Ref<boolean>;
+  isLoading: Ref<boolean>;
+  isNotFoundVisible: Ref<boolean>;
   recordCount: Ref<number>;
 }
 
@@ -30,6 +32,8 @@ export const properties: GridProperties = {
   isMultipleSelection: ref(false),
   isSettingsEnabled: ref(true),
   isSettingsVisible: ref(false),
+  isLoading: ref(false),
+  isNotFoundVisible: ref(false),
   recordCount: ref(0)
 }
 

@@ -17,15 +17,15 @@ const { toggleSettingsVisibility } = useGrid()
 </script>
 
 <template>
-  <header class="hora-control">
-    <div class="hora-control--left">
-      <span class="hora-control__title">{{ title }}</span>
+  <header class="hora-header">
+    <div class="hora-header--left">
+      <span class="hora-header__title">{{ title }}</span>
     </div>
-    <div class="hora-control--right">
+    <div class="hora-header--right">
       <hora-button
         v-if="isSettingsEnabled"
-        class="hora-control__button"
-        type="primary-outline"
+        class="hora-header__button"
+        type="secondary"
         @click="toggleSettingsVisibility()">
         Settings
       </hora-button>

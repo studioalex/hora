@@ -16,6 +16,8 @@
   <div
     class="hora-loading"
     :class="{ 'hora-loading--visible': isVisible}">
-    <slot><GridShimmer /></slot>
+    <slot>
+      <GridShimmer />
+    </slot>
   </div>
 </template>

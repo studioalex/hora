@@ -25,7 +25,7 @@
     "postbuild": "vue-tsc --declaration --emitDeclarationOnly",
     "lint": "eslint --ext .js,.ts,.vue lib",
     "clean": "del-cli ./node_modules ./dist ./lib/dist ./coverage",
-    "test": "vitest --run",
+    "test:notready": "vitest --run",
     "test:ui": "vitest --ui",
     "test:dev": "vitest",
     "coverage": "vitest run --coverage"

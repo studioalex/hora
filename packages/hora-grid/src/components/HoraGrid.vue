@@ -4,11 +4,12 @@
   import { initGrid, properties } from '../features/initGrid'
   import { useGrid } from '../features/useGrid'
   import { emitter } from '../features/emitter'
-  import GridSettings from './settings/GridSettings.vue'
-  import GridLoading from './GridLoading.vue'
-  import HoraFieldHeader from './GridFieldHeader.vue'
   import GridField from './GridField.vue'
-  import HoraHeader from './GridHeader.vue'
+  import GridSettings from './settings/GridSettings.vue'
+  import GridFieldHeader from './GridFieldHeader.vue'
+  import GridHeader from './GridHeader.vue'
+  import GridLoading from './GridLoading.vue'
+  import GridNotFound from './GridNotFound.vue'
 
   const props = defineProps({
     fields: {
@@ -102,8 +103,10 @@
   properties.isSettingsEnabled = isSettingsEnabled
   properties.isMultipleSelection = isMultipleSelection
   properties.isSettingsEnabled = isSettingsEnabled
+  properties.isLoading = isLoading
   initGrid(fields)
   const isSettingsVisible = properties.isSettingsVisible
+  const isNotFoundVisible = properties.isNotFoundVisible
 
   const {
     fieldList,
@@ -146,7 +149,9 @@
   const gridStyle = computed(() => {
     let gridTemplateColumnsValue = gridTemplateColumns.value.join(' ')
 
-    if (properties.isSettingsVisible.value === true || isLoading.value === true) {
+    if (properties.isSettingsVisible.value === true
+      || isLoading.value === true
+      || isNotFoundVisible.value === true) {
       gridTemplateColumnsValue = '1fr'
     }
 
@@ -157,13 +162,16 @@
 
   /**
    * GRID DISPLAY OPTIONS
-   * Set Grid CSS classes like:
-   * - row hovering
+   * Set CSS Grid Classes for `hovering`
+   * and if Setting, Loading or No Data Found view should be visible.
    */
   const gridClass = computed(() => {
+    const isViewEnabled = properties.isSettingsVisible.value === true
+      || isLoading.value === true
+      || isNotFoundVisible.value === true
     return {
       'hora-grid--hover': isSelectable.value === true,
-      'hora-grid--view-enabled': properties.isSettingsVisible.value === true || isLoading.value === true
+      'hora-grid--view-enabled': isViewEnabled
     }
   })
 
@@ -184,20 +192,28 @@
   watch(() => props.isLoading, () => {
     properties.isSettingsVisible.value = false
   })
+
+  watch(() => data.value, () => {
+    isNotFoundVisible.value = (data.value.length === 0)
+  })
 </script>
 
 <template>
   <div class="hora">
-    <div>{{ title }} {{ properties.isSettingsVisible }}</div>
-    <HoraHeader :title="title" />
+    <GridHeader :title="title" />
     <div
       class="hora-grid"
       :class="gridClass"
       :style="gridStyle">
-      <GridSettings :is-visible="isSettingsVisible" />
-      <GridLoading :is-visible="isLoading" />
-      <HoraFieldHeader />
+      <GridFieldHeader />
       <GridField :data="data" />
+      <GridSettings :is-visible="isSettingsVisible" />
+      <GridLoading :is-visible="isLoading">
+        <slot name="loading"></slot>
+      </GridLoading>
+      <GridNotFound :is-visible="isNotFoundVisible">
+        <slot name="notfound"></slot>
+      </GridNotFound>
     </div>
   </div>
 </template>

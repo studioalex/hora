@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-  import { ref } from 'vue'
+  import { ref, computed } from 'vue'
   import _ from 'lodash'
   import { HoraField } from '@studioalex/hora-grid'
   import { useSettingsStore } from '../store/settings'
@@ -28,6 +28,21 @@
     // handle sorting by sort function or db query
     gridData.value = _.orderBy(gridData.value, [sortField.value], [sortDirection.value])
   }
+
+  function manageData () {
+    if (gridData.value.length === 0) {
+      gridData.value = data
+    } else {
+      gridData.value = []
+    }
+  }
+
+  const dataCaption = computed(() => {
+    if (gridData.value.length === 0) {
+      return 'Load Data'
+    }
+    return `Clear Data`
+  })
 </script>
 
 <template>
@@ -44,8 +59,8 @@
             {{ themeItem.label }}
           </option>
         </select>
-        <button @click="settings = !settings">
-          Toogle Settings
+        <button @click="manageData()">
+          {{ dataCaption }}
         </button>
       </div>
     </div>
@@ -66,8 +81,8 @@
       :show-settings="settings"
       @on-selection="setSelected"
       @on-sort="handleSort">
-      <template #cell-k0="{ record, field }">
-        {{ field.key }} -- {{ record.k6 }}
+      <template #cell-email="record">
+        {{ record }}
       </template>
     </hora-grid>
   </div>
