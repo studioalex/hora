@@ -81,8 +81,8 @@
       :show-settings="settings"
       @on-selection="setSelected"
       @on-sort="handleSort">
-      <template #cell-email="record">
-        {{ record }}
+      <template #cell-email="{ record, field }">
+        mail icon {{ record[field.key] }}
       </template>
     </hora-grid>
   </div>

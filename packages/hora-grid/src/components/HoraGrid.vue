@@ -209,8 +209,16 @@
         class="hora-grid"
         :class="gridClass"
         :style="gridStyle">
-        <GridFieldHeader />
-        <GridField :data="data" />
+        <GridFieldHeader>
+          <template v-for="(_, name) in $slots" v-slot:[name]="slotData">
+            <slot :name="name" v-bind="slotData"></slot>
+          </template>
+        </GridFieldHeader>
+        <GridField :data="data">
+          <template v-for="(_, name) in $slots" v-slot:[name]="slotData">
+            <slot :name="name" v-bind="slotData"></slot>
+          </template>
+        </GridField>
         <GridSettings :is-visible="isSettingsVisible" />
         <GridLoading :is-visible="isLoading">
           <slot name="loading"></slot>

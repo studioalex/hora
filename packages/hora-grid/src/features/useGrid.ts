@@ -67,8 +67,8 @@ export function useGrid () {
     if (properties.isLoading.value === false) {
       if (properties.isSettingsVisible.value === false) {
         properties.isNotFoundVisible.value = false
-        properties.isSettingsVisible.value = !properties.isSettingsVisible.value
       }
+      properties.isSettingsVisible.value = !properties.isSettingsVisible.value
     }
   }
 
