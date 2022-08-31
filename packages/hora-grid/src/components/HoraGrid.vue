@@ -201,19 +201,21 @@
 <template>
   <div class="hora">
     <GridHeader :title="title" />
-    <div
-      class="hora-grid"
-      :class="gridClass"
-      :style="gridStyle">
-      <GridFieldHeader />
-      <GridField :data="data" />
-      <GridSettings :is-visible="isSettingsVisible" />
-      <GridLoading :is-visible="isLoading">
-        <slot name="loading"></slot>
-      </GridLoading>
-      <GridNotFound :is-visible="isNotFoundVisible">
-        <slot name="notfound"></slot>
-      </GridNotFound>
+    <div class="hora__wrapper">
+      <div
+        class="hora-grid"
+        :class="gridClass"
+        :style="gridStyle">
+        <GridFieldHeader />
+        <GridField :data="data" />
+        <GridSettings :is-visible="isSettingsVisible" />
+        <GridLoading :is-visible="isLoading">
+          <slot name="loading"></slot>
+        </GridLoading>
+        <GridNotFound :is-visible="isNotFoundVisible">
+          <slot name="notfound"></slot>
+        </GridNotFound>
+      </div>
     </div>
   </div>
 </template>
