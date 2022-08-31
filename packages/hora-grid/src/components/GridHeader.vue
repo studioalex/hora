@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { toRefs } from 'vue'
+import { toRefs, computed } from 'vue'
 import { HoraButton } from "@studioalex/hora-elements"
 import { properties } from '../features/initGrid'
 import { useGrid } from '../features/useGrid'
@@ -14,6 +14,8 @@ const props = defineProps({
 const { title } = toRefs(props)
 const { isSettingsEnabled, isSettingsVisible } = properties
 const { toggleSettingsVisibility } = useGrid()
+
+const settingsCaption = computed(() => isSettingsVisible.value === true ? 'Close Settings' : 'Settings')
 </script>
 
 <template>
@@ -27,7 +29,7 @@ const { toggleSettingsVisibility } = useGrid()
         class="hora-header__button"
         type="secondary"
         @click="toggleSettingsVisibility()">
-        Settings
+        {{ settingsCaption }}
       </hora-button>
     </div>
   </header>
