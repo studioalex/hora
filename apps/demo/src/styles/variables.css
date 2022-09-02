@@ -65,7 +65,9 @@
   --hr-font-family-mono: Menlo, Monaco, Consolas, 'Courier New', monospace;
 
   --hr-layout-max-width: 1440px;
-  /* //////// */
+}
+
+.hrd {
   --hr-color-bg: var(--hr-color-white);
   --hr-color-bg-soft: var(--hr-color-white-soft);
   --hr-color-bg-mute: var(--hr-color-white-mute);
@@ -74,10 +76,10 @@
   --hr-color-divider-light: var(--hr-color-divider-light-2);
   --hr-color-divider-inverse: var(--hr-color-divider-dark-1);
   --hr-color-divider-inverse-light: var(--hr-color-divider-dark-2);
-  --hr-color-text-1: var(--hr-color-text-light-1);
-  --hr-color-text-2: var(--hr-color-text-light-2);
-  --hr-color-text-3: var(--hr-color-text-light-3);
-  --hr-color-text-4: var(--hr-color-text-light-4);
+  --hr-color-text-1: var(--hr-color-gray-dark-5);
+  --hr-color-text-2: var(--hr-color-gray-dark-4);
+  --hr-color-text-3: var(--hr-color-gray-dark-3);
+  --hr-color-text-4: var(--hr-color-gray-light-1);
   --hr-color-text-inverse-1: var(--hr-color-text-dark-1);
   --hr-color-text-inverse-2: var(--hr-color-text-dark-2);
   --hr-color-text-inverse-3: var(--hr-color-text-dark-3);
@@ -91,7 +93,7 @@
   --hr-color-sponsor: #fd1d7c;
 }
 
-html.dark {
+.dark .hrd {
   --hr-color-bg: var(--hr-color-black-soft);
   --hr-color-bg-soft: var(--hr-color-black-mute);
   --hr-color-bg-mute: var(--hr-color-gray-dark-3);
@@ -103,7 +105,7 @@ html.dark {
   --hr-color-text-1: var(--hr-color-text-dark-1);
   --hr-color-text-2: var(--hr-color-text-dark-2);
   --hr-color-text-3: var(--hr-color-text-dark-3);
-  --hr-color-text-4: var(--hr-color-text-dark-4);
+  --hr-color-text-4: var(--hr-color-gray-dark-1);
   --hr-color-text-inverse-1: var(--hr-color-text-light-1);
   --hr-color-text-inverse-2: var(--hr-color-text-light-2);
   --hr-color-text-inverse-3: var(--hr-color-text-light-3);
