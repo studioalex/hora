@@ -29,16 +29,29 @@
       }
 
       &-title {
-        order: 0;
+        order: 1;
         flex: 1 1 auto;
         align-self: auto;
         padding: 0 var(--HORA--field-settings--padding);
       }
 
       &-actions {
-        order: 1;
+        order: 2;
         flex: 0 1 auto;
         align-self: auto;
+      }
+
+      &-move {
+        order: 0;
+        flex: 0 1 auto;
+        align-self: auto;
+
+        svg {
+          height: 1.2em;
+          path {
+            fill: var(--HORA--field-settings--font-color);
+          }
+        }
       }
     }
 

@@ -3,6 +3,7 @@
   import { VueDraggableNext as draggable } from 'vue-draggable-next'
   import HoraStatusIndicator from '../StatusIndicator.vue'
   import { HoraField } from '../../types'
+  import MoveIcon from '../icons/MoveIcon.vue'
 
   const emit = defineEmits(['update:modelValue'])
   const props = defineProps({
@@ -65,6 +66,9 @@
       class="hora-grid-field-settings__field"
       :class="{ 'hora-grid-field-settings__field--disabled': !isFieldVisible(fieldItem.visible) }"
       :data-field-key="fieldItem.key">
+      <div class="hora-grid-field-settings__field-move">
+        <MoveIcon />
+      </div>
       <div class="hora-grid-field-settings__field-title">
         {{ fieldItem.title }}
       </div>
