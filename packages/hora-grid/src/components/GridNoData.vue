@@ -1,8 +1,5 @@
 <script lang="ts" setup>
   import { toRefs } from 'vue'
-  // import { properties } from '../features/initGrid'
-
-  // const { isLoading, recordCount } = properties
 
   const props = defineProps({
     isVisible: {
@@ -212,26 +209,3 @@
     </slot>
   </div>
 </template>
-
-<style>
-.hora-clip--nodata {
-  --HORA--clip-nodata--lens-shadow-color: var(--hr-color-indigo);
-  --HORA--clip-nodata--display-shadow-color: var(--hr-color-gray-light-4);
-  --HORA--clip-nodata--lens-color: var(--hr-color-blue);
-  --HORA--clip-nodata--display-top-color: var(--hr-color-gray-light-5);
-  --HORA--clip-nodata--display-top-all-color: var(--hr-color-gray-light-5);
-  --HORA--clip-nodata--border-bottom-color: var(--hr-color-gray-light-3);
-  --HORA--clip-nodata--border-bottom-all-color: var(--hr-color-gray-light-2);
-  --HORA--clip-nodata--display-bottom-color: var(--hr-color-gray-light-4);
-}
-.dark .hora-clip--nodata {
-  --HORA--clip-nodata--lens-shadow-color: var(--hr-color-indigo);
-  --HORA--clip-nodata--display-shadow-color: var(--hr-color-gray-dark-1);
-  --HORA--clip-nodata--lens-color: var(--hr-color-blue);
-  --HORA--clip-nodata--display-top-color: var(--hr-color-gray-dark-5);
-  --HORA--clip-nodata--display-top-all-color: var(--hr-color-gray-dark-4);
-  --HORA--clip-nodata--border-bottom-color: var(--hr-color-gray-dark-3);
-  --HORA--clip-nodata--border-bottom-all-color: var(--hr-color-gray-dark-4);
-  --HORA--clip-nodata--display-bottom-color: var(--hr-color-gray-dark-2);
-}
-</style>

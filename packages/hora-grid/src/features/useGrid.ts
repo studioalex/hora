@@ -66,7 +66,7 @@ export function useGrid () {
   function toggleSettingsVisibility (): void {
     if (properties.isLoading.value === false) {
       if (properties.isSettingsVisible.value === false) {
-        properties.isNotFoundVisible.value = false
+        properties.isNoDataVisible.value = false
       }
       properties.isSettingsVisible.value = !properties.isSettingsVisible.value
     }

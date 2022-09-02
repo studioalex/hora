@@ -13,7 +13,7 @@ interface GridProperties {
   isSettingsEnabled: Ref<boolean>;
   isSettingsVisible: Ref<boolean>;
   isLoading: Ref<boolean>;
-  isNotFoundVisible: Ref<boolean>;
+  isNoDataVisible: Ref<boolean>;
   recordCount: Ref<number>;
 }
 
@@ -33,7 +33,7 @@ export const properties: GridProperties = {
   isSettingsEnabled: ref(true),
   isSettingsVisible: ref(false),
   isLoading: ref(false),
-  isNotFoundVisible: ref(false),
+  isNoDataVisible: ref(false),
   recordCount: ref(0)
 }
 

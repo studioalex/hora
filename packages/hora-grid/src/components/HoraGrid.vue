@@ -9,7 +9,7 @@
   import GridFieldHeader from './GridFieldHeader.vue'
   import GridHeader from './GridHeader.vue'
   import GridLoading from './GridLoading.vue'
-  import GridNotFound from './GridNotFound.vue'
+  import GridNoData from './GridNoData.vue'
 
   const props = defineProps({
     fields: {
@@ -102,7 +102,7 @@
   properties.isLoading = isLoading
   initGrid(fields)
   const isSettingsVisible = properties.isSettingsVisible
-  const isNotFoundVisible = properties.isNotFoundVisible
+  const isNoDataVisible = properties.isNoDataVisible
 
   const {
     fieldList,
@@ -147,7 +147,7 @@
 
     if (properties.isSettingsVisible.value === true
       || isLoading.value === true
-      || isNotFoundVisible.value === true) {
+      || isNoDataVisible.value === true) {
       gridTemplateColumnsValue = '1fr'
     }
 
@@ -164,7 +164,7 @@
   const gridClass = computed(() => {
     const isViewEnabled = properties.isSettingsVisible.value === true
       || isLoading.value === true
-      || isNotFoundVisible.value === true
+      || isNoDataVisible.value === true
     return {
       'hora-grid--hover': isSelectable.value === true,
       'hora-grid--view-enabled': isViewEnabled
@@ -179,7 +179,7 @@
   watch(() => properties.isLoading.value, (newValue) => {
     if (newValue === true) {
       properties.isSettingsVisible.value = false
-      properties.isNotFoundVisible.value = false
+      properties.isNoDataVisible.value = false
     }
   })
 
@@ -187,7 +187,7 @@
    * Manage show "No Data Found" message visibility.
    */
   watch(() => data.value, () => {
-    isNotFoundVisible.value = (data.value.length === 0)
+    isNoDataVisible.value = (data.value.length === 0)
   })
 
   /**
@@ -196,7 +196,7 @@
    */
   watch(() => properties.isSettingsVisible.value, (newValue) => {
     if (newValue === false && data.value.length === 0) {
-      isNotFoundVisible.value = true
+      isNoDataVisible.value = true
     }
   })
 </script>
@@ -233,9 +233,9 @@
         <GridLoading :is-visible="isLoading">
           <slot name="loading"></slot>
         </GridLoading>
-        <GridNotFound :is-visible="isNotFoundVisible">
+        <GridNoData :is-visible="isNoDataVisible">
           <slot name="notfound"></slot>
-        </GridNotFound>
+        </GridNoData>
       </div>
     </div>
   </div>
