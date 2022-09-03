@@ -9,7 +9,7 @@ export interface GridSettings {
   isSortable: boolean;
   isSettingsEnabled: boolean;
   isSelectable: boolean;
-  isMultipleSelection: boolean;
+  isMultipleSelectable: boolean;
   selectedItems: Array<HoraField>;
   isLoading: boolean;
 }
@@ -24,7 +24,7 @@ export const useSettingsStore = defineStore('settings', {
       isSortable: false,
       isSettingsEnabled: true,
       isSelectable: false,
-      isMultipleSelection: false,
+      isMultipleSelectable: false,
       isLoading: false,
       selectedItems: []
     } as GridSettings

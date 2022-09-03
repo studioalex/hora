@@ -56,7 +56,7 @@
     <HrdSwitch
       v-if="store.isSelectable"
       id="switch-8"
-      v-model="store.isMultipleSelection"
+      v-model="store.isMultipleSelectable"
       title="Can select multiple" />
     <HrdSwitch
       id="switch-9"

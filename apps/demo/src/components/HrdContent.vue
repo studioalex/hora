@@ -76,7 +76,7 @@
       :is-selectable="store.isSelectable"
       :is-sortable="store.isSortable"
       :is-settings-enabled="store.isSettingsEnabled"
-      :is-multiple-selection="store.isMultipleSelection"
+      :is-multiple-selectable="store.isMultipleSelectable"
       :is-loading="store.isLoading"
       :show-settings="settings"
       @on-selection="setSelected"
