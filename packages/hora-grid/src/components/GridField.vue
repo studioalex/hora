@@ -96,7 +96,11 @@
       :style="rowDetailStyle">
       <slot
         name="details"
-        :record="record">
+        :record="record"
+        :index="rowIndex"
+        :fields="fieldList"
+        :toggle-details="toggleDetails(rowIndex)"
+        :is-record-selected="isSelected(rowIndex)">
         {{ record }}
       </slot>
     </div> 
