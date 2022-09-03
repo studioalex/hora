@@ -23,7 +23,9 @@ export default defineConfig({
           { text: 'Custom Data Rendering', link: '/guide/custom_data_rendering' },
           { text: 'Sorting', link: '/guide/sorting' },
           { text: 'Static header and columns', link: '/guide/static' },
-          { text: 'Field definition reference', link: '/guide/definition_reference' },
+          { text: 'Row details rendering', link: '/guide/row_details_rendering' },
+          { text: 'Grid styling', link: '/guide/grid_styling' },
+          { text: 'Grid component reference', link: '/guide/definition_reference' },
         ]
       }],
       '/elements/': [{
