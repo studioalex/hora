@@ -2,6 +2,7 @@
   import { toRefs, PropType, computed } from 'vue'
   import HoraStatusIndicator from './StatusIndicator.vue'
   import { selected, isSelected, setSelection } from '../features/selection'
+  import { toggleDetailVisibility, isDetailVisible } from '../features/details'
   import { useGrid } from '../features/useGrid'
   import { properties } from '../features/initGrid'
   import { getFieldClasses } from '../features/classes'
@@ -37,8 +38,19 @@
   }
 
   /**
-   * RECORD SUBGRID
-   * > > > > > > > > > >
+   * Toggle details visibility of specified record, by it's index value.
+   * We need to wrap the origin function to prevent recursive updates
+   * in the component.
+   * @param recordIndex {number} Index value of the record in grid.
+   */
+  function toggleDetails (recordIndex: number) {
+    const toggle = () => {
+      toggleDetailVisibility(recordIndex)
+    }
+    return toggle
+  }
+
+  /**
    * Set Subgrid styles.
    */
   const rowDetailStyle = computed(() => {
@@ -47,6 +59,7 @@
     }
   })
 </script>
+
 <template>
   <div
     v-for="(record, rowIndex) in data"
@@ -61,7 +74,9 @@
       <slot
         :name="`cell-${field.key}`"
         :record="record"
-        :field="field">
+        :field="field"
+        :toggle-details="toggleDetails(rowIndex)"
+        :is-detail-visible="isDetailVisible(rowIndex)">
         {{ record[field.key] }}
       </slot>
     </div>
@@ -76,10 +91,13 @@
     </div>
     <!-- FIELD::DETAILS -->
     <div
+      v-if="isDetailVisible(rowIndex)"
       class="hora-grid__row-details"
       :style="rowDetailStyle">
-      <slot name="row-details">
-        subgrid
+      <slot
+        name="details"
+        :record="record">
+        {{ record }}
       </slot>
     </div> 
   </div>

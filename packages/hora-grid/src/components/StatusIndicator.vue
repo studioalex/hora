@@ -8,9 +8,7 @@
       required: true
     }
   })
-
   const { isActive } = toRefs(props)
-
   const classes = computed(() => {
     const classlist = ['hora-indicator']
     if (isActive.value === true) {

@@ -12,10 +12,7 @@
   })
 
   const { isSettingsEnabled } = properties
-  const {
-    fieldsDefinition,
-    toggleSettingsVisibility
-  } = useGrid()
+  const { fieldsDefinition } = useGrid()
 
   const { isVisible } = toRefs(props)
 </script>

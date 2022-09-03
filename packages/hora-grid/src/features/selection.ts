@@ -37,7 +37,8 @@ function setSelection (index: number, multipleSelection = false) {
 }
 
 /**
- * Clear selection empty the selection array
+ * Clear all selected records by resetting the array.
+ * @returns {void}
  */
 function clearSelection () {
   selected.value = []
@@ -45,9 +46,17 @@ function clearSelection () {
 
 /**
  * Return the number of selected records.
+ * @returns {void}
  */
 const selectedCount = computed(() => selected.value.length)
 
+/**
+ * Marks all records in the grid as selected.
+ * Caution: Additionally loaded data records, are not automatically
+ * in the selection list. Therefore not marked as selected.
+ * @param count {number} Total number of records in the grid.
+ * @returns {void}
+ */
 function selectAll(count: number):void {
   selected.value = Array.from(Array(count).keys())
 }
