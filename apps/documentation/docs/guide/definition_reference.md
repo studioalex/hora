@@ -21,19 +21,19 @@ The following field properties are recognized:
 
 ## Table Properties
 
-| Property           | Type              | Description |
-| ------------------ | ----------------- | ----------- |
-| fields             | Array of fields   |  |
-| data               | Array             |  |
-| loading            | Boolean           | Show the loading item which indicate data loading status. |
-| isSortable         | Boolean           | When header visibility is enabled show the sort icons and enable the functionality. |
-| isHeaderVisible    | Boolean           | Show or hide the whole header with all header functions. |
-| isHeaderStatic     | Boolean           | Let the header position static  on the top while scrolling. |
-| isFirstFieldStatic | Boolean           | Let the first field static on the left while scrolling. |
-| isLastFieldStatic  | Boolean           | Let the last field static on the left while scrolling. |
-| isSelectable       | Boolean           | Enable field single selection by showing action field at the end on table view with a checkbox. |
-| isSingleSelection  | Boolean           | Enable multiple field selection when selections are enabled |
-| isSettingsEnabled  | Boolean           | Show settings icon in an additional field at the end on the table view. |
+| Property              | Type              | Description |
+| --------------------- | ----------------- | ----------- |
+| fields                | Array of fields   |             |
+| data                  | Array             |             |
+| isLoading             | Boolean           | Show the loading item which indicate data loading status. |
+| isSortable            | Boolean           | When header visibility is enabled show the sort icons and enable the functionality. |
+| isHeaderVisible       | Boolean           | Show or hide the whole header with all header functions. |
+| isHeaderStatic        | Boolean           | Let the header position static  on the top while scrolling. |
+| isFirstFieldStatic    | Boolean           | Let the first field static on the left while scrolling. |
+| isLastFieldStatic     | Boolean           | Let the last field static on the left while scrolling. |
+| isSelectable          | Boolean           | Enable field single selection by showing action field at the end on table view with a checkbox. |
+| isMultipleSelectable  | Boolean           | Enable multiple field selection when selections are enabled |
+| isSettingsEnabled     | Boolean           | Show settings icon in an additional field at the end on the table view. |
 
 ## Table Events
 

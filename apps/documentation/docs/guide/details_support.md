@@ -1,4 +1,4 @@
-# Row details rendering
+# Details Support
 
 The detail rendering enables to display additional record information. Using the scoped slot `details`, in combination with the scoped function `toggleDetails` enables the using of details view below the row fields.
 
@@ -20,7 +20,7 @@ Note: We don't extend or manipulate the record object at any point. The informat
 **detail slot** is stored separately.
 :::
 
-## Available `details` scoped variable properties
+## Available `details` scoped properties
 
 | Property          | Type              | Description                                             |
 | ----------------- | ----------------- | ------------------------------------------------------- |
