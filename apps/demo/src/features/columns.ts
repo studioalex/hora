@@ -15,5 +15,7 @@ export default [
     key: 'gender'
   }, {
     key: 'ip_address'
+  }, {
+    key: 'action'
   }
 ]

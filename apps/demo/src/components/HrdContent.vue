@@ -82,7 +82,12 @@
       @on-selection="setSelected"
       @on-sort="handleSort">
       <template #cell-email="{ record, field }">
-        mail icon {{ record[field.key] }}
+        Mail: {{ record[field.key] }}
+      </template>
+      <template #cell-action="{ toggleDetails, isDetailVisible }">
+        <button @click="toggleDetails()">
+          {{ isDetailVisible? 'Hide': 'Show' }} details
+        </button>
       </template>
     </hora-grid>
   </div>
