@@ -16,6 +16,6 @@ describe('Grid Field Settings', () => {
       }
     })
 
-    expect(wrapper.find('.hora-grid').exists()).toBeTruthy
+    expect(wrapper.find('.hora-grid').exists()).toBeTruthy()
   })
 })

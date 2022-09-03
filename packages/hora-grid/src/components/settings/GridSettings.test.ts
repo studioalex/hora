@@ -6,24 +6,26 @@ import { mount } from '@vue/test-utils'
 import GridSettings from './GridSettings.vue'
 
 describe('Grid Settings', () => {
-  it('should render', async () => {
+  it('should render ab be visible', async () => {
     const wrapper = mount(GridSettings, {
       propsData: {
-        title: 'test-value'
+        isVisible: true
       }
     })
-    // Property check
-    expect(wrapper.props('title')).toBe('test-value')
-    // Has close button
-    expect(wrapper.find('button').exists()).toBeTruthy()
-    // Has title
-    expect(wrapper.find('.hora-settings__title').exists()).toBeTruthy()
-    expect(wrapper.find('.hora-settings__title').text()).toBe('test-value')
+    // verify is rendered
+    expect(wrapper.find('.hora-settings').exists()).toBeTruthy()
+    expect(wrapper.find('.hora-settings.hora-settings--visible').exists()).toBeTruthy()
+  })
 
-    // Trigger close
-    const button = wrapper.find('button')
-    button.trigger('click')
-    wrapper.vm.$nextTick()
-    expect(wrapper.emitted().close).toBeTruthy()
+  it('should render and not be visible', async () => {
+    const wrapper = mount(GridSettings, {
+      propsData: {
+        isVisible: false
+      }
+    })
+    // verify is rendered
+    expect(wrapper.find('.hora-settings').exists()).toBeTruthy()
+    expect(wrapper.find('.hora-settings.hora-settings--visible').exists()).toBeFalsy()
   })
 })
+
