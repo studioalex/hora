@@ -89,6 +89,16 @@
           {{ isDetailVisible? 'Hide': 'Show' }} details
         </button>
       </template>
+      <template #details="{ record, toggleDetails }">
+        <div>
+          {{ record }}
+        </div>
+        <div>
+          <button @click="toggleDetails()">
+            close
+          </button>
+        </div>
+      </template>
     </hora-grid>
   </div>
 </template>
