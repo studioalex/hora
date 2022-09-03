@@ -9,7 +9,7 @@ interface GridProperties {
   isHeaderVisible: Ref<boolean>;
   isSortable: Ref<boolean>;
   isSelectable: Ref<boolean>;
-  isMultipleSelection: Ref<boolean>;
+  isMultipleSelectable: Ref<boolean>;
   isSettingsEnabled: Ref<boolean>;
   isSettingsVisible: Ref<boolean>;
   isLoading: Ref<boolean>;
@@ -29,7 +29,7 @@ export const properties: GridProperties = {
   isHeaderVisible: ref(false),
   isSortable: ref(false),
   isSelectable: ref(false),
-  isMultipleSelection: ref(false),
+  isMultipleSelectable: ref(false),
   isSettingsEnabled: ref(true),
   isSettingsVisible: ref(false),
   isLoading: ref(false),

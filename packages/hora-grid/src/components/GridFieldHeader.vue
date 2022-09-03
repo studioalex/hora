@@ -25,7 +25,7 @@
     isFirstFieldStatic,
     isLastFieldStatic,
     isSortable,
-    isMultipleSelection,
+    isMultipleSelectable,
     isSelectable,
     recordCount
   } = properties
@@ -33,7 +33,7 @@
   /**
    * Clear selection when single or multiple select ability was disabled.
    */
-  watch([isSelectable, isMultipleSelection], ([newSelectable, newMultipleSelection]) => {
+  watch([isSelectable, isMultipleSelectable], ([newSelectable, newMultipleSelection]) => {
     if (newSelectable === false || newMultipleSelection === false) {
       clearSelection()
     }
@@ -116,7 +116,7 @@
       v-if="isSelectionFieldVisible"
       :class="getHeaderClasses(fieldCount, fieldCount, isHeaderStatic, isFirstFieldStatic, isLastFieldStatic, true)">
       <HoraStatusIndicator
-        v-if="isMultipleSelection"
+        v-if="isMultipleSelectable"
         :is-active="isSelectedAll"
         @click="handleSelectAll()" />
     </div>

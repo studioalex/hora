@@ -19,7 +19,7 @@
   const {
     isFirstFieldStatic,
     isLastFieldStatic,
-    isMultipleSelection
+    isMultipleSelectable
   } = properties
   const {
     fieldList,
@@ -33,7 +33,7 @@
    * @param index 
    */
   function handleSelection (index: number) {
-    setSelection(index, isMultipleSelection.value)
+    setSelection(index, isMultipleSelectable.value)
     emitter.emit('onSelection', data.value.filter((__record, index) => selected.value.includes(index)))
   }
 

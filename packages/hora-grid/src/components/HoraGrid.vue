@@ -62,7 +62,7 @@
       default: false
     },
     /* Enable multiple field selection when selections are enabled */
-    isMultipleSelection: {
+    isMultipleSelectable: {
       type: Boolean,
       default: false
     },
@@ -84,7 +84,7 @@
     isHeaderVisible,
     isSortable,
     isSelectable,
-    isMultipleSelection,
+    isMultipleSelectable,
     isSettingsEnabled
   } = toRefs(props)
 
@@ -97,7 +97,7 @@
   properties.isSortable = isSortable
   properties.isSelectable = isSelectable
   properties.isSettingsEnabled = isSettingsEnabled
-  properties.isMultipleSelection = isMultipleSelection
+  properties.isMultipleSelectable = isMultipleSelectable
   properties.isSettingsEnabled = isSettingsEnabled
   properties.isLoading = isLoading
   initGrid(fields)
