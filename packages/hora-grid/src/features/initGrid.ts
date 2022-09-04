@@ -1,7 +1,10 @@
 import { ref, Ref } from 'vue'
 import { HoraField } from '../types'
 
-interface GridProperties {
+export type Fields = Ref<Array<HoraField>>
+export type FieldsDefinition = Ref<Array<HoraField>>
+export type VisibleFields = Ref<Array<string>>
+export interface GridProperties {
   title: Ref<string | undefined>;
   isHeaderStatic: Ref<boolean>;
   isFirstFieldStatic: Ref<boolean>;
@@ -17,27 +20,48 @@ interface GridProperties {
   recordCount: Ref<number>;
 }
 
-// Field definition
-export const fieldsDefinition: Ref<Array<HoraField>> = ref([])
-
-// Component properties
-export const properties: GridProperties = {
-  title: ref(undefined),
-  isHeaderStatic: ref(false),
-  isFirstFieldStatic: ref(false),
-  isLastFieldStatic: ref(false),
-  isHeaderVisible: ref(false),
-  isSortable: ref(false),
-  isSelectable: ref(false),
-  isMultipleSelectable: ref(false),
-  isSettingsEnabled: ref(true),
-  isSettingsVisible: ref(false),
-  isLoading: ref(false),
-  isNoDataVisible: ref(false),
-  recordCount: ref(0)
+export interface GridOptions {
+  properties: GridProperties
+  fieldsDefinition: FieldsDefinition;
+  visibleFields: VisibleFields;
 }
 
-export function initGrid (fields: Ref<Array<HoraField>>) {
+export function propertiesConstructor (): GridProperties {
+  return {
+    title: ref(undefined),
+    isHeaderStatic: ref(false),
+    isFirstFieldStatic: ref(false),
+    isLastFieldStatic: ref(false),
+    isHeaderVisible: ref(false),
+    isSortable: ref(false),
+    isSelectable: ref(false),
+    isMultipleSelectable: ref(false),
+    isSettingsEnabled: ref(true),
+    isSettingsVisible: ref(false),
+    isLoading: ref(false),
+    isNoDataVisible: ref(false),
+    recordCount: ref(0)
+  }
+}
+
+export function optionsConstructor (): GridOptions {
+  return {
+    properties: propertiesConstructor(),
+    fieldsDefinition: ref([]),
+    visibleFields: ref([])
+  }
+}
+
+export function initGrid (fields: Fields) {
+  /** Field definition */
+  const fieldsDefinition: FieldsDefinition = ref([])
+
+  /** Sort field definition */
+  const visibleFields: VisibleFields = ref([])
+
+  /** Component properties */
+  const properties: GridProperties = propertiesConstructor()
+
   /**
    * Prepare field definitions,
    * The minimum requirement on field definitions is the key property,
@@ -52,6 +76,12 @@ export function initGrid (fields: Ref<Array<HoraField>>) {
     field.title = field.title || field.key
     return field
   })
+
+  return {
+    fieldsDefinition,
+    visibleFields,
+    properties
+  }
 }
 
 

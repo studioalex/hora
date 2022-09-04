@@ -1,14 +1,11 @@
-import { ref, Ref, computed } from 'vue'
-import { properties, fieldsDefinition } from '../features/initGrid'
+import { computed } from 'vue'
 import { HoraField } from '../types'
+import { GridOptions } from '../features/initGrid'
 
-/** Sort field definition */
-const sortField: Ref<string[]> = ref([])
-
-/** COMPUTED */
-const isSelectionFieldVisible = computed(() => (properties.isSelectable.value === true))
-
-export function useGrid () {
+export function useGrid (options: GridOptions) {
+  const { properties, fieldsDefinition, visibleFields } = options
+  /** COMPUTED */
+  const isSelectionFieldVisible = computed(() => (properties.isSelectable.value === true))
   /**
    * Return a list of fields in sorted order and only fields mark as visible.
    * The list is also required by `grid-template-fields` to set the right amount of fields.
@@ -47,8 +44,8 @@ export function useGrid () {
    * @returns {string}
    */
    function getSortIconClass (field: string) {
-    if (Array.isArray(sortField.value) && sortField.value[0]) {
-      const [fieldKey, sortDirection] = sortField.value[0].split('::')
+    if (Array.isArray(visibleFields.value) && visibleFields.value[0]) {
+      const [fieldKey, sortDirection] = visibleFields.value[0].split('::')
 
       if (fieldKey === field ) {
         return `hora__icon hora__icon-sort--${sortDirection.toLowerCase()}`
@@ -77,7 +74,7 @@ export function useGrid () {
     fieldList,
     fieldCount,
     getSortIconClass,
-    sortField,
+    visibleFields,
     isSelectionFieldVisible,
     toggleSettingsVisibility
   }

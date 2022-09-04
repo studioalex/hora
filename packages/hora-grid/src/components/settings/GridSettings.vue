@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-  import { toRefs } from 'vue'
-  import { properties } from '../../features/initGrid'
+  import { toRefs, PropType } from 'vue'
+  import { GridOptions } from '../../features/initGrid'
   import { useGrid } from '../../features/useGrid'
   import HoraFieldSettings from './FieldSettings.vue'
 
@@ -8,13 +8,17 @@
     isVisible: {
       type: Boolean,
       default: false
+    },
+    options: {
+      type: Object as PropType<GridOptions>,
+      required: true
     }
   })
 
-  const { isSettingsEnabled } = properties
-  const { fieldsDefinition } = useGrid()
+  const { isVisible, options } = toRefs(props)
+  const { isSettingsEnabled } = options.value.properties
+  const { fieldsDefinition } = useGrid(options.value)
 
-  const { isVisible } = toRefs(props)
 </script>
 
 <template>

@@ -4,7 +4,7 @@
   import { selected, isSelected, setSelection } from '../features/selection'
   import { toggleDetailVisibility, isDetailVisible } from '../features/details'
   import { useGrid } from '../features/useGrid'
-  import { properties } from '../features/initGrid'
+  import { GridOptions } from '../features/initGrid'
   import { getFieldClasses } from '../features/classes'
   import { emitter } from '../features/emitter'
 
@@ -12,20 +12,24 @@
     data: {
       type: Array as PropType<Array<any>>,
       default: () => []
+    },
+    options: {
+      type: Object as PropType<GridOptions>,
+      required: true
     }
   })
 
-  const { data } = toRefs(props)
+  const { data, options } = toRefs(props)
   const {
     isFirstFieldStatic,
     isLastFieldStatic,
     isMultipleSelectable
-  } = properties
+  } = options.value.properties
   const {
     fieldList,
     fieldCount,
     isSelectionFieldVisible
-  } = useGrid()
+  } = useGrid(options.value)
 
   /**
    * Handle selection click on record.

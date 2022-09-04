@@ -1,23 +1,27 @@
 <script lang="ts" setup>
-import { toRefs, computed } from 'vue'
+import { toRefs, computed, PropType } from 'vue'
 import { HoraButton } from "@studioalex/hora-elements"
-import { properties } from '../features/initGrid'
+import { GridOptions } from '../features/initGrid'
 import { useGrid } from '../features/useGrid'
 
 const props = defineProps({
   title: {
     type: String,
     default: undefined
+  },
+  options: {
+    type: Object as PropType<GridOptions>,
+    required: true
   }
 })
 
-const { title } = toRefs(props)
-const { toggleSettingsVisibility } = useGrid()
+const { title, options } = toRefs(props)
+const { toggleSettingsVisibility } = useGrid(props.options)
 const {
   isSettingsEnabled,
   isSettingsVisible,
   isLoading
-} = properties
+} = options.value.properties
 
 const settingsCaption = computed(() => isSettingsVisible.value === true ? 'Close Settings' : 'Settings')
 </script>

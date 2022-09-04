@@ -1,9 +1,9 @@
 <script lang="ts" setup>
-  import { watch, computed } from 'vue'
+  import { watch, computed, toRefs, PropType } from 'vue'
   import { emitter } from '../features/emitter'
+  import { GridOptions } from '../features/initGrid'
   import { useGrid } from '../features/useGrid'
   import { getHeaderClasses } from '../features/classes'
-  import { properties } from '../features/initGrid'
   import {
     clearSelection,
     selectedCount,
@@ -12,13 +12,20 @@
   import GridFieldHeaderActions from './GridFieldHeaderActions.vue'
   import HoraStatusIndicator from './StatusIndicator.vue'
 
+  const props = defineProps({
+    options: {
+      type: Object as PropType<GridOptions>,
+      required: true
+    }
+  })
+  const { options } = toRefs(props)
   const {
     fieldList,
     fieldCount,
     getSortIconClass,
     isSelectionFieldVisible,
-    sortField
-  } = useGrid()
+    visibleFields
+  } = useGrid(options.value)
 
   const {
     isHeaderStatic,
@@ -28,7 +35,7 @@
     isMultipleSelectable,
     isSelectable,
     recordCount
-  } = properties
+  } = options.value.properties
 
   /**
    * Clear selection when single or multiple select ability was disabled.
@@ -53,24 +60,24 @@
    * @returns {void}
    */
    function handleSort (field: string) {
-    if (Array.isArray(sortField.value) && sortField.value[0]) {
-      const [fieldKey, sortDirection] = sortField.value[0].split('::')
+    if (Array.isArray(visibleFields.value) && visibleFields.value[0]) {
+      const [fieldKey, sortDirection] = visibleFields.value[0].split('::')
 
       if (field === fieldKey) {
         if (sortDirection === 'ASC') {
-          sortField.value = [`${field}::DESC`]
+          visibleFields.value = [`${field}::DESC`]
         } else {
-          sortField.value = [`${field}::ASC`]
+          visibleFields.value = [`${field}::ASC`]
         }
       } else {
-        sortField.value = [`${field}::ASC`]
+        visibleFields.value = [`${field}::ASC`]
       }
     } else {
-      sortField.value = [`${field}::ASC`]
+      visibleFields.value = [`${field}::ASC`]
     }
 
     // Emit the sort value
-    emitter.emit('onSort', sortField.value[0].split('::'))
+    emitter.emit('onSort', visibleFields.value[0].split('::'))
   }
 
   /**
@@ -89,7 +96,7 @@
 <template>
   <!-- HEADER -->
   <div
-    v-if="properties.isHeaderVisible.value"
+    v-if="options.properties.isHeaderVisible.value"
     class="hora-grid__row-header">
     <!-- HEADER::FIELD -->
     <div
@@ -106,7 +113,7 @@
       </div>
       <!-- HEADER::INFIELD-ACTIONS -->
       <GridFieldHeaderActions
-        :is-visible="properties.isSortable.value === true && field.sortable !== false"
+        :is-visible="options.properties.isSortable.value === true && field.sortable !== false"
         :custom-class="getSortIconClass(field.key)"
         :field-key="field.key"
         @sort="handleSort(field.key)" />

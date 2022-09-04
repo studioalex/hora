@@ -1,7 +1,7 @@
 <script lang="ts" setup>
   import { toRefs, PropType, computed, watch } from 'vue'
   import { HoraField } from '../types'
-  import { initGrid, properties } from '../features/initGrid'
+  import { initGrid, GridOptions } from '../features/initGrid'
   import { useGrid } from '../features/useGrid'
   import { emitter } from '../features/emitter'
   import GridField from './GridField.vue'
@@ -87,6 +87,9 @@
     isMultipleSelectable,
     isSettingsEnabled
   } = toRefs(props)
+  
+  const { properties, fieldsDefinition, visibleFields } = initGrid(fields)
+  const { fieldList, isSelectionFieldVisible } = useGrid({ properties, fieldsDefinition, visibleFields })
 
   properties.title = title
   properties.recordCount = computed(() => data.value.length)
@@ -100,14 +103,11 @@
   properties.isMultipleSelectable = isMultipleSelectable
   properties.isSettingsEnabled = isSettingsEnabled
   properties.isLoading = isLoading
-  initGrid(fields)
+
   const isSettingsVisible = properties.isSettingsVisible
   const isNoDataVisible = properties.isNoDataVisible
 
-  const {
-    fieldList,
-    isSelectionFieldVisible
-  } = useGrid()
+  const gridOptions: GridOptions = { properties, fieldsDefinition, visibleFields }
 
   /** Emitter */
   const emit = defineEmits<{
@@ -203,13 +203,15 @@
 
 <template>
   <div class="hora">
-    <GridHeader :title="title" />
+    <GridHeader
+      :title="title"
+      :options="gridOptions" />
     <div class="hora__wrapper">
       <div
         class="hora-grid"
         :class="gridClass"
         :style="gridStyle">
-        <GridFieldHeader>
+        <GridFieldHeader :options="gridOptions">
           <template
             v-for="(_, name) in $slots"
             #[name]="slotData">
@@ -219,7 +221,9 @@
             </slot>
           </template>
         </GridFieldHeader>
-        <GridField :data="data">
+        <GridField
+          :data="data"
+          :options="gridOptions">
           <template
             v-for="(_, name) in $slots"
             #[name]="slotData">
@@ -229,7 +233,9 @@
             </slot>
           </template>
         </GridField>
-        <GridSettings :is-visible="isSettingsVisible" />
+        <GridSettings
+          :is-visible="isSettingsVisible"
+          :options="gridOptions" />
         <GridLoading :is-visible="isLoading">
           <slot name="loading"></slot>
         </GridLoading>
