@@ -88,26 +88,26 @@
     isSettingsEnabled
   } = toRefs(props)
   
-  const { properties, fieldsDefinition, visibleFields } = initGrid(fields)
-  const { fieldList, isSelectionFieldVisible } = useGrid({ properties, fieldsDefinition, visibleFields })
+  const { settings, fieldsDefinition, visibleFields } = initGrid(fields)
+  const { fieldList, isSelectionFieldVisible } = useGrid({ settings, fieldsDefinition, visibleFields })
 
-  properties.title = title
-  properties.recordCount = computed(() => data.value.length)
-  properties.isHeaderStatic = isHeaderStatic
-  properties.isFirstFieldStatic = isFirstFieldStatic
-  properties.isLastFieldStatic = isLastFieldStatic
-  properties.isHeaderVisible = isHeaderVisible
-  properties.isSortable = isSortable
-  properties.isSelectable = isSelectable
-  properties.isSettingsEnabled = isSettingsEnabled
-  properties.isMultipleSelectable = isMultipleSelectable
-  properties.isSettingsEnabled = isSettingsEnabled
-  properties.isLoading = isLoading
+  settings.title = title
+  settings.recordCount = computed(() => data.value.length)
+  settings.isHeaderStatic = isHeaderStatic
+  settings.isFirstFieldStatic = isFirstFieldStatic
+  settings.isLastFieldStatic = isLastFieldStatic
+  settings.isHeaderVisible = isHeaderVisible
+  settings.isSortable = isSortable
+  settings.isSelectable = isSelectable
+  settings.isSettingsEnabled = isSettingsEnabled
+  settings.isMultipleSelectable = isMultipleSelectable
+  settings.isSettingsEnabled = isSettingsEnabled
+  settings.isLoading = isLoading
 
-  const isSettingsVisible = properties.isSettingsVisible
-  const isNoDataVisible = properties.isNoDataVisible
+  const isSettingsVisible = settings.isSettingsVisible
+  const isNoDataVisible = settings.isNoDataVisible
 
-  const gridOptions: GridOptions = { properties, fieldsDefinition, visibleFields }
+  const gridOptions: GridOptions = { settings, fieldsDefinition, visibleFields }
 
   /** Emitter */
   const emit = defineEmits<{
@@ -145,7 +145,7 @@
   const gridStyle = computed(() => {
     let gridTemplateColumnsValue = gridTemplateColumns.value.join(' ')
 
-    if (properties.isSettingsVisible.value === true
+    if (settings.isSettingsVisible.value === true
       || isLoading.value === true
       || isNoDataVisible.value === true) {
       gridTemplateColumnsValue = '1fr'
@@ -162,7 +162,7 @@
    * and if Setting, Loading or No Data Found view should be visible.
    */
   const gridClass = computed(() => {
-    const isViewEnabled = properties.isSettingsVisible.value === true
+    const isViewEnabled = settings.isSettingsVisible.value === true
       || isLoading.value === true
       || isNoDataVisible.value === true
     return {
@@ -176,10 +176,10 @@
    * Watch property is loading and hide all other internal views
    * like settings when loading view change.
    */
-  watch(() => properties.isLoading.value, (newValue) => {
+  watch(() => settings.isLoading.value, (newValue) => {
     if (newValue === true) {
-      properties.isSettingsVisible.value = false
-      properties.isNoDataVisible.value = false
+      settings.isSettingsVisible.value = false
+      settings.isNoDataVisible.value = false
     }
   })
 
@@ -194,7 +194,7 @@
    * Show "No Data Found" message when there is no data
    * and setting view has been closed.
    */
-  watch(() => properties.isSettingsVisible.value, (newValue) => {
+  watch(() => settings.isSettingsVisible.value, (newValue) => {
     if (newValue === false && data.value.length === 0) {
       isNoDataVisible.value = true
     }

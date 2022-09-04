@@ -4,11 +4,6 @@
   import { GridOptions } from '../features/initGrid'
   import { useGrid } from '../features/useGrid'
   import { getHeaderClasses } from '../features/classes'
-  import {
-    clearSelection,
-    selectedCount,
-    selectAll
-  } from '../features/selection'
   import GridFieldHeaderActions from './GridFieldHeaderActions.vue'
   import HoraStatusIndicator from './StatusIndicator.vue'
 
@@ -24,7 +19,10 @@
     fieldCount,
     getSortIconClass,
     isSelectionFieldVisible,
-    visibleFields
+    visibleFields,
+    clearSelection,
+    selectedCount,
+    selectAll
   } = useGrid(options.value)
 
   const {
@@ -35,7 +33,7 @@
     isMultipleSelectable,
     isSelectable,
     recordCount
-  } = options.value.properties
+  } = options.value.settings
 
   /**
    * Clear selection when single or multiple select ability was disabled.
@@ -96,7 +94,7 @@
 <template>
   <!-- HEADER -->
   <div
-    v-if="options.properties.isHeaderVisible.value"
+    v-if="options.settings.isHeaderVisible.value"
     class="hora-grid__row-header">
     <!-- HEADER::FIELD -->
     <div
@@ -113,7 +111,7 @@
       </div>
       <!-- HEADER::INFIELD-ACTIONS -->
       <GridFieldHeaderActions
-        :is-visible="options.properties.isSortable.value === true && field.sortable !== false"
+        :is-visible="options.settings.isSortable.value === true && field.sortable !== false"
         :custom-class="getSortIconClass(field.key)"
         :field-key="field.key"
         @sort="handleSort(field.key)" />

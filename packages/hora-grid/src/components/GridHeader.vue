@@ -21,7 +21,7 @@ const {
   isSettingsEnabled,
   isSettingsVisible,
   isLoading
-} = options.value.properties
+} = options.value.settings
 
 const settingsCaption = computed(() => isSettingsVisible.value === true ? 'Close Settings' : 'Settings')
 </script>

@@ -1,8 +1,6 @@
 <script lang="ts" setup>
   import { toRefs, PropType, computed } from 'vue'
   import HoraStatusIndicator from './StatusIndicator.vue'
-  import { selected, isSelected, setSelection } from '../features/selection'
-  import { toggleDetailVisibility, isDetailVisible } from '../features/details'
   import { useGrid } from '../features/useGrid'
   import { GridOptions } from '../features/initGrid'
   import { getFieldClasses } from '../features/classes'
@@ -24,11 +22,15 @@
     isFirstFieldStatic,
     isLastFieldStatic,
     isMultipleSelectable
-  } = options.value.properties
+  } = options.value.settings
   const {
     fieldList,
     fieldCount,
-    isSelectionFieldVisible
+    isSelectionFieldVisible,
+    isSelected,
+    setSelection,
+    toggleDetailVisibility,
+    isDetailVisible
   } = useGrid(options.value)
 
   /**
@@ -38,7 +40,7 @@
    */
   function handleSelection (index: number) {
     setSelection(index, isMultipleSelectable.value)
-    emitter.emit('onSelection', data.value.filter((__record, index) => selected.value.includes(index)))
+    emitter.emit('onSelection', data.value.filter((__record, index) => options.value.settings.recordSelected.value.includes(index)))
   }
 
   /**

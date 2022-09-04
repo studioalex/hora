@@ -4,7 +4,7 @@ import { HoraField } from '../types'
 export type Fields = Ref<Array<HoraField>>
 export type FieldsDefinition = Ref<Array<HoraField>>
 export type VisibleFields = Ref<Array<string>>
-export interface GridProperties {
+export interface GridSettings {
   title: Ref<string | undefined>;
   isHeaderStatic: Ref<boolean>;
   isFirstFieldStatic: Ref<boolean>;
@@ -18,15 +18,17 @@ export interface GridProperties {
   isLoading: Ref<boolean>;
   isNoDataVisible: Ref<boolean>;
   recordCount: Ref<number>;
+  recordSelected: Ref<Array<number>>;
+  detailsVisible: Ref<Array<number>>;
 }
 
 export interface GridOptions {
-  properties: GridProperties
+  settings: GridSettings
   fieldsDefinition: FieldsDefinition;
   visibleFields: VisibleFields;
 }
 
-export function propertiesConstructor (): GridProperties {
+export function settingsConstructor (): GridSettings {
   return {
     title: ref(undefined),
     isHeaderStatic: ref(false),
@@ -40,13 +42,15 @@ export function propertiesConstructor (): GridProperties {
     isSettingsVisible: ref(false),
     isLoading: ref(false),
     isNoDataVisible: ref(false),
-    recordCount: ref(0)
+    recordCount: ref(0),
+    recordSelected: ref([]),
+    detailsVisible: ref([])
   }
 }
 
 export function optionsConstructor (): GridOptions {
   return {
-    properties: propertiesConstructor(),
+    settings: settingsConstructor(),
     fieldsDefinition: ref([]),
     visibleFields: ref([])
   }
@@ -59,14 +63,14 @@ export function initGrid (fields: Fields) {
   /** Sort field definition */
   const visibleFields: VisibleFields = ref([])
 
-  /** Component properties */
-  const properties: GridProperties = propertiesConstructor()
+  /** Component settings */
+  const settings: GridSettings = settingsConstructor()
 
   /**
    * Prepare field definitions,
    * The minimum requirement on field definitions is the key property,
-   * to identify the data property in the JSON object. But we expect some
-   * properties, like `order` or `title` that exists.
+   * to identify the data property in the JSON object. But also we expect
+   * some properties, like `order` or `title` that exists.
    * Here we set the minimum field definition properties.
    * @todo may it is better to use a lib like ZOD
    */
@@ -80,7 +84,7 @@ export function initGrid (fields: Fields) {
   return {
     fieldsDefinition,
     visibleFields,
-    properties
+    settings
   }
 }
 

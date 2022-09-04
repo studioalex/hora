@@ -16,7 +16,7 @@
   })
 
   const { isVisible, options } = toRefs(props)
-  const { isSettingsEnabled } = options.value.properties
+  const { isSettingsEnabled } = options.value.settings
   const { fieldsDefinition } = useGrid(options.value)
 
 </script>
