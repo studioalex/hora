@@ -89,7 +89,12 @@
   } = toRefs(props)
   
   const { settings, fieldsDefinition, visibleFields } = initGrid(fields)
-  const { fieldList, isSelectionFieldVisible } = useGrid({ settings, fieldsDefinition, visibleFields })
+  const {
+    fieldList,
+    isSelectionFieldVisible,
+    closeAllDetails,
+    clearSelection
+  } = useGrid({ settings, fieldsDefinition, visibleFields })
 
   settings.title = title
   settings.recordCount = computed(() => data.value.length)
@@ -185,9 +190,12 @@
 
   /**
    * Manage show "No Data Found" message visibility.
+   * Also reset all selections and visible details slots.
    */
-  watch(() => data.value, () => {
-    isNoDataVisible.value = (data.value.length === 0)
+  watch(() => data.value, (newValue) => {
+    isNoDataVisible.value = (newValue.length === 0)
+    closeAllDetails()
+    clearSelection()
   })
 
   /**
