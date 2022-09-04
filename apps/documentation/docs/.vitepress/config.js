@@ -22,6 +22,7 @@ export default defineConfig({
           { text: 'Items and Fields', link: '/guide/data_fields' },
           { text: 'Custom Data Rendering', link: '/guide/custom_data_rendering' },
           { text: 'Sorting', link: '/guide/sorting' },
+          { text: 'Field Settings', link: '/guide/settings' },
           { text: 'Static header and columns', link: '/guide/static' },
           { text: 'Selection support', link: '/guide/selection_support' },
           { text: 'Details support', link: '/guide/details_support' },
