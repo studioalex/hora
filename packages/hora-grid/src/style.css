@@ -5,7 +5,7 @@
 @import './styles/checkbox.postcss';
 @import './styles/indicator.postcss';
 @import './styles/loading.postcss';
-@import './styles/notfound.postcss';
+@import './styles/nodata.postcss';
 @import './styles/settings.postcss';
 @import './styles/field-settings.postcss';
 @import './styles/icons.postcss';
