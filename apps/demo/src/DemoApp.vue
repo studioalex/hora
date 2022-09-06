@@ -13,8 +13,8 @@
   const sideLogo = `${baseurl}images/logo.png`
   const footerCopyright = 'Copyright © 2022-present Alexander Sedeke'
   const headerLinks: navs = new Map([
-    ["vitepress", { link: "/api/", title: "API Documentation"}],
-    ["github:issues", { link: "https://github.com/studioalex/hora/issues", title: "Issues"}],
+    ["vitepress", { link: "/api/", title: "Documentation"}],
+    // ["github:issues", { link: "https://github.com/studioalex/hora/issues", title: "Issues"}],
     ["github", { link: "https://github.com/studioalex/hora", title: "GitHub"}],
     ["npm", { link: "https://www.npmjs.com/package/@studioalex/hora", title: "NPM"}]
   ])
