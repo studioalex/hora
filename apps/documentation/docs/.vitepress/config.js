@@ -30,7 +30,7 @@ export default defineConfig({
           { text: 'No Data State', link: '/guide/no_data_state' },
           { text: 'Grid Headline', link: '/guide/headline' },
           { text: 'Grid styling', link: '/guide/grid_styling' },
-          { text: 'Grid component reference', link: '/guide/definition_reference' },
+          { text: 'Component reference', link: '/guide/definition_reference' },
         ]
       }],
       '/elements/': [{

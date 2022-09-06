@@ -3,11 +3,11 @@
 Hora Grid provide a view to show when no data was provided.
 To customize this message use the `nodata` slot as show in example below.
 
-## Default message example
+## Example of default message
 
 <NoDataExample />
 
-## Custom message example
+## Example of message slot usage
 
 ```vue
 <hora-grid
