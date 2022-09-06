@@ -248,7 +248,7 @@
           <slot name="loading"></slot>
         </GridLoading>
         <GridNoData :is-visible="isNoDataVisible">
-          <slot name="notfound"></slot>
+          <slot name="nodata"></slot>
         </GridNoData>
       </div>
     </div>

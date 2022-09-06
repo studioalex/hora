@@ -17,8 +17,9 @@
     class="hora-nodata"
     :class="{ 'hora-nodata--visible': isVisible}">
     <slot>
-      <div class="hora-nodata__center-view">
-        <div class="hora-nodata__message-wrapper">
+      <div class="hora-nodata__message">
+        <div class="hora-nodata__message-flex"></div>
+        <div class="hora-nodata__message-image">
           <svg
             viewBox="0 0 500 500"
             fill="none"
@@ -198,13 +199,14 @@
               d="M354.3 157C352.8 153.6 351.1 150.2 349.4 147L350.3 146.5C352.1 149.8 353.8 153.2 355.3 156.6L354.3 157ZM345 139.6C340 131.8 334.2 124.6 327.7 118L328.5 117.2C335.1 123.8 341 131.1 346 138.9L345 139.6Z"
               fill="var(--HORA--clip-nodata--lens-shadow-color)" />
           </svg>
-          <h3 class="hora-nodata__message-title">
-            We searched everywhere
-          </h3>
-          <p class="hora-nodata__message">
-            But we couldn't find any data that match your current criterial.
-          </p>
         </div>
+        <h3 class="hora-nodata__message-title">
+          We searched everywhere
+        </h3>
+        <p class="hora-nodata__message-description">
+          But we couldn't find any data that match your current criterial.
+        </p>
+        <div class="hora-nodata__message-flex"></div>
       </div>
     </slot>
   </div>

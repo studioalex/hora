@@ -136,11 +136,11 @@
   --HORA--settings--border-radius: 6px;
   --HORA--settings--headline-separator: 2pt solid var(--hr-color-gray-light-3);
 
-  --HORA--notfound--background-color: var(--hr-color-white-soft);
-  --HORA--notfound--headline-font-color: var(--hr-color-text-light-2);
-  --HORA--notfound--headline-font-weight: 400;
-  --HORA--notfound--headline-font-size: 1.6em;
-  --HORA--notfound--font-color: var(--hr-color-gray-light-1);
+  --HORA--nodata--background-color: var(--hr-color-white-soft);
+  --HORA--nodata--headline-font-color: var(--hr-color-text-light-2);
+  --HORA--nodata--headline-font-weight: 400;
+  --HORA--nodata--headline-font-size: 1.6em;
+  --HORA--nodata--font-color: var(--hr-color-gray-light-1);
 
   --HORA--field-settings--background: var(--hr-color-gray-light-4);
   --HORA--field-settings--background-disabled: var(--hr-color-gray-light-5);
@@ -225,11 +225,11 @@
   --HORA--settings--border-radius: 6px;
   --HORA--settings--headline-separator: 2pt solid var(--hr-color-gray-dark-3);
 
-  --HORA--notfound--background-color: var(--hr-color-black-mute);
-  --HORA--notfound--headline-font-color: var(--hr-color-text-dark-2);
-  --HORA--notfound--headline-font-weight: 400;
-  --HORA--notfound--headline-font-size: 1.6em;
-  --HORA--notfound--font-color: var(--hr-color-gray-dark-1);
+  --HORA--nodata--background-color: var(--hr-color-black-mute);
+  --HORA--nodata--headline-font-color: var(--hr-color-text-dark-2);
+  --HORA--nodata--headline-font-weight: 400;
+  --HORA--nodata--headline-font-size: 1.6em;
+  --HORA--nodata--font-color: var(--hr-color-gray-dark-1);
 
   --HORA--field-settings--background: var(--hr-color-gray-dark-3);
   --HORA--field-settings--background-disabled: var(--hr-color-gray-dark-4);

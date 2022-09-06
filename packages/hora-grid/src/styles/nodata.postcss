@@ -12,28 +12,46 @@
       display: grid;
     }
 
-    &__center-view {
+    &__message {
       display: flex;
-      flex-direction: row;
+      flex-direction: column;
       flex-wrap: nowrap;
       justify-content: center;
-      align-content: stretch;
+      align-content: center;
       align-items: center;
-    }
+      height: 100%;
 
-    &__message-wrapper {
-      height: 70%;
-      text-align: center;
-    }
-    &__message-title {
-      font-size: 1.4em;
-      font-weight: var(--HORA--notfound--headline-font-weight);
-      font-size: var(--HORA--notfound--headline-font-size);
-      color: var(--HORA--notfound--headline-font-color);
-    }
-    &__message {
-      color: var(--HORA--notfound--font-color);
-      font-size: 1em;
+      h3, p {
+        margin: 0.3em 0;
+      }
+
+      &-image {
+        flex: 2 1 auto;
+        align-self: auto;
+        min-height: 150px;
+        overflow: hidden;
+
+        svg {
+          height: 100%;
+        }
+      }
+
+      &-title {
+        font-size: 1.4em;
+        font-weight: var(--HORA--nodata--headline-font-weight);
+        font-size: var(--HORA--nodata--headline-font-size);
+        color: var(--HORA--nodata--headline-font-color);
+      }
+
+      &-description {
+        color: var(--HORA--nodata--font-color);
+        font-size: 1em;
+      }
+
+      &-flex {
+        flex: 2 1 auto;
+        align-self: auto;
+      }
     }
   }
 }
