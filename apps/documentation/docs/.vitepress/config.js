@@ -20,12 +20,15 @@ export default defineConfig({
         text: 'Guide',
         items: [
           { text: 'Items and Fields', link: '/guide/data_fields' },
+          { text: 'Static header and fields', link: '/guide/static' },
           { text: 'Custom Data Rendering', link: '/guide/custom_data_rendering' },
           { text: 'Sorting', link: '/guide/sorting' },
           { text: 'Field Settings', link: '/guide/settings' },
-          { text: 'Static header and columns', link: '/guide/static' },
           { text: 'Selection support', link: '/guide/selection_support' },
           { text: 'Details support', link: '/guide/details_support' },
+          { text: 'Loading State', link: '/guide/loading_state' },
+          { text: 'No Data State', link: '/guide/no_data_state' },
+          { text: 'Grid Headline', link: '/guide/headline' },
           { text: 'Grid styling', link: '/guide/grid_styling' },
           { text: 'Grid component reference', link: '/guide/definition_reference' },
         ]
