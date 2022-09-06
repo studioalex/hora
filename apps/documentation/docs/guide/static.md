@@ -79,6 +79,6 @@ Setting the **Hora Grid Component** as CSS Grid element cause the same problem b
 That problem isn’t actually something buggy or wrong. In fact, that’s the effect of a default CSS behavior. Why and how? Learn more about this [here](https://ishadeed.com/article/position-sticky-css-grid/)
 
 <script setup>
-  import StaticHeaderExample from './StaticHeaderExample.vue'
-  import StaticColumnsExample from './StaticColumnsExample.vue'
+  import StaticHeaderExample from './examples/StaticHeaderExample.vue'
+  import StaticColumnsExample from './examples/StaticColumnsExample.vue'
 </script>

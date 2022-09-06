@@ -42,5 +42,5 @@ This settings then result to the following table view:
 ```
 
 <script setup>
- import DataExample from './DataExample.vue'
+ import DataExample from './examples/DataExample.vue'
 </script>

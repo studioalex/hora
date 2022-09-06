@@ -91,6 +91,6 @@ Scoped slots for the header cells uses a special naming convention of `header-<f
 <CustomHeaderExample />
 
 <script setup>
- import CustomDataExample from './CustomDataExample.vue'
- import CustomHeaderExample from './CustomHeaderExample.vue'
+ import CustomDataExample from './examples/CustomDataExample.vue'
+ import CustomHeaderExample from './examples/CustomHeaderExample.vue'
 </script>

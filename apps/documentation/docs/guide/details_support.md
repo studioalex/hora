@@ -83,5 +83,5 @@ Note: We don't extend or manipulate the record object at any point. The informat
 ```
 
 <script setup>
-  import DetailSlotExample from './DetailSlotExample.vue'
+  import DetailSlotExample from './examples/DetailSlotExample.vue'
 </script>

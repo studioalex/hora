@@ -74,5 +74,5 @@ The `onSort` event returns an array where the first element is the selected fiel
 ```
 
 <script setup>
-  import SortExample from './SortExample.vue'
+  import SortExample from './examples/SortExample.vue'
 </script>

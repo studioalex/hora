@@ -12,12 +12,12 @@ support selection by clicking anywhere within the data record, we have decided a
 We want to avoid problems with other click events within the data record.
 :::
 
-## Select
+## How to select
 
 When `isSelectable` property is enabled, a field become visible at the right side of the grid within a selection `indicator`.
 By clicking this `indicator` the record can be selected or unselected.
 
-## Select All
+## Use Select All
 
 In **multiple selection** mode (`isMultipleSelectable`) a `indicator` is visible in the Grid header. By using this indicator all records can be selected or unselected.
 
@@ -39,5 +39,5 @@ In **multiple selection** mode (`isMultipleSelectable`) a `indicator` is visible
 <SelectionExample />
 
 <script setup>
-  import SelectionExample from './SelectionExample.vue'
+  import SelectionExample from './examples/SelectionExample.vue'
 </script>
