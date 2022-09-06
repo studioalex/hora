@@ -29,7 +29,11 @@ const settingsCaption = computed(() => isSettingsVisible.value === true ? 'Close
 <template>
   <header class="hora-header">
     <div class="hora-header--left">
-      <span class="hora-header__title">{{ title }}</span>
+      <slot>
+        <span class="hora-header__title">
+          {{ title }}
+        </span>
+      </slot>
     </div>
     <div class="hora-header--right">
       <hora-button

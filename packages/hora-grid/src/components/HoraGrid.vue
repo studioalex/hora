@@ -213,7 +213,9 @@
   <div class="hora">
     <GridHeader
       :title="title"
-      :options="gridOptions" />
+      :options="gridOptions">
+      <slot name="headline"></slot>
+    </GridHeader>
     <div class="hora__wrapper">
       <div
         class="hora-grid"
