@@ -26,10 +26,10 @@ export default defineConfig({
           { text: 'Field Settings', link: '/guide/settings' },
           { text: 'Selection support', link: '/guide/selection_support' },
           { text: 'Details support', link: '/guide/details_support' },
+          { text: 'Headline', link: '/guide/headline' },
           { text: 'Loading State', link: '/guide/loading_state' },
           { text: 'No Data State', link: '/guide/no_data_state' },
-          { text: 'Grid Headline', link: '/guide/headline' },
-          { text: 'Grid styling', link: '/guide/grid_styling' },
+          { text: 'Styling options', link: '/guide/styling' },
           { text: 'Component reference', link: '/guide/definition_reference' },
         ]
       }],
