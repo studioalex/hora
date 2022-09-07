@@ -9,7 +9,7 @@ export default defineConfig({
   themeConfig: {
     logo: '/logo.svg',
     nav: [
-      { text: 'Guide', link: '/guide/' },
+      { text: 'Guide', link: '/guide/data_fields' },
       { text: 'Elements', link: '/elements/' },
       { text: 'Demo App', link: 'https://hora.studioalex.one/demo/' },
       { text: 'Changelog', link: 'https://github.com/studioalex/hora/blob/main/README.md' },
