@@ -130,11 +130,7 @@
   --HORA--field-selected--font-color: var(--hr-color-text-light-1);
 
   --HORA--settings--background-color: var(--hr-color-white-soft);
-  --HORA--settings--headline-font-color: var(--hr-color-text-light-2);
-  --HORA--settings--headline-font-weight: 400;
-  --HORA--settings--headline-font-size: 1.6em;
   --HORA--settings--border-radius: 6px;
-  --HORA--settings--headline-separator: 2pt solid var(--hr-color-gray-light-3);
 
   --HORA--nodata--background-color: var(--hr-color-white-soft);
   --HORA--nodata--headline-font-color: var(--hr-color-text-light-2);
@@ -153,6 +149,9 @@
   --HORA--field-settings--padding: 6px;
   --HORA--field-settings--margin: 6px 3px;
   --HORA--field-settings--ghost-background: var(--hr-color-blue-light);
+
+  --HORA--loading--background-color: transparent;
+  --HORA--loading--border-radius: 6px;
 
   --HORA--shimmer--background-color: var(--hr-color-white);
   --HORA--shimmer--box-from-color: var(--hr-color-gray-light-3);
@@ -219,17 +218,13 @@
   --HORA--field-selected--font-color: var(--hr-color-text-light-1);
 
   --HORA--settings--background-color: var(--hr-color-black-mute);
-  --HORA--settings--headline-font-color: var(--hr-color-text-dark-2);
-  --HORA--settings--headline-font-weight: 400;
-  --HORA--settings--headline-font-size: 1.6em;
   --HORA--settings--border-radius: 6px;
-  --HORA--settings--headline-separator: 2pt solid var(--hr-color-gray-dark-3);
 
   --HORA--nodata--background-color: var(--hr-color-black-mute);
-  --HORA--nodata--headline-font-color: var(--hr-color-text-dark-2);
-  --HORA--nodata--headline-font-weight: 400;
-  --HORA--nodata--headline-font-size: 1.6em;
-  --HORA--nodata--font-color: var(--hr-color-gray-dark-1);
+  --HORA--nodata--title-font-color: var(--hr-color-text-dark-2);
+  --HORA--nodata--title-font-weight: 400;
+  --HORA--nodata--title-font-size: 1.6em;
+  --HORA--nodata--description-font-color: var(--hr-color-gray-dark-1);
 
   --HORA--field-settings--background: var(--hr-color-gray-dark-3);
   --HORA--field-settings--background-disabled: var(--hr-color-gray-dark-4);
@@ -242,6 +237,9 @@
   --HORA--field-settings--padding: 6px;
   --HORA--field-settings--margin: 6px 3px;
   --HORA--field-settings--ghost-background: var(--hr-color-blue-light);
+
+  --HORA--loading--background-color: transparent;
+  --HORA--loading--border-radius: 6px;
 
   --HORA--shimmer--background-color: var(--hr-color-black-soft);
   --HORA--shimmer--box-from-color: var(--hr-color-gray-dark-4);
