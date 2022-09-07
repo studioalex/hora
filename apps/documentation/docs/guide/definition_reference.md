@@ -48,4 +48,4 @@ The following field properties are recognized:
 | ------------------ | ----------------- | ----------- |
 | row-details        | x | x |
 | header-`{key}`     | `{ field }` | Scoped slot for custom header label rendering. `{key}` is the field's key name. |
-| cell-`{key}`       | `{ record, field }` | Scoped slot for custom data rendering of field data. `{key}` is the field's key name. |
+| field-`{key}`      | `{ record, field }` | Scoped slot for custom data rendering of field data. `{key}` is the field's key name. |

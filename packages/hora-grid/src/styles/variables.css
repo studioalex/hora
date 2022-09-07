@@ -79,8 +79,8 @@
   --HORA--grid--font-family: var(--hr-font-family-base);
   --HORA--grid--rows-auto: minmax(20px, auto);
 
-  --HORA--actionbar--title-font: 700 1.4em var(--hr-font-family-base);
-  --HORA--actionbar--title-color: var(--hr-color-gray-dark-3);
+  --HORA--headline--title-font: 700 1.4em var(--hr-font-family-base);
+  --HORA--headline--title-color: var(--hr-color-gray-dark-3);
 
   --HORA--header--background: var(--hr-color-white);
   --HORA--header--font-color: var(--hr-color-text-light-3);
@@ -97,37 +97,37 @@
 
   --HORA--header-action-hover-background: var(--hr-color-white-mute);
 
-  --HORA--cell--background: var(--hr-color-white-soft);
-  --HORA--cell--padding: 12px;
+  --HORA--field--background: var(--hr-color-white-soft);
+  --HORA--field--padding: 12px;
 
-  --HORA--cell--font-color: var(--hr-color-text-light-1);
-  --HORA--cell--font-weight: 400;
-  --HORA--cell--border-size: 1px;
-  --HORA--cell--border-radius: 6px;
-  --HORA--cell--border: var(--HORA--cell--border-size) solid var(--hr-color-text-light-4);
-  --HORA--cell--border-top: var(--HORA--cell--border);
-  --HORA--cell--border-bottom: var(--HORA--cell--border);
-  --HORA--cell--border-left: var(--HORA--cell--border);
-  --HORA--cell--border-right: var(--HORA--cell--border);
-  --HORA--cell--border-separator: var(--HORA--cell--border-size) solid var(--hr-color-white);
+  --HORA--field--font-color: var(--hr-color-text-light-1);
+  --HORA--field--font-weight: 400;
+  --HORA--field--border-size: 1px;
+  --HORA--field--border-radius: 6px;
+  --HORA--field--border: var(--HORA--field--border-size) solid var(--hr-color-text-light-4);
+  --HORA--field--border-top: var(--HORA--field--border);
+  --HORA--field--border-bottom: var(--HORA--field--border);
+  --HORA--field--border-left: var(--HORA--field--border);
+  --HORA--field--border-right: var(--HORA--field--border);
+  --HORA--field--border-separator: var(--HORA--field--border-size) solid var(--hr-color-white);
 
-  --HORA--cell-hover--background-color: var(--hr-color-white-mute);
-  --HORA--cell-hover--border-separator: var(--HORA--cell--border-size) solid var(--hr-color-white-mute);
-  --HORA--cell-hover--border: var(--HORA--cell--border-size) solid var(--hr-color-white);
-  --HORA--cell-hover--border-top: var(--HORA--cell-hover--border);
-  --HORA--cell-hover--border-bottom: var(--HORA--cell-hover--border);
-  --HORA--cell-hover--border-left: var(--HORA--cell-hover--border);
-  --HORA--cell-hover--border-right: var(--HORA--cell-hover--border);
-  --HORA--cell-hover--font-color: var(--hr-color-text-light-1);
+  --HORA--field-hover--background-color: var(--hr-color-white-mute);
+  --HORA--field-hover--border-separator: var(--HORA--field--border-size) solid var(--hr-color-white-mute);
+  --HORA--field-hover--border: var(--HORA--field--border-size) solid var(--hr-color-white);
+  --HORA--field-hover--border-top: var(--HORA--field-hover--border);
+  --HORA--field-hover--border-bottom: var(--HORA--field-hover--border);
+  --HORA--field-hover--border-left: var(--HORA--field-hover--border);
+  --HORA--field-hover--border-right: var(--HORA--field-hover--border);
+  --HORA--field-hover--font-color: var(--hr-color-text-light-1);
 
-  --HORA--cell-selected--background: var(--hr-color-blue-light);
-  --HORA--cell-selected--border-separator: var(--HORA--cell--border-size) solid var(--hr-color-blue-light);
-  --HORA--cell-selected--border: var(--HORA--cell--border-size) solid var(--hr-color-blue);
-  --HORA--cell-selected--border-top: var(--HORA--cell-selected--border);
-  --HORA--cell-selected--border-bottom: var(--HORA--cell-selected--border);
-  --HORA--cell-selected--border-left: var(--HORA--cell-selected--border);
-  --HORA--cell-selected--border-right: var(--HORA--cell-selected--border);
-  --HORA--cell-selected--font-color: var(--hr-color-text-light-1);
+  --HORA--field-selected--background: var(--hr-color-blue-light);
+  --HORA--field-selected--border-separator: var(--HORA--field--border-size) solid var(--hr-color-blue-light);
+  --HORA--field-selected--border: var(--HORA--field--border-size) solid var(--hr-color-blue);
+  --HORA--field-selected--border-top: var(--HORA--field-selected--border);
+  --HORA--field-selected--border-bottom: var(--HORA--field-selected--border);
+  --HORA--field-selected--border-left: var(--HORA--field-selected--border);
+  --HORA--field-selected--border-right: var(--HORA--field-selected--border);
+  --HORA--field-selected--font-color: var(--hr-color-text-light-1);
 
   --HORA--settings--background-color: var(--hr-color-white-soft);
   --HORA--settings--headline-font-color: var(--hr-color-text-light-2);
@@ -158,7 +158,7 @@
   --HORA--shimmer--box-from-color: var(--hr-color-gray-light-3);
   --HORA--shimmer--box-to-color: var(--hr-color-gray-light-5);
 
-  --HORA--cell-action--width: minmax(50px, auto);
+  --HORA--field-selection--width: minmax(50px, auto);
 }
 
 .dark	.hora {
@@ -168,8 +168,8 @@
   --HORA--grid--font-family: var(--hr-font-family-base);
   --HORA--grid--rows-auto: minmax(20px, auto);
 
-  --HORA--actionbar--title-font: 700 1.4em var(--hr-font-family-base);
-  --HORA--actionbar--title-color: var(--hr-color-light-dark-5);
+  --HORA--headline--title-font: 700 1.4em var(--hr-font-family-base);
+  --HORA--headline--title-color: var(--hr-color-light-dark-5);
 
   --HORA--header--background: var(--hr-color-black-soft);
   --HORA--header--font-color: var(--hr-color-text-dark-3);
@@ -186,37 +186,37 @@
 
   --HORA--header-action-hover-background: var(--hr-color-text-dark-4);
 
-  --HORA--cell--background: var(--hr-color-black-mute);
-  --HORA--cell--padding: 12px;
+  --HORA--field--background: var(--hr-color-black-mute);
+  --HORA--field--padding: 12px;
 
-  --HORA--cell--font-color: var(--hr-color-text-dark-1);
-  --HORA--cell--font-weight: 400;
-  --HORA--cell--border-size: 1px;
-  --HORA--cell--border-radius: 6px;
-  --HORA--cell--border: var(--HORA--cell--border-size) solid var(--hr-color-text-dark-4);
-  --HORA--cell--border-top: var(--HORA--cell--border);
-  --HORA--cell--border-bottom: var(--HORA--cell--border);
-  --HORA--cell--border-left: var(--HORA--cell--border);
-  --HORA--cell--border-right: var(--HORA--cell--border);
-  --HORA--cell--border-separator: var(--HORA--cell--border-size) solid var(--hr-color-gray-dark-4);
+  --HORA--field--font-color: var(--hr-color-text-dark-1);
+  --HORA--field--font-weight: 400;
+  --HORA--field--border-size: 1px;
+  --HORA--field--border-radius: 6px;
+  --HORA--field--border: var(--HORA--field--border-size) solid var(--hr-color-text-dark-4);
+  --HORA--field--border-top: var(--HORA--field--border);
+  --HORA--field--border-bottom: var(--HORA--field--border);
+  --HORA--field--border-left: var(--HORA--field--border);
+  --HORA--field--border-right: var(--HORA--field--border);
+  --HORA--field--border-separator: var(--HORA--field--border-size) solid var(--hr-color-gray-dark-4);
 
-  --HORA--cell-hover--background-color: var(--hr-color-gray-dark-5);
-  --HORA--cell-hover--border-separator: var(--HORA--cell--border-size) solid var(--hr-color-gray-dark-5);
-  --HORA--cell-hover--border: var(--HORA--cell--border-size) solid var(--hr-color-gray-dark-5);
-  --HORA--cell-hover--border-top: var(--HORA--cell-hover--border);
-  --HORA--cell-hover--border-bottom: var(--HORA--cell-hover--border);
-  --HORA--cell-hover--border-left: var(--HORA--cell-hover--border);
-  --HORA--cell-hover--border-right: var(--HORA--cell-hover--border);
-  --HORA--cell-hover--font-color: var(--hr-color-text-dark-1);
+  --HORA--field-hover--background-color: var(--hr-color-gray-dark-5);
+  --HORA--field-hover--border-separator: var(--HORA--field--border-size) solid var(--hr-color-gray-dark-5);
+  --HORA--field-hover--border: var(--HORA--field--border-size) solid var(--hr-color-gray-dark-5);
+  --HORA--field-hover--border-top: var(--HORA--field-hover--border);
+  --HORA--field-hover--border-bottom: var(--HORA--field-hover--border);
+  --HORA--field-hover--border-left: var(--HORA--field-hover--border);
+  --HORA--field-hover--border-right: var(--HORA--field-hover--border);
+  --HORA--field-hover--font-color: var(--hr-color-text-dark-1);
 
-  --HORA--cell-selected--background: var(--hr-color-blue-light);
-  --HORA--cell-selected--border-separator: var(--HORA--cell--border-size) solid var(--hr-color-blue-light);
-  --HORA--cell-selected--border: var(--HORA--cell--border-size) solid var(--hr-color-blue);
-  --HORA--cell-selected--border-top: var(--HORA--cell-selected--border);
-  --HORA--cell-selected--border-bottom: var(--HORA--cell-selected--border);
-  --HORA--cell-selected--border-left: var(--HORA--cell-selected--border);
-  --HORA--cell-selected--border-right: var(--HORA--cell-selected--border);
-  --HORA--cell-selected--font-color: var(--hr-color-text-light-1);
+  --HORA--field-selected--background: var(--hr-color-blue-light);
+  --HORA--field-selected--border-separator: var(--HORA--field--border-size) solid var(--hr-color-blue-light);
+  --HORA--field-selected--border: var(--HORA--field--border-size) solid var(--hr-color-blue);
+  --HORA--field-selected--border-top: var(--HORA--field-selected--border);
+  --HORA--field-selected--border-bottom: var(--HORA--field-selected--border);
+  --HORA--field-selected--border-left: var(--HORA--field-selected--border);
+  --HORA--field-selected--border-right: var(--HORA--field-selected--border);
+  --HORA--field-selected--font-color: var(--hr-color-text-light-1);
 
   --HORA--settings--background-color: var(--hr-color-black-mute);
   --HORA--settings--headline-font-color: var(--hr-color-text-dark-2);
@@ -247,7 +247,7 @@
   --HORA--shimmer--box-from-color: var(--hr-color-gray-dark-4);
   --HORA--shimmer--box-to-color: var(--hr-color-gray-dark-3);
 
-  --HORA--cell-action--width: minmax(50px, auto); 
+  --HORA--field-selection--width: minmax(50px, auto); 
 }
 
 .hora-clip--nodata {

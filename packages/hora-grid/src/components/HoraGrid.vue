@@ -136,7 +136,7 @@
   const gridTemplateColumns = computed(() => {
     const columnsInGrid = fieldList.value.map(field => field.width || '1fr')
     if (isSelectionFieldVisible.value === true) {
-      columnsInGrid.push('var(--HORA--cell-action--width)')
+      columnsInGrid.push('var(--HORA--field-selection--width)')
     }
 
     return columnsInGrid

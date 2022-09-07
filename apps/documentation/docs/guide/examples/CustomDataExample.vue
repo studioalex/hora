@@ -23,7 +23,7 @@
   <hora-grid
     :fields="fieldList"
     :data="dataExample">
-    <template #cell-age="{ record, field }">
+    <template #field-age="{ record, field }">
       {{ record[field.key] }} years old
     </template>
   </hora-grid>

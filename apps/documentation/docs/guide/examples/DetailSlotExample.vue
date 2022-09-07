@@ -24,7 +24,7 @@
   <hora-grid
     :fields="fieldList"
     :data="dataExample">
-    <template #cell-action="{ toggleDetails, isDetailVisible }">
+    <template #field-action="{ toggleDetails, isDetailVisible }">
       <button @click="toggleDetails()">
         {{ isDetailVisible? 'Hide': 'Show' }} details
       </button>

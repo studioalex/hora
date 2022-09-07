@@ -81,10 +81,10 @@
       :show-settings="settings"
       @on-selection="setSelected"
       @on-sort="handleSort">
-      <template #cell-email="{ record, field }">
+      <template #field-email="{ record, field }">
         Mail: {{ record[field.key] }}
       </template>
-      <template #cell-action="{ toggleDetails, isDetailVisible }">
+      <template #field-action="{ toggleDetails, isDetailVisible }">
         <button @click="toggleDetails()">
           {{ isDetailVisible? 'Hide': 'Show' }} details
         </button>

@@ -78,7 +78,7 @@
       :data-selected="isSelected(rowIndex)">
       <!-- FIELD::SLOT -->
       <slot
-        :name="`cell-${field.key}`"
+        :name="`field-${field.key}`"
         :record="record"
         :field="field"
         :toggle-details="toggleDetails(rowIndex)"

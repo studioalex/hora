@@ -61,7 +61,7 @@ Note: We don't extend or manipulate the record object at any point. The informat
   <hora-grid
     :fields="fieldList"
     :data="dataExample">
-    <template #cell-action="{ toggleDetails, isDetailVisible }">
+    <template #field-action="{ toggleDetails, isDetailVisible }">
       <button @click="toggleDetails()">
         {{ isDetailVisible? 'Hide': 'Show' }} details
       </button>

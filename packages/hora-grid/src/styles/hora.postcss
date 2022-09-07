@@ -46,7 +46,7 @@
         z-index: 0;
       }
       
-      .hora-grid__cell {
+      .hora-grid__field {
         &--justify {
           &-content-center {
             display: flex;
@@ -102,7 +102,7 @@
     }
 
     &__row-details {
-      color: var(--HORA--cell--font-color);
+      color: var(--HORA--field--font-color);
     }
     
     &__header {     
@@ -115,7 +115,7 @@
       border-right: var(--HORA--header--border-separator);
 
       &__action {
-        padding-top: calc(var(--HORA--cell--padding)/2);
+        padding-top: calc(var(--HORA--field--padding)/2);
         text-align: right;
       }
 
@@ -137,57 +137,57 @@
       }
     }
     
-    &__cell {
-      padding: var(--HORA--cell--padding);
-      color: var(--HORA--cell--font-color);
-      background-color: var(--HORA--cell--background);
-      font-weight: var(--HORA--cell--font-weight);
-      border-top: var(--HORA--cell--border-top);
-      border-bottom: var(--HORA--cell--border-bottom);
-      border-right: var(--HORA--cell--border-separator);
+    &__field {
+      padding: var(--HORA--field--padding);
+      color: var(--HORA--field--font-color);
+      background-color: var(--HORA--field--background);
+      font-weight: var(--HORA--field--font-weight);
+      border-top: var(--HORA--field--border-top);
+      border-bottom: var(--HORA--field--border-bottom);
+      border-right: var(--HORA--field--border-separator);
 
       &[data-selected="true"] {
-        border-top: var(--HORA--cell-selected--border-top);
-        border-bottom: var(--HORA--cell-selected--border-bottom);
-        border-right: var(--HORA--cell-selected--border-separator);
-        background-color: var(--HORA--cell-selected--background);
-        color: var(--HORA--cell-selected--font-color);
+        border-top: var(--HORA--field-selected--border-top);
+        border-bottom: var(--HORA--field-selected--border-bottom);
+        border-right: var(--HORA--field-selected--border-separator);
+        background-color: var(--HORA--field-selected--background);
+        color: var(--HORA--field-selected--font-color);
       }
 
       &--first {
-        border-radius: var(--HORA--cell--border-radius) 0 0 var(--HORA--cell--border-radius);
-        border-left: var(--HORA--cell--border-left);
+        border-radius: var(--HORA--field--border-radius) 0 0 var(--HORA--field--border-radius);
+        border-left: var(--HORA--field--border-left);
         
         &[data-selected="true"] {
-          background-color: var(--HORA--cell-selected--background);
-          border-left: var(--HORA--cell-selected--border-left);
+          background-color: var(--HORA--field-selected--background);
+          border-left: var(--HORA--field-selected--border-left);
         }
       }
       
       &--last {
-        border-radius: 0 var(--HORA--cell--border-radius) var(--HORA--cell--border-radius) 0;
-        border-right: var(--HORA--cell--border-right);
+        border-radius: 0 var(--HORA--field--border-radius) var(--HORA--field--border-radius) 0;
+        border-right: var(--HORA--field--border-right);
 
         &[data-selected="true"] {
-          background-color: var(--HORA--cell-selected--background);
-          border-right: var(--HORA--cell-selected--border-right);
+          background-color: var(--HORA--field-selected--background);
+          border-right: var(--HORA--field-selected--border-right);
         }
       }
     }
 
     &--hover {
       .hora-grid__row:hover {
-        .hora-grid__cell {
-          border-top: var(--HORA--cell-hover--border-top);
-          border-bottom: var(--HORA--cell-hover--border-bottom);
-          border-right: var(--HORA--cell-hover--border-separator);
-          background-color: var(--HORA--cell-hover--background-color);
-          color: var(--HORA--cell-hover--font-color);
+        .hora-grid__field {
+          border-top: var(--HORA--field-hover--border-top);
+          border-bottom: var(--HORA--field-hover--border-bottom);
+          border-right: var(--HORA--field-hover--border-separator);
+          background-color: var(--HORA--field-hover--background-color);
+          color: var(--HORA--field-hover--font-color);
           &--first {
-            border-left: var(--HORA--cell-hover--border-left);
+            border-left: var(--HORA--field-hover--border-left);
           }
           &--last {
-            border-right: var(--HORA--cell-hover--border-right);
+            border-right: var(--HORA--field-hover--border-right);
           }
         }
       }

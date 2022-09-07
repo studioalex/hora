@@ -4,7 +4,7 @@ Custom rendering for each data field in a row is possible using either [scoped s
 
 ## Scoped field slots
 
-Scoped field slots give you greater control over how the record data appears. You can use scoped slots to provided custom rendering for a particular field. If you want to add an extra field which does not exist in the records, just add it to the fields array, and then reference the field(s) in the scoped slot(s). Scoped field slots use the following naming syntax: `cell-<fieldkey>`.
+Scoped field slots give you greater control over how the record data appears. You can use scoped slots to provided custom rendering for a particular field. If you want to add an extra field which does not exist in the records, just add it to the fields array, and then reference the field(s) in the scoped slot(s). Scoped field slots use the following naming syntax: `field-<fieldkey>`.
 
 ### Example: Custom data rendering with scoped slots
 
@@ -34,7 +34,7 @@ Scoped field slots give you greater control over how the record data appears. Yo
   <hora-grid
     :fields="fieldList"
     :data="dataExample">
-    <template #cell-age="{ record, field }">
+    <template #field-age="{ record, field }">
       {{ record[field.key] }} years old
     </template>
   </hora-grid>
@@ -51,7 +51,7 @@ The slot's scope variable `data` contain the current record object, white the sc
 
 It is also possible to provide custom rendering for the Grid Header Fields. Note by default the Grid Header Fields are enabled, and can be disabled by settings the Grid property `isHeaderVisible` to `false`.
 
-Scoped slots for the header cells uses a special naming convention of `header-<fieldkey>` respectively.
+Scoped slots for the header fields uses a special naming convention of `header-<fieldkey>` respectively.
 
 ### Example: Custom header rendering with scoped slots
 
