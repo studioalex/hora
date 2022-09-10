@@ -1,10 +1,12 @@
-import { defineConfig, searchForWorkspaceRoot } from 'vite'
+import { defineConfig } from 'vitepress'
+import { version } from '../../package.json'
 
 export default defineConfig({
   lang: 'en-US',
   title: 'Hora Grid',
   description: 'Vue 3 Data Grid Component Documentation.',
   appearance: true,
+  lastUpdated: true,
   base: '/',
   themeConfig: {
     logo: '/logo.svg',
@@ -48,10 +50,7 @@ export default defineConfig({
     algolia: {
       appId: 'NBVX6OR8H4',
       apiKey: 'ffd35574f8f7cbf4dc554e9fa3ba7a66',
-      indexName: 'hora',
-      // searchParameters: {
-      //   facetFilters: ['tags:en'],
-      // },
+      indexName: 'hora'
     }
   }
 })

@@ -4,9 +4,10 @@
   "description": "Hora Grid Vue 3 Component Documentation",
   "main": "index.js",
   "scripts": {
-    "dev": "vitepress dev docs --host",
+    "devs": "vitepress dev docs --host",
+    "dev": "vitepress dev docs --host --port 3333 --open",
     "build": "vitepress build docs",
-    "serve": "vitepress --port 3020 serve docs",
+    "serve": "vitepress --port 3330 serve docs",
     "deploy": "cpy . ../../../../../deploy/web --cwd=docs/.vitepress/dist",
     "clean": "del-cli ./node_modules ./docs/.vitepress/dist"
   },

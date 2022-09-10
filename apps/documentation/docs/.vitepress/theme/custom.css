@@ -16,3 +16,10 @@
 .dark .VPHome {
   background-image: url("/hory-dark-theme.svg");
 }
+
+/**
+ * Component: Algolia
+ * -------------------------------------------------------------------------- */
+.DocSearch {
+  --docsearch-primary-color: var(--vp-c-brand) !important;
+}
