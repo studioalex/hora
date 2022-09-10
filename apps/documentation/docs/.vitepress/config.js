@@ -43,6 +43,15 @@ export default defineConfig({
     footer: {
       message: 'Released under the GPLV3+ License.',
       copyright: 'Copyright © 2022-present Alexander Sedeke'
+    },
+
+    algolia: {
+      appId: 'NBVX6OR8H4',
+      apiKey: 'ffd35574f8f7cbf4dc554e9fa3ba7a66',
+      indexName: 'hora',
+      // searchParameters: {
+      //   facetFilters: ['tags:en'],
+      // },
     }
   }
 })
