@@ -3,9 +3,9 @@ import { defineConfig, searchForWorkspaceRoot } from 'vite'
 export default defineConfig({
   lang: 'en-US',
   title: 'Hora Grid',
-  description: 'Component documentation.',
+  description: 'Vue 3 Data Grid Component Documentation.',
   appearance: true,
-  base: '/api/',
+  base: '/',
   themeConfig: {
     logo: '/logo.svg',
     nav: [

@@ -1,0 +1,18 @@
+.VPContent.is-homes {
+  background-color: rgb(240, 240, 240);
+}
+
+.VPHome {
+  background-image: url("/hory-light-theme.svg");
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.dark .VPContent.is-homes {
+  background-color: rgb(36, 36, 36);
+}
+
+.dark .VPHome {
+  background-image: url("/hory-dark-theme.svg");
+}

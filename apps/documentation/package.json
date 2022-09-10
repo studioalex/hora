@@ -1,13 +1,13 @@
 {
   "name": "@studioalex/hora-documentation",
   "version": "0.1.0",
-  "description": "",
+  "description": "Hora Grid Vue 3 Component Documentation",
   "main": "index.js",
   "scripts": {
     "dev": "vitepress dev docs --host",
     "build": "vitepress build docs",
     "serve": "vitepress --port 3020 serve docs",
-    "deploy": "cpy . ../../../../../deploy/web/api --cwd=docs/.vitepress/dist",
+    "deploy": "cpy . ../../../../../deploy/web --cwd=docs/.vitepress/dist",
     "clean": "del-cli ./node_modules ./docs/.vitepress/dist"
   },
   "keywords": [
@@ -27,6 +27,6 @@
     "del-cli": "^5.0.0",
     "lodash": "^4.17.21",
     "vitepress": "^1.0.0-alpha.13",
-    "vue": "^3.2.38"
+    "vue": "^3.2.39"
   }
 }

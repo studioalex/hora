@@ -34,16 +34,16 @@
   },
   "dependencies": {
     "mitt": "^3.0.0",
-    "vue": "^3.2.38"
+    "vue": "^3.2.39"
   },
   "devDependencies": {
     "@studioalex/hora-elements": "*",
-    "@types/node": "^18.7.14",
-    "@typescript-eslint/eslint-plugin": "^5.36.1",
-    "@typescript-eslint/parser": "^5.36.1",
-    "@vitejs/plugin-vue": "^3.0.3",
-    "@vitest/ui": "^0.22.1",
-    "@vue/eslint-config-typescript": "^11.0.0",
+    "@types/node": "^18.7.16",
+    "@typescript-eslint/eslint-plugin": "^5.36.2",
+    "@typescript-eslint/parser": "^5.36.2",
+    "@vitejs/plugin-vue": "^3.1.0",
+    "@vitest/ui": "^0.23.1",
+    "@vue/eslint-config-typescript": "^11.0.1",
     "@vue/test-utils": "^2.0.2",
     "autoprefixer": "^10.4.8",
     "c8": "^7.12.0",
@@ -53,10 +53,10 @@
     "eslint-plugin-vue": "^9.4.0",
     "happy-dom": "^6.0.4",
     "postcss-nested": "^5.0.6",
-    "typescript": "^4.8.2",
-    "vite": "^3.0.9",
-    "vitest": "^0.22.1",
+    "typescript": "^4.8.3",
+    "vite": "^3.1.0",
+    "vitest": "^0.23.1",
     "vue-draggable-next": "^2.1.1",
-    "vue-tsc": "^0.40.4"
+    "vue-tsc": "^0.40.13"
   }
 }
