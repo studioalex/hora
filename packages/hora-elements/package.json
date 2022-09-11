@@ -2,7 +2,7 @@
   "name": "@studioalex/hora-elements",
   "private": true,
   "license": "GPLV3+",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "type": "module",
   "files": [
     "dist"
