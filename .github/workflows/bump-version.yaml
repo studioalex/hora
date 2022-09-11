@@ -50,7 +50,11 @@ jobs:
         git config user.name 'Alexander Sedeke'
         git config user.email 'alexander.sedeke@icloud.com'
     - name: bump version
-      run: npm version ${{ github.event.inputs.version }}
+      run: |
+        npm version ${{ github.event.inputs.version }} -ws
+        git add .
+        git commit -m "Upgrade workspaces ${{ github.event.inputs.version }}"
+        npm version ${{ github.event.inputs.version }}
 
     - name: Push latest version
       run: git push origin main --follow-tags
