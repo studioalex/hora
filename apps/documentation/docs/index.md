@@ -30,3 +30,9 @@ features:
   - title: Sorting
     details: Customize field sort order.
 ---
+
+<HeroExample />
+
+<script setup>
+  import HeroExample from './HeroExample.vue'
+</script>

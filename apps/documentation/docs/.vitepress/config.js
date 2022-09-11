@@ -15,7 +15,8 @@ export default defineConfig({
       { text: 'Elements', link: '/elements/' },
       { text: 'Demo App', link: 'https://hora.studioalex.one/demo/' },
       { text: 'Changelog', link: 'https://github.com/studioalex/hora/blob/main/README.md' },
-      { text: 'GitHub', link: 'https://github.com/studioalex/hora' }
+      { text: 'GitHub', link: 'https://github.com/studioalex/hora' },
+      { text: version }
     ],
     sidebar: {
       '/guide/': [{
