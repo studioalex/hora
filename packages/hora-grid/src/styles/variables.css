@@ -153,7 +153,7 @@
   --HORA--loading--background-color: transparent;
   --HORA--loading--border-radius: 6px;
 
-  --HORA--shimmer--background-color: var(--hr-color-white);
+  --HORA--shimmer--background-color: transparent;
   --HORA--shimmer--box-from-color: var(--hr-color-gray-light-3);
   --HORA--shimmer--box-to-color: var(--hr-color-gray-light-5);
 
@@ -241,7 +241,7 @@
   --HORA--loading--background-color: transparent;
   --HORA--loading--border-radius: 6px;
 
-  --HORA--shimmer--background-color: var(--hr-color-black-soft);
+  --HORA--shimmer--background-color: transparent;
   --HORA--shimmer--box-from-color: var(--hr-color-gray-dark-4);
   --HORA--shimmer--box-to-color: var(--hr-color-gray-dark-3);
 
