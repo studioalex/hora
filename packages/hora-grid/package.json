@@ -59,5 +59,8 @@
     "vitest": "^0.23.1",
     "vue-draggable-next": "^2.1.1",
     "vue-tsc": "^0.40.13"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
