@@ -19,10 +19,10 @@ jobs:
         run: |
           npm config set //registry.npmjs.org/:_authToken ${NPM_TOKEN}
           npm ci -w packages/hora-elements -w packages/hora-grid
-          npm build -w packages/hora-elements
-          npm build -w packages/hora-grid
-          npm publish -w packages/hora-elements
-          npm publish -w packages/hora-grid
+          npm run build -w packages/hora-elements
+          npm run build -w packages/hora-grid
+          npm run publish -w packages/hora-elements
+          npm run publish -w packages/hora-grid
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
