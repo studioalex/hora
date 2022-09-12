@@ -1,6 +1,5 @@
 {
   "name": "@studioalex/hora-grid-demo",
-  "private": true,
   "license": "MIT",
   "version": "0.1.6",
   "type": "module",

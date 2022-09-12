@@ -1,7 +1,6 @@
 {
   "name": "@studioalex/horagrid-project",
   "version": "0.1.6",
-  "private": true,
   "license": "GPLV3+",
   "workspaces": [
     "apps/*",
