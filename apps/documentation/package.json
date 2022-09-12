@@ -1,6 +1,6 @@
 {
   "name": "@studioalex/hora-docs",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "Hora Grid Vue 3 Component Documentation",
   "main": "index.js",
   "scripts": {
