@@ -15,7 +15,7 @@ hero:
   actions:
     - theme: brand
       text: Get Started
-      link: /guide/
+      link: /guide/getting_started
     - theme: alt
       text: View on GitHub
       link: https://github.com/studioalex/hora
