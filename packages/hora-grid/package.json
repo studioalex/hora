@@ -1,6 +1,6 @@
 {
   "name": "@studioalex/hora-grid",
-  "license": "GPLV3+",
+  "license": "MIT",
   "version": "0.1.10",
   "type": "module",
   "files": [

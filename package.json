@@ -1,7 +1,7 @@
 {
   "name": "@studioalex/hora",
   "version": "0.1.10",
-  "license": "GPLV3+",
+  "license": "MIT",
   "workspaces": [
     "apps/*",
     "packages/*"
