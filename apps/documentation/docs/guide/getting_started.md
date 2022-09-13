@@ -1,9 +1,7 @@
-# Hora Grid
+# Getting Started
 
 Vue 3 Data Grid component driven by pure [CSS Grid Layout](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout)
 helps to display data delivered from API's.
-
-Documentation and example Project can be found [here](https://hora.studioalex.one/).
 
 ## Adding Hora Grid to your Project
 

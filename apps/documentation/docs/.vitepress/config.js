@@ -11,7 +11,7 @@ export default defineConfig({
   themeConfig: {
     logo: '/logo.svg',
     nav: [
-      { text: 'Guide', link: '/guide/data_fields' },
+      { text: 'Guide', link: '/guide/getting_started' },
       { text: 'Elements', link: '/elements/' },
       { text: 'Demo App', link: 'https://hora.studioalex.one/demo/' },
       { text: 'Changelog', link: 'https://github.com/studioalex/hora/blob/main/README.md' },
@@ -22,6 +22,7 @@ export default defineConfig({
       '/guide/': [{
         text: 'Guide',
         items: [
+          { text: 'Getting Started', link: '/guide/getting_started' },
           { text: 'Items and Fields', link: '/guide/data_fields' },
           { text: 'Static header and fields', link: '/guide/static' },
           { text: 'Custom Data Rendering', link: '/guide/custom_data_rendering' },
