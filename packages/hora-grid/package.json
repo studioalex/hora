@@ -3,6 +3,11 @@
   "license": "MIT",
   "version": "0.1.11",
   "type": "module",
+  "keywords": [
+    "Vue", "Vue 3", "Vite", "components", "component",
+    "datatable", "data-table", "data", "table", "grid", "css grid", "column", "row", "field",
+    "style"
+  ],
   "files": [
     "dist"
   ],
