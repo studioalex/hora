@@ -26,7 +26,7 @@
     isLoading.value = false
   }
   isLoading.value = true
-  setTimeout(loadData, 3000)
+  setTimeout(loadData, 1500)
 
   /** SORT */
   const sortField = ref(null)
