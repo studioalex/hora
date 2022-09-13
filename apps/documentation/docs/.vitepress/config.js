@@ -8,6 +8,10 @@ export default defineConfig({
   appearance: true,
   lastUpdated: true,
   base: '/',
+  head: [
+    ['script', { async: true, src: 'https://www.googletagmanager.com/gtag/js?id=G-107PE2E9DH' }],
+    ['script', {}, "window.dataLayer = window.dataLayer || [];\nfunction gtag(){dataLayer.push(arguments);}\ngtag('js', new Date());\ngtag('config', 'G-107PE2E9DH');"]
+  ],
   themeConfig: {
     logo: '/logo.svg',
     nav: [
