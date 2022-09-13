@@ -1,5 +1,5 @@
 <p align="center">
-  ![Hora Grid Logo](/assets/logo-large.png)
+  <img src="https://github.com/studioalex/hora/blob/2b96bffc5bf1c1cdc35133f5049443287e2765f6/assets/logo-large.png" height="150">
 </p>
 
 <h1 align="center">
