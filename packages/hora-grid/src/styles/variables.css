@@ -75,7 +75,7 @@
   /* Basic Theme Settings */
   --HORA--color--action: var(--hr-color-blue);
 
-  --HORA--grid--gap: 8px;
+  --HORA--grid--gap: 6px;
   --HORA--grid--font-family: var(--hr-font-family-base);
   --HORA--grid--rows-auto: minmax(20px, auto);
 
@@ -163,7 +163,7 @@
 .dark	.hora {
   --HORA--color--action: var(--hr-color-blue);
 
-  --HORA--grid--gap: 8px;
+  --HORA--grid--gap: 6px;
   --HORA--grid--font-family: var(--hr-font-family-base);
   --HORA--grid--rows-auto: minmax(20px, auto);
 
