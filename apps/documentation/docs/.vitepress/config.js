@@ -1,5 +1,10 @@
 import { defineConfig } from 'vitepress'
+import { createWriteStream } from 'node:fs'
+import { resolve } from 'node:path'
+import { SitemapStream } from 'sitemap'
 import { version } from '../../package.json'
+
+const links = []
 
 export default defineConfig({
   lang: 'en-US',
@@ -58,5 +63,20 @@ export default defineConfig({
       apiKey: 'ffd35574f8f7cbf4dc554e9fa3ba7a66',
       indexName: 'hora'
     }
+  },
+  transformHtml: (_, id, { pageData }) => {
+    if (!/[\\/]404\.html$/.test(id))
+      links.push({
+        // you might need to change this if not using clean urls mode
+        url: pageData.relativePath.replace(/((^|\/)index)?\.md$/, '$2'),
+        lastmod: pageData.lastUpdated
+      })
+  },
+  buildEnd: ({ outDir }) => {
+    const sitemap = new SitemapStream({ hostname: 'https://hora.studioalex.one/' })
+    const writeStream = createWriteStream(resolve(outDir, 'sitemap.xml'))
+    sitemap.pipe(writeStream)
+    links.forEach((link) => sitemap.write(link))
+    sitemap.end()
   }
 })
