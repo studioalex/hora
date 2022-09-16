@@ -29,9 +29,6 @@
     "test:dev": "vitest",
     "coverage": "vitest run --coverage"
   },
-  "dependencies": {
-    "vue": "^3.2.39"
-  },
   "devDependencies": {
     "@types/node": "^18.7.16",
     "@typescript-eslint/eslint-plugin": "^5.36.2",
@@ -51,6 +48,7 @@
     "typescript": "^4.8.3",
     "vite": "^3.1.0",
     "vitest": "^0.23.1",
+    "vue": "^3.2.39",
     "vue-tsc": "^0.40.13"
   },
   "publishConfig": {

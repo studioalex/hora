@@ -38,10 +38,6 @@
     "typecheck": "vue-tsc --noEmit",
     "typecheck:why": "vue-tsc --noEmit --explainFiles > explainTypes.txt"
   },
-  "dependencies": {
-    "mitt": "^3.0.0",
-    "vue": "^3.2.39"
-  },
   "devDependencies": {
     "@studioalex/hora-elements": "*",
     "@types/node": "^18.7.16",
@@ -58,10 +54,12 @@
     "eslint": "^8.23.0",
     "eslint-plugin-vue": "^9.4.0",
     "happy-dom": "^6.0.4",
+    "mitt": "^3.0.0",
     "postcss-nested": "^5.0.6",
     "typescript": "^4.8.3",
     "vite": "^3.1.0",
     "vitest": "^0.23.1",
+    "vue": "^3.2.39",
     "vue-draggable-next": "^2.1.1",
     "vue-tsc": "^0.40.13"
   },
