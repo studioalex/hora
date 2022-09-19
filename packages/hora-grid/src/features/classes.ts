@@ -10,21 +10,25 @@ export function getFieldClasses (
   isFirstFieldFixed: boolean,
   isLastFieldFixed: boolean
 ): string {
-  const classes: Array<string> = ['hora-grid__field']
+  const _index = fieldIndex + 1
+  const classes: Array<string> = [
+    'hora-grid__field',
+    `hora-grid__field--${fieldIndex}`
+  ]
   // Mark as first field
-  if (fieldIndex === 1) {
+  if (_index === 1) {
     classes.push('hora-grid__field--first')
   }
   // Mark as last field
-  if (fieldIndex === fieldCount) {
+  if (_index === fieldCount) {
     classes.push('hora-grid__field--last')
   }
   // Fix first field and mark as static
-  if (isFirstFieldFixed === true && fieldIndex === 1) {
+  if (isFirstFieldFixed === true && _index === 1) {
     classes.push('hora-grid__field--fixed-left')
   }
   // Fix last field and mark as static
-  if (isLastFieldFixed === true && fieldIndex === fieldCount) {
+  if (isLastFieldFixed === true && _index === fieldCount) {
     classes.push('hora-grid__field--fixed-right')
   }
   
@@ -46,21 +50,25 @@ export function getHeaderClasses (
   isLastFieldFixed: boolean,
   hasActionField: boolean
   ): string {
-  const classes: Array<string> = ['hora-grid__header']
+  const _index = fieldIndex + 1
+  const classes: Array<string> = [
+    'hora-grid__header',
+    `hora-grid__header--${fieldIndex}`
+  ]
   // Header is marked as fixed
   if (isHeaderFixed === true) {
     // Fixed top-left
-    if (isFirstFieldFixed === true && fieldIndex === 1) {
+    if (isFirstFieldFixed === true && _index === 1) {
       classes.push('hora-grid__field--fixed-top-left')
     }
     // Fixed top-right
-    if (isLastFieldFixed === true && fieldIndex === fieldCount) {
+    if (isLastFieldFixed === true && _index === fieldCount) {
       classes.push('hora-grid__field--fixed-top-right')
     }
     // Top all others fields
-    if ((fieldIndex > 1 && fieldIndex < fieldCount) 
-       || (isFirstFieldFixed === false && fieldIndex === 1)
-       || (isLastFieldFixed === false && fieldIndex === fieldCount)) {
+    if ((_index > 1 && _index < fieldCount) 
+       || (isFirstFieldFixed === false && _index === 1)
+       || (isLastFieldFixed === false && _index === fieldCount)) {
       classes.push('hora-grid__field--fixed-top')
     }
   }
@@ -68,22 +76,22 @@ export function getHeaderClasses (
   // Header is NOT marked as fixed
   if (isHeaderFixed === false) {
     // Fixed left
-    if (isFirstFieldFixed === true && fieldIndex === 1) {
+    if (isFirstFieldFixed === true && _index === 1) {
       classes.push('hora-grid__field--fixed-left')
     }
     // Fixed right
-    if (isLastFieldFixed === true && fieldIndex === fieldCount) {
+    if (isLastFieldFixed === true && _index === fieldCount) {
       classes.push('hora-grid__field--fixed-right')
     }
   }
 
   // Mark first visible header field
-  if (fieldIndex === 1) {
+  if (_index === 1) {
     classes.push('hora-grid__header--first')
   }
 
   // Mark last visible header field
-  if (fieldIndex === fieldCount) {
+  if (_index === fieldCount) {
     classes.push('hora-grid__header--last')
   }
 
