@@ -59,9 +59,9 @@ export default defineConfig({
     },
 
     algolia: {
-      appId: 'NBVX6OR8H4',
-      apiKey: 'ffd35574f8f7cbf4dc554e9fa3ba7a66',
-      indexName: 'hora'
+      appId: 'KB13RTVKOU',
+      apiKey: 'ce9cb5875081fc6d5234a7cdab55d306',
+      indexName: 'hora-studioalex'
     }
   },
   transformHtml: (_, id, { pageData }) => {
