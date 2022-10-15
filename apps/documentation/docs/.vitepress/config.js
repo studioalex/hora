@@ -73,7 +73,7 @@ export default defineConfig({
       })
   },
   buildEnd: ({ outDir }) => {
-    const sitemap = new SitemapStream({ hostname: 'https://hora.studioalex.one/' })
+    const sitemap = new SitemapStream({ hostname: 'https://hora.studioalex.tech/' })
     const writeStream = createWriteStream(resolve(outDir, 'sitemap.xml'))
     sitemap.pipe(writeStream)
     links.forEach((link) => sitemap.write(link))
