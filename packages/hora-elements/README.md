@@ -1,6 +1,6 @@
 # Hora Elements
 
-[GitHub](https://github.com/studioalex/hora) | [Documentation](https://hora.studioalex.one/)
+[GitHub](https://github.com/studioalex/hora) | [Documentation](https://hora.studioalex.tech/)
 
 ## License
 

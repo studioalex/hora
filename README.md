@@ -13,7 +13,7 @@
 <p>
 
 <p align="center">
- <a href="https://hora.studioalex.one/">Documentation</a> | <a href="https://hora.studioalex.one/demo">Demo</a>
+ <a href="https://hora.studioalex.tech/">Documentation</a> | <a href="https://hora.studioalex.tech/demo">Demo</a>
 </p>
 
 ## Features
