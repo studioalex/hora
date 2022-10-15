@@ -14,15 +14,15 @@ export default defineConfig({
   lastUpdated: true,
   base: '/',
   head: [
-    ['script', { async: true, src: 'https://www.googletagmanager.com/gtag/js?id=G-107PE2E9DH' }],
-    ['script', {}, "window.dataLayer = window.dataLayer || [];\nfunction gtag(){dataLayer.push(arguments);}\ngtag('js', new Date());\ngtag('config', 'G-107PE2E9DH');"]
+    ['script', { async: true, src: 'https://www.googletagmanager.com/gtag/js?id=G-30QGCTJWJ8' }],
+    ['script', {}, "window.dataLayer = window.dataLayer || [];\nfunction gtag(){dataLayer.push(arguments);}\ngtag('js', new Date());\ngtag('config', 'G-30QGCTJWJ8');"]
   ],
   themeConfig: {
     logo: '/logo.svg',
     nav: [
       { text: 'Guide', link: '/guide/getting_started' },
       { text: 'Elements', link: '/elements/' },
-      { text: 'Demo App', link: 'https://hora.studioalex.one/demo/' },
+      { text: 'Demo App', link: 'https://hora.studioalex.tech/demo/' },
       { text: 'Changelog', link: 'https://github.com/studioalex/hora/blob/main/README.md' },
       { text: 'GitHub', link: 'https://github.com/studioalex/hora' },
       { text: version }
