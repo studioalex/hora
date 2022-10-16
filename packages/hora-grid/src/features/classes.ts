@@ -12,8 +12,7 @@ export function getFieldClasses (
 ): string {
   const _index = fieldIndex + 1
   const classes: Array<string> = [
-    'hora-grid__field',
-    `hora-grid__field--${fieldIndex}`
+    'hora-grid__field'
   ]
   // Mark as first field
   if (_index === 1) {
@@ -52,8 +51,7 @@ export function getHeaderClasses (
   ): string {
   const _index = fieldIndex + 1
   const classes: Array<string> = [
-    'hora-grid__header',
-    `hora-grid__header--${fieldIndex}`
+    'hora-grid__header'
   ]
   // Header is marked as fixed
   if (isHeaderFixed === true) {
